@@ -22,3 +22,5 @@ C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\Respo
 C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.exe
 C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.xml
 C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.pdb
+C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.Form2.resources
+C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.Form3.resources
