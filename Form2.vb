@@ -99,7 +99,11 @@
 
         Dim outFile As IO.StreamWriter
         Dim qlqr As String
+        Dim cabecalho As String
+        Dim datahoraAtual As DateTime = Now
+        cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf & "Usuário: " & TextBox8.Text & vbCrLf & "Amostra: " & TextBox9.Text & vbCrLf & "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf & "Magnitude (mV)	Comprimento de onda(nm)"
         outFile = My.Computer.FileSystem.OpenTextFileWriter(TextBox7.Text, True)
+        outFile.WriteLine(cabecalho)
         For i = LBound(responsividade) + 1 To responsividade.Length - 1
             qlqr = responsividade(i).ToString + " " + columnXAmostra(i).ToString
             outFile.WriteLine(qlqr)
