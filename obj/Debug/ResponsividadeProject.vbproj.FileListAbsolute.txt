@@ -24,3 +24,17 @@ C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\Respo
 C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.pdb
 C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.Form2.resources
 C:\Users\phdin\source\repos\Responsividade\ResponsividadeProject\obj\Debug\ResponsividadeProject.Form3.resources
+C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.exe.config
+C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.exe
+C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.pdb
+C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.xml
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.vbprojAssemblyReference.cache
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.Form1.resources
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.Form2.resources
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.Form3.resources
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.Resources.resources
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.vbproj.GenerateResource.cache
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.vbproj.CoreCompileInputs.cache
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.exe
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.xml
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.pdb

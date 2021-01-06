@@ -97,32 +97,32 @@ Public Class Form3
 
         nomeAmostra(0) = RichTextBox1.Text
         If String.IsNullOrEmpty(nomeAmostra(0)) Then
-            nomeAmostra(0) = "Amostra"
+            nomeAmostra(0) = "Amostra0"
         End If
 
         nomeAmostra(1) = RichTextBox3.Text
         If String.IsNullOrEmpty(nomeAmostra(1)) Then
-            nomeAmostra(1) = "Amostra"
+            nomeAmostra(1) = "Amostra1"
         End If
 
         nomeAmostra(2) = RichTextBox4.Text
         If String.IsNullOrEmpty(nomeAmostra(2)) Then
-            nomeAmostra(2) = "Amostra"
+            nomeAmostra(2) = "Amostra2"
         End If
 
         nomeAmostra(3) = RichTextBox5.Text
         If String.IsNullOrEmpty(nomeAmostra(3)) Then
-            nomeAmostra(3) = "Amostra"
+            nomeAmostra(3) = "Amostra3"
         End If
 
         nomeAmostra(4) = RichTextBox6.Text
         If String.IsNullOrEmpty(nomeAmostra(4)) Then
-            nomeAmostra(4) = "Amostra"
+            nomeAmostra(4) = "Amostra4"
         End If
 
         nomeAmostra(5) = RichTextBox7.Text
         If String.IsNullOrEmpty(nomeAmostra(5)) Then
-            nomeAmostra(5) = "Amostra"
+            nomeAmostra(5) = "Amostra5"
         End If
 
         Dim minimo As Double
@@ -158,6 +158,7 @@ Public Class Form3
         'specify series plot lines
         Form1.Chart1.Series.Clear()
 
+        ' INICIO - 1 GRAFICO
         If RadioButton1.Checked Then
             Form1.Chart1.Series.Clear()
             Form1.Chart1.Series.Add(nomeAmostra(0))
@@ -166,16 +167,17 @@ Public Class Form3
 
             Dim path As String = openFile()
             Text = readTxtComplete(path)
-            Dim y() As Double = getColumYOfStringOfColumns(Text)
-            Dim x() As Double = getColumXOfStringofColumns(Text)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
 
-            For i = 0 To x.Length - 1
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Console.WriteLine(x(i))
                 Console.WriteLine(y(i))
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
         End If
-
+        ' FIM - 1 GRAFICO
+        ' INICIO - 2 GRAFICOS
         If RadioButton2.Checked Then
             Form1.Chart1.Series.Clear()
             Form1.Chart1.Series.Add(nomeAmostra(0))
@@ -184,13 +186,12 @@ Public Class Form3
 
             Dim path As String = openFile()
             Dim Text As String = readTxtComplete(path)
-            Dim y() As Double = getColumYOfStringOfColumns(Text)
-            Dim x() As Double = getColumXOfStringofColumns(Text)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
 
-            For i = 0 To x.Length - 1
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
-
 
 
             Form1.Chart1.Series.Add(nomeAmostra(1))
@@ -199,17 +200,18 @@ Public Class Form3
 
             Dim path1 As String = openFile()
             Dim Text1 As String = readTxtComplete(path1)
-            Dim y1() As Double = getColumYOfStringOfColumns(Text1)
-            Dim x1() As Double = getColumXOfStringofColumns(Text1)
+            Dim y1() As Double = getColumYOfStringComplete(Text1)
+            Dim x1() As Double = getColumXOfStringComplete(Text1)
 
-            For i = 0 To x1.Length - 1
+            For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
         End If
-
-
+        ' FIM - 2 GRAFICOS
+        ' INICIO - 3 GRAFICOS
         If RadioButton3.Checked Then
+
             Form1.Chart1.Series.Clear()
             Form1.Chart1.Series.Add(nomeAmostra(0))
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
@@ -217,10 +219,10 @@ Public Class Form3
 
             Dim path As String = openFile()
             Text = readTxtComplete(path)
-            Dim y() As Double = getColumYOfStringOfColumns(Text)
-            Dim x() As Double = getColumXOfStringofColumns(Text)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
 
-            For i = 0 To x.Length - 1
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
@@ -231,10 +233,10 @@ Public Class Form3
 
             Dim path1 As String = openFile()
             Dim Text1 As String = readTxtComplete(path1)
-            Dim y1() As Double = getColumYOfStringOfColumns(Text1)
-            Dim x1() As Double = getColumXOfStringofColumns(Text1)
+            Dim y1() As Double = getColumYOfStringComplete(Text1)
+            Dim x1() As Double = getColumXOfStringComplete(Text1)
 
-            For i = 0 To x1.Length - 1
+            For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
@@ -245,14 +247,237 @@ Public Class Form3
 
             Dim path2 As String = openFile()
             Dim Text2 As String = readTxtComplete(path2)
-            Dim y2() As Double = getColumYOfStringOfColumns(Text2)
-            Dim x2() As Double = getColumXOfStringofColumns(Text2)
+            Dim y2() As Double = getColumYOfStringComplete(Text2)
+            Dim x2() As Double = getColumXOfStringComplete(Text2)
 
-            For i = 0 To x2.Length - 1
+            For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
         End If
+        ' FIM - 3 GRAFICOS
+        ' INICIO - 4 GRAFICOS
+        If RadioButton4.Checked Then
+
+            Form1.Chart1.Series.Clear()
+            Form1.Chart1.Series.Add(nomeAmostra(0))
+            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path As String = openFile()
+            Text = readTxtComplete(path)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
+
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(1))
+            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path1 As String = openFile()
+            Dim Text1 As String = readTxtComplete(path1)
+            Dim y1() As Double = getColumYOfStringComplete(Text1)
+            Dim x1() As Double = getColumXOfStringComplete(Text1)
+
+            For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(2))
+            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path2 As String = openFile()
+            Dim Text2 As String = readTxtComplete(path2)
+            Dim y2() As Double = getColumYOfStringComplete(Text2)
+            Dim x2() As Double = getColumXOfStringComplete(Text2)
+
+            For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(3))
+            Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
+            Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path3 As String = openFile()
+            Dim Text3 As String = readTxtComplete(path3)
+            Dim y3() As Double = getColumYOfStringComplete(Text3)
+            Dim x3() As Double = getColumXOfStringComplete(Text3)
+
+            For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+            Next i
+        End If
+        ' FIM - 4 GRAFICOS
+        ' INICIO - 5 GRAFICOS
+        If RadioButton5.Checked Then
+
+            Form1.Chart1.Series.Clear()
+            Form1.Chart1.Series.Add(nomeAmostra(0))
+            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path As String = openFile()
+            Text = readTxtComplete(path)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
+
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(1))
+            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path1 As String = openFile()
+            Dim Text1 As String = readTxtComplete(path1)
+            Dim y1() As Double = getColumYOfStringComplete(Text1)
+            Dim x1() As Double = getColumXOfStringComplete(Text1)
+
+            For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(2))
+            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path2 As String = openFile()
+            Dim Text2 As String = readTxtComplete(path2)
+            Dim y2() As Double = getColumYOfStringComplete(Text2)
+            Dim x2() As Double = getColumXOfStringComplete(Text2)
+
+            For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(3))
+            Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
+            Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path3 As String = openFile()
+            Dim Text3 As String = readTxtComplete(path3)
+            Dim y3() As Double = getColumYOfStringComplete(Text3)
+            Dim x3() As Double = getColumXOfStringComplete(Text3)
+
+            For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(4))
+            Form1.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
+            Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path4 As String = openFile()
+            Dim Text4 As String = readTxtComplete(path4)
+            Dim y4() As Double = getColumYOfStringComplete(Text4)
+            Dim x4() As Double = getColumXOfStringComplete(Text4)
+
+            For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+            Next i
+        End If
+        ' FIM - 5 GRAFICOS
+        ' INICIO - 6 GRAFICOS
+        If RadioButton6.Checked Then
+
+            Form1.Chart1.Series.Clear()
+            Form1.Chart1.Series.Add(nomeAmostra(0))
+            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path As String = openFile()
+            Text = readTxtComplete(path)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
+
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(1))
+            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path1 As String = openFile()
+            Dim Text1 As String = readTxtComplete(path1)
+            Dim y1() As Double = getColumYOfStringComplete(Text1)
+            Dim x1() As Double = getColumXOfStringComplete(Text1)
+
+            For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(2))
+            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path2 As String = openFile()
+            Dim Text2 As String = readTxtComplete(path2)
+            Dim y2() As Double = getColumYOfStringComplete(Text2)
+            Dim x2() As Double = getColumXOfStringComplete(Text2)
+
+            For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(3))
+            Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
+            Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path3 As String = openFile()
+            Dim Text3 As String = readTxtComplete(path3)
+            Dim y3() As Double = getColumYOfStringComplete(Text3)
+            Dim x3() As Double = getColumXOfStringComplete(Text3)
+
+            For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(4))
+            Form1.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
+            Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path4 As String = openFile()
+            Dim Text4 As String = readTxtComplete(path4)
+            Dim y4() As Double = getColumYOfStringComplete(Text4)
+            Dim x4() As Double = getColumXOfStringComplete(Text4)
+
+            For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+            Next i
+
+
+            Form1.Chart1.Series.Add(nomeAmostra(5))
+            Form1.Chart1.Series(nomeAmostra(5)).Color = Color.FromKnownColor(KnownColor.Pink)
+            Form1.Chart1.Series(nomeAmostra(5)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+            Dim path5 As String = openFile()
+            Dim Text5 As String = readTxtComplete(path5)
+            Dim y5() As Double = getColumYOfStringComplete(Text5)
+            Dim x5() As Double = getColumXOfStringComplete(Text5)
+
+            For i = 0 To x5.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
+            Next i
+        End If
+        ' FIM - 6 GRAFICOS
 
         Me.Hide()
     End Sub

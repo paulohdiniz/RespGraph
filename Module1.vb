@@ -17,9 +17,9 @@
             Return strFileName
         End If
     End Function
-    Public Sub Add(Of T)(ByRef arr As T(), item As T)
-        Array.Resize(arr, arr.Length + 1)
+    Public Sub Add(Of T)(ByRef arr As T(), item As T) 'Adiciona um elemento num array no seu final. Pega o array, aumenta seu tamanho em 1 e coloca o elemento item nesse posto.
         arr(arr.Length - 1) = item
+        Array.Resize(arr, arr.Length + 1)
     End Sub
 
     Public Function readTxtComplete(ByVal FILE_NAME As String) As String
@@ -47,14 +47,14 @@
         Dim position As Integer
         Dim stringWithColumns As String
         Dim vetorX(0) As Double
+        MsgBox(vetorX.Length)
         Dim vetor(1) As String
         Dim xDouble As Double
         stringSearching = "onda(nm)"
         position = InStr(textComplete, stringSearching)
-        stringWithColumns = textComplete.Substring(position + 8)
+        stringWithColumns = textComplete.Substring(position + 9)
         Dim linhas As String() = stringWithColumns.Split(vbLf)
-
-        For i = LBound(linhas) To UBound(linhas)
+        For i = 0 To (linhas.Length - 2) 'o ultimo elemento de linhas não é linha válida
 
             If (Not linhas(i).Equals("") And Not linhas(i).Equals(vbLf) And Not linhas(i).Equals(vbCrLf)) Then
 
@@ -62,7 +62,8 @@
                 If (Not linhas(i).Equals(" ")) Then 'nao deixa dar o split se a linha do txt for um ou mais espaços
                     vetor = linhas(i).Split(" ")
                     vetor(1) = vetor(1).Replace(".", ",") 'para o vb o separador de decimal é ,
-                    If Double.TryParse(vetor(1), xDouble) Then
+                    If Double.TryParse(vetor(1), xDouble) Then 'se a string virar double o if é true
+
                         Add(Of Double)(vetorX, xDouble)
                     End If
                 End If
@@ -81,10 +82,10 @@
         Dim yDouble As Double
         stringSearching = "onda(nm)"
         position = InStr(textComplete, stringSearching)
-        stringWithColumns = textComplete.Substring(position + 8)
+        stringWithColumns = textComplete.Substring(position + 9)
         Dim linhas As String() = stringWithColumns.Split(vbLf)
 
-        For i = LBound(linhas) To UBound(linhas)
+        For i = 0 To (linhas.Length - 1)
 
             If (Not linhas(i).Equals("") And Not linhas(i).Equals(vbLf) And Not linhas(i).Equals(vbCrLf)) Then
 
@@ -109,52 +110,4 @@
         End While
         Return i - 1
     End Function
-
-    Public Function getColumYOfStringOfColumns(ByVal stringWithColumns As String) As Double() 'y é a primeira coluna do textcomplete
-        Dim vetorY(0) As Double
-        Dim vetor(1) As String
-        Dim yDouble As Double
-        Dim linhas As String() = stringWithColumns.Split(vbLf)
-
-        For i = LBound(linhas) To UBound(linhas)
-
-            If (Not linhas(i).Equals("") And Not linhas(i).Equals(vbLf) And Not linhas(i).Equals(vbCrLf)) Then
-
-                linhas(i) = System.Text.RegularExpressions.Regex.Replace(linhas(i), "\s+", " ") 'Esse comando apaga espaços consecutivos entre os valores, um trim mais generico
-                If (Not linhas(i).Equals(" ") And Not linhas(i).Equals("")) Then 'nao deixa dar o split se a linha do txt for um ou mais espaços
-                    vetor = linhas(i).Split(" ")
-                    vetor(0) = vetor(0).Replace(".", ",") 'para o vb o separador de decimal é ,
-                    If Double.TryParse(vetor(0), yDouble) Then
-                        Add(Of Double)(vetorY, yDouble)
-                    End If
-                End If
-
-            End If
-        Next i
-        Return vetorY
-    End Function
-    Public Function getColumXOfStringofColumns(ByVal stringWithColumns As String) As Double() 'x é a segunda coluna do textcomplete
-        Dim vetorX(0) As Double
-        Dim vetor(1) As String
-        Dim xDouble As Double
-        Dim linhas As String() = stringWithColumns.Split(vbLf)
-
-        For i = LBound(linhas) To UBound(linhas)
-
-            If (Not linhas(i).Equals("") And Not linhas(i).Equals(vbLf) And Not linhas(i).Equals(vbCrLf)) Then
-
-                linhas(i) = System.Text.RegularExpressions.Regex.Replace(linhas(i), "\s+", " ") 'Esse comando apaga espaços consecutivos entre os valores, um trim mais generico
-                If (Not linhas(i).Equals(" ")) Then 'nao deixa dar o split se a linha do txt for um ou mais espaços
-                    vetor = linhas(i).Split(" ")
-                    vetor(1) = vetor(1).Replace(".", ",") 'para o vb o separador de decimal é ,
-                    If Double.TryParse(vetor(1), xDouble) Then
-                        Add(Of Double)(vetorX, xDouble)
-                    End If
-                End If
-
-            End If
-        Next i
-        Return vetorX
-    End Function
-
 End Module
