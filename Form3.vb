@@ -143,17 +143,63 @@ Public Class Form3
             Double.TryParse(RichTextBox9.Text, maximo) 'transformando a string em double
         End If
 
+        Dim renameX As String
+        renameX = RichTextBox10.Text
+        If String.IsNullOrEmpty(renameX) Then
+            renameX = "Comprimento de onda (nm)"
+        End If
+
+        Dim renameY As String
+        renameY = RichTextBox11.Text
+        If String.IsNullOrEmpty(renameY) Then
+            renameY = "Responsividade"
+        End If
+
+        ' N indica o numero como ele realmente é, o NX indica com X casas decimais
+        Dim formatX As String
+        Dim formatY As String
+        formatX = "N"
+        formatY = "N"
+        'X
+        If RadioButton7.Checked Then
+            formatX = "N0"
+        End If
+        If RadioButton8.Checked Then
+            formatX = "N1"
+        End If
+        If RadioButton9.Checked Then
+            formatX = "N2"
+        End If
+        If RadioButton10.Checked Then
+            formatX = "N3"
+        End If
+        'Y - a ordem la ta esquisita mesmo, mas nada demais só olhar la e colocar aqui
+        If RadioButton11.Checked Then
+            formatY = "N0"
+        End If
+        If RadioButton14.Checked Then
+            formatY = "N1"
+        End If
+        If RadioButton13.Checked Then
+            formatY = "N2"
+        End If
+        If RadioButton12.Checked Then
+            formatY = "N3"
+        End If
+
         Form1.Chart1.Titles.Clear()
         Form1.Chart1.Titles.Add(titulo) 'specify chart name
         Form1.Chart1.ChartAreas.Clear()
         Form1.Chart1.ChartAreas.Add(nomeAmostra(0))
         With Form1.Chart1.ChartAreas(nomeAmostra(0))
-            .AxisX.Title = "Comprimento de onda (nm)" 'x label
+            .AxisX.Title = renameX 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
             .AxisX.Minimum = minimo 'LIMITANDO O GRAFICO EM X ENTRE O VALOR MINIMUM E MAXIMUM
             .AxisX.Maximum = maximo
-            .AxisY.Title = "Responsividade" 'y label
+            .AxisY.Title = renameY 'y label
+            .AxisX.LabelStyle.Format = formatX
+            .AxisY.LabelStyle.Format = formatY
         End With
         'specify series plot lines
         Form1.Chart1.Series.Clear()
