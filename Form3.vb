@@ -212,25 +212,29 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = openFile()
+            If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Text = readTxtComplete(path)
-            Dim y() As Double = getColumYOfStringComplete(Text)
-            Dim x() As Double = getColumXOfStringComplete(Text)
+                Dim y() As Double = getColumYOfStringComplete(Text)
+                Dim x() As Double = getColumXOfStringComplete(Text)
 
-            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Console.WriteLine(x(i))
-                Console.WriteLine(y(i))
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
-            Next i
-        End If
-        ' FIM - 1 GRAFICO
-        ' INICIO - 2 GRAFICOS
-        If RadioButton2.Checked Then
+                For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                    Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Next i
+            End If
+            ' FIM - 1 GRAFICO
+            ' INICIO - 2 GRAFICOS
+            If RadioButton2.Checked Then
             Form1.Chart1.Series.Clear()
             Form1.Chart1.Series.Add(nomeAmostra(0))
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = openFile()
+            If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text As String = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
             Dim x() As Double = getColumXOfStringComplete(Text)
@@ -245,6 +249,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = openFile()
+            If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
             Dim x1() As Double = getColumXOfStringComplete(Text1)
@@ -264,6 +271,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = openFile()
+            If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
             Dim x() As Double = getColumXOfStringComplete(Text)
@@ -278,6 +288,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = openFile()
+            If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
             Dim x1() As Double = getColumXOfStringComplete(Text1)
@@ -292,6 +305,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = openFile()
+            If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
             Dim x2() As Double = getColumXOfStringComplete(Text2)
@@ -311,6 +327,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = openFile()
+            If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
             Dim x() As Double = getColumXOfStringComplete(Text)
@@ -325,6 +344,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = openFile()
+            If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
             Dim x1() As Double = getColumXOfStringComplete(Text1)
@@ -339,6 +361,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = openFile()
+            If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
             Dim x2() As Double = getColumXOfStringComplete(Text2)
@@ -353,6 +378,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path3 As String = openFile()
+            If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text3 As String = readTxtComplete(path3)
             Dim y3() As Double = getColumYOfStringComplete(Text3)
             Dim x3() As Double = getColumXOfStringComplete(Text3)
@@ -371,6 +399,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = openFile()
+            If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
             Dim x() As Double = getColumXOfStringComplete(Text)
@@ -385,6 +416,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = openFile()
+            If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
             Dim x1() As Double = getColumXOfStringComplete(Text1)
@@ -399,6 +433,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = openFile()
+            If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
             Dim x2() As Double = getColumXOfStringComplete(Text2)
@@ -413,6 +450,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path3 As String = openFile()
+            If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text3 As String = readTxtComplete(path3)
             Dim y3() As Double = getColumYOfStringComplete(Text3)
             Dim x3() As Double = getColumXOfStringComplete(Text3)
@@ -427,6 +467,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path4 As String = openFile()
+            If path4 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text4 As String = readTxtComplete(path4)
             Dim y4() As Double = getColumYOfStringComplete(Text4)
             Dim x4() As Double = getColumXOfStringComplete(Text4)
@@ -445,6 +488,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = openFile()
+            If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
             Dim x() As Double = getColumXOfStringComplete(Text)
@@ -459,6 +505,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = openFile()
+            If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
             Dim x1() As Double = getColumXOfStringComplete(Text1)
@@ -473,6 +522,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = openFile()
+            If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
             Dim x2() As Double = getColumXOfStringComplete(Text2)
@@ -487,6 +539,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path3 As String = openFile()
+            If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text3 As String = readTxtComplete(path3)
             Dim y3() As Double = getColumYOfStringComplete(Text3)
             Dim x3() As Double = getColumXOfStringComplete(Text3)
@@ -501,6 +556,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path4 As String = openFile()
+            If path4 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text4 As String = readTxtComplete(path4)
             Dim y4() As Double = getColumYOfStringComplete(Text4)
             Dim x4() As Double = getColumXOfStringComplete(Text4)
@@ -515,6 +573,9 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(5)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path5 As String = openFile()
+            If path5 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+                Exit Sub
+            End If
             Dim Text5 As String = readTxtComplete(path5)
             Dim y5() As Double = getColumYOfStringComplete(Text5)
             Dim x5() As Double = getColumXOfStringComplete(Text5)
@@ -528,5 +589,7 @@ Public Class Form3
         Me.Hide()
     End Sub
 
-
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Form4.Visible = True
+    End Sub
 End Class

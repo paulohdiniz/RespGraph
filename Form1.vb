@@ -17,4 +17,8 @@
             ToolTip1.SetToolTip(Chart1, "(" & h.Series.Points(h.PointIndex).XValue & " ; " & h.Series.Points(h.PointIndex).YValues(0) & ")")
         End If
     End Sub
+
+    Private Sub SobreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SobreToolStripMenuItem.Click
+        Sobre.Visible = True
+    End Sub
 End Class

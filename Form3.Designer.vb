@@ -76,6 +76,7 @@ Partial Class Form3
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -280,6 +281,7 @@ Partial Class Form3
         Me.Button1.Size = New System.Drawing.Size(162, 87)
         Me.Button1.TabIndex = 32
         Me.Button1.Text = "Plotar"
+        Me.ToolTip1.SetToolTip(Me.Button1, "GO !")
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Label2
@@ -710,11 +712,24 @@ Partial Class Form3
         Me.Panel1.Size = New System.Drawing.Size(326, 499)
         Me.Panel1.TabIndex = 44
         '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(1194, 639)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(108, 57)
+        Me.Button2.TabIndex = 46
+        Me.Button2.Text = "Ajuda"
+        Me.ToolTip1.SetToolTip(Me.Button2, "Clique aqui se possui alguma dúvida.")
+        Me.Button2.UseVisualStyleBackColor = False
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1283, 733)
+        Me.ClientSize = New System.Drawing.Size(1348, 721)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Button1)
@@ -792,4 +807,5 @@ Partial Class Form3
     Friend WithEvents RadioButton13 As RadioButton
     Friend WithEvents RadioButton14 As RadioButton
     Friend WithEvents Panel6 As Panel
+    Friend WithEvents Button2 As Button
 End Class

@@ -4,16 +4,16 @@
         Dim strFileName As String
         openFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         openFD.Title = "Buscando arquivo..."
-        openFD.Filter = "Text Files|*.txt|Word Files|*.doc|Calibracao|*.med|Referencias|*.ref"
+        openFD.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = openFD.ShowDialog()
         strFileName = openFD.FileName
 
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
+
             Return Nothing
         Else
             strFileName = openFD.FileName
-            Console.WriteLine(strFileName)
             Return strFileName
         End If
     End Function
@@ -51,6 +51,7 @@
         Dim vetor(1) As String
         Dim xDouble As Double
         stringSearching = "onda(nm)"
+        MsgBox(textComplete.Length)
         position = InStr(textComplete, stringSearching)
         stringWithColumns = textComplete.Substring(position + 9)
         Dim linhas As String() = stringWithColumns.Split(vbLf)
@@ -82,7 +83,14 @@
         Dim yDouble As Double
         stringSearching = "onda(nm)"
         position = InStr(textComplete, stringSearching)
-        stringWithColumns = textComplete.Substring(position + 9)
+        If position = 0 Then
+            MsgBox("O programa será reiniciado, você selecionou um arquivo inválido ou cancelou a abertura. Clique no botão AJUDA para saber mais")
+            'Fecha o programa e reabre.
+            Application.Exit()
+            Process.Start(Application.ExecutablePath)
+        Else
+            stringWithColumns = textComplete.Substring(position + 9)
+        End If
         Dim linhas As String() = stringWithColumns.Split(vbLf)
 
         For i = 0 To (linhas.Length - 1)
