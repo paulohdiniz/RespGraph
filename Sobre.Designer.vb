@@ -21,7 +21,6 @@ Partial Class Sobre
     Friend WithEvents LabelCompanyName As System.Windows.Forms.Label
     Friend WithEvents TextBoxDescription As System.Windows.Forms.TextBox
     Friend WithEvents OKButton As System.Windows.Forms.Button
-    Friend WithEvents LabelCopyright As System.Windows.Forms.Label
 
     'Exigido pelo Windows Form Designer
     Private components As System.ComponentModel.IContainer
@@ -36,7 +35,6 @@ Partial Class Sobre
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.LabelProductName = New System.Windows.Forms.Label()
         Me.LabelVersion = New System.Windows.Forms.Label()
-        Me.LabelCopyright = New System.Windows.Forms.Label()
         Me.LabelCompanyName = New System.Windows.Forms.Label()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.OKButton = New System.Windows.Forms.Button()
@@ -52,7 +50,6 @@ Partial Class Sobre
         Me.TableLayoutPanel.Controls.Add(Me.LogoPictureBox, 0, 0)
         Me.TableLayoutPanel.Controls.Add(Me.LabelProductName, 1, 0)
         Me.TableLayoutPanel.Controls.Add(Me.LabelVersion, 1, 1)
-        Me.TableLayoutPanel.Controls.Add(Me.LabelCopyright, 1, 2)
         Me.TableLayoutPanel.Controls.Add(Me.LabelCompanyName, 1, 3)
         Me.TableLayoutPanel.Controls.Add(Me.TextBoxDescription, 1, 4)
         Me.TableLayoutPanel.Controls.Add(Me.OKButton, 1, 5)
@@ -92,7 +89,7 @@ Partial Class Sobre
         Me.LabelProductName.Name = "LabelProductName"
         Me.LabelProductName.Size = New System.Drawing.Size(510, 21)
         Me.LabelProductName.TabIndex = 0
-        Me.LabelProductName.Text = "ProgramaSemNome"
+        Me.LabelProductName.Text = "Programa RESPGRAPH"
         Me.LabelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LabelVersion
@@ -106,18 +103,6 @@ Partial Class Sobre
         Me.LabelVersion.TabIndex = 0
         Me.LabelVersion.Text = "Versão 1.0"
         Me.LabelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LabelCopyright
-        '
-        Me.LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelCopyright.Location = New System.Drawing.Point(264, 100)
-        Me.LabelCopyright.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
-        Me.LabelCopyright.MaximumSize = New System.Drawing.Size(0, 21)
-        Me.LabelCopyright.Name = "LabelCopyright"
-        Me.LabelCopyright.Size = New System.Drawing.Size(510, 21)
-        Me.LabelCopyright.TabIndex = 0
-        Me.LabelCopyright.Text = "Copyright"
-        Me.LabelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LabelCompanyName
         '

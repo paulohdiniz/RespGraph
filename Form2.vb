@@ -20,12 +20,14 @@
         PathRef = ComboBox1.Text
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
+        'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
         Dim areaSensorDeReferencia As Double
         Dim distanciaSensorDeReferencia As Double
         Dim areaAmostra As Double
         Dim distanciaAmostra As Double
         Dim sucess As Boolean
 
+        'variavel booleana que verifica se os valores dos parametros de correção foram inseridos corretamente
         sucess = Double.TryParse(TextBox3.Text, areaSensorDeReferencia) And Double.TryParse(TextBox4.Text, distanciaSensorDeReferencia) And Double.TryParse(TextBox5.Text, areaAmostra) And Double.TryParse(TextBox6.Text, distanciaAmostra)
 
         Dim alfa As Double

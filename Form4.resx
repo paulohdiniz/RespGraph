@@ -124,13 +124,13 @@
     <value>Instruções para o bom uso do gráfico:
 
 1) O usuário pode escolher até 6 curvas para plotar no mesmo gráfico. Isso foi feito para que se possa comparar diferentes curvas de diferentes dispositivos.
-2) Essas curvas devem estar em arquivos de texto (Dê preferência aos arquivos tipo .txt, .med, .ref). Esses dois últimos tipos são tipos de saídas do programa principal.
-3) Esses arquivos de texto devem ter um cabeçalho na qual a última linha dele termina com a frase "ondas(nm)" e após isso têm as duas colunas com os valores a serem plotados.
-4) A primeira coluna corresponde ao eixo Y (eixo ordenado) e a segunda coluna corresponde ao eixo X (eixo das abscissas).
+2) Essas curvas devem estar em arquivos de texto (Dê preferência aos arquivos tipo .txt, .med, .ref). Esses dois últimos tipos são tipos de saídas do programa principal em uso no laboratório.
+3) Esses arquivos de texto devem ter um cabeçalho na qual a última linha dele termina com a frase "onda(nm)" e após isso têm as duas colunas com os valores a serem plotados.
+4) A primeira coluna corresponderá ao eixo Y (eixo ordenado) e a segunda coluna corresponderá ao eixo X (eixo das abscissas).
 5) O usuário pode alterar o nome dos eixos para o caso em que se mudem as unidades, ordens de grandeza, dimensão e até natureza dos valores plotados.
 6) O programa foi feito para não parar de rodar caso você não coloque alguma informação (título, nome das amostras), mas tente preencher todas as partes para melhor aproveitamento do gráfico.
-7) O usuário pode plotar qualquer natureza de curvas nesse ambiente (desde que sejam cumpridas as especificações acima). 
-         Exemplo: caso o usuário tenha um arquivo sem cabeçalho em que constem nele apenas duas colunas de valores, o usuário pode escrever na primeira linha desse arquivo "ondas(nm)" e executar o programa que ele plotará as duas colunas perfeitamente.
+7) O usuário pode plotar qualquer natureza de curvas nesse ambiente (desde que sejam cumpridas as especificações já citadas nos itens acima). 
+         Exemplo: caso o usuário tenha um arquivo sem cabeçalho em que constem nele apenas duas colunas de valores, o usuário pode escrever na primeira linha desse arquivo "onda(nm)" e executar o programa que ele plotará as duas colunas perfeitamente.
 8) Ao passar o ponteiro do mouse sobre o gráfico é possível ver os valores (x, y) da região plotada.
 9) No caso em que se plotará mais de uma curva, o sistema requisitará a quantidade de arquivos igual ao número de curvas que você selecionou. Selecione os arquivos texto na ordem indicada das amostras que você escreveu, caso cancele algum desses envios (clicando no X ou em cancelar) você pode clicar novamente para plotar e terá que selecionar do começo na ordem indicada por você das amostras.
 </value>

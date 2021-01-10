@@ -14,7 +14,6 @@
         '    (abaixo do menu"Project").
         Me.LabelProductName.Text = Me.LabelProductName.Text
         Me.LabelVersion.Text = Me.LabelVersion.Text
-        Me.LabelCopyright.Text = Me.LabelCopyright.Text
         Me.LabelCompanyName.Text = Me.LabelCompanyName.Text
         Me.TextBoxDescription.Text = Me.TextBoxDescription.Text
     End Sub

@@ -41,3 +41,7 @@ C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.pdb
 C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.Sobre.resources
 C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.SplashScreen1.resources
 C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.Form4.resources
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.exe.manifest
+C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.exe.manifest
+C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.application
+C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.application

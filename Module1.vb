@@ -10,7 +10,6 @@
 
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
-
             Return Nothing
         Else
             strFileName = openFD.FileName
@@ -47,11 +46,9 @@
         Dim position As Integer
         Dim stringWithColumns As String
         Dim vetorX(0) As Double
-        MsgBox(vetorX.Length)
         Dim vetor(1) As String
         Dim xDouble As Double
         stringSearching = "onda(nm)"
-        MsgBox(textComplete.Length)
         position = InStr(textComplete, stringSearching)
         stringWithColumns = textComplete.Substring(position + 9)
         Dim linhas As String() = stringWithColumns.Split(vbLf)
@@ -78,6 +75,7 @@
         Dim stringSearching As String
         Dim position As Integer
         Dim stringWithColumns As String
+        stringWithColumns = ""
         Dim vetorY(0) As Double
         Dim vetor(1) As String
         Dim yDouble As Double
