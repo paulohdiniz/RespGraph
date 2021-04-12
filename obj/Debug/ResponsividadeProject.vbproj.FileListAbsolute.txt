@@ -45,3 +45,24 @@ C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.exe.m
 C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.exe.manifest
 C:\Users\phdin\source\repos\Responsividade\bin\Debug\ResponsividadeProject.application
 C:\Users\phdin\source\repos\Responsividade\obj\Debug\ResponsividadeProject.application
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\bin\Debug\ResponsividadeProject.exe.config
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\bin\Debug\ResponsividadeProject.exe.manifest
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\bin\Debug\ResponsividadeProject.application
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\bin\Debug\ResponsividadeProject.exe
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\bin\Debug\ResponsividadeProject.pdb
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\bin\Debug\ResponsividadeProject.xml
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.vbprojAssemblyReference.cache
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form4.resources
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Sobre.resources
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form1.resources
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form2.resources
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Resources.resources
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.SplashScreen1.resources
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.vbproj.GenerateResource.cache
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.vbproj.CoreCompileInputs.cache
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.exe.manifest
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.application
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.exe
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.xml
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.pdb
+C:\Users\phdin\Documents\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form3.resources

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ResponsividadeProject.exe" size="161760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ResponsividadeProject.exe" size="172000">
       <assemblyIdentity name="ResponsividadeProject" version="1.1.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eJ/W2ozcKafwqMl8ZtV/+9KUsh1OpxgRRev+yGle0eg=</dsig:DigestValue>
+        <dsig:DigestValue>Q1Vp51AqISKJwJNyvyR/o7A+UxS/2B6+3Snsel7j+n8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

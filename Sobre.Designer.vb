@@ -113,7 +113,7 @@ Partial Class Sobre
         Me.LabelCompanyName.Name = "LabelCompanyName"
         Me.LabelCompanyName.Size = New System.Drawing.Size(510, 21)
         Me.LabelCompanyName.TabIndex = 0
-        Me.LabelCompanyName.Text = "Nome da Companhia"
+        Me.LabelCompanyName.Text = "Instituto de Física da USP - IFUSP" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.LabelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'TextBoxDescription

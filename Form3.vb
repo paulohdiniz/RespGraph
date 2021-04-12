@@ -1,4 +1,6 @@
 ﻿
+
+
 Public Class Form3
 
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
@@ -13,6 +15,13 @@ Public Class Form3
         Label10.Visible = False
         Label11.Visible = False
         Label12.Visible = False
+        Button3.Visible = True 'botao do 1
+        Button4.Visible = False
+        Button5.Visible = False
+        Button6.Visible = False
+        Button7.Visible = False
+        Button8.Visible = False
+
 
     End Sub
 
@@ -28,6 +37,12 @@ Public Class Form3
         Label10.Visible = False
         Label11.Visible = False
         Label12.Visible = False
+        Button3.Visible = True 'botao do 1
+        Button4.Visible = True
+        Button5.Visible = False
+        Button6.Visible = False
+        Button7.Visible = False
+        Button8.Visible = False
     End Sub
 
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
@@ -42,6 +57,12 @@ Public Class Form3
         Label10.Visible = False
         Label11.Visible = False
         Label12.Visible = False
+        Button3.Visible = True 'botao do 1
+        Button4.Visible = True
+        Button5.Visible = True
+        Button6.Visible = False
+        Button7.Visible = False
+        Button8.Visible = False
     End Sub
 
     Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
@@ -56,6 +77,12 @@ Public Class Form3
         Label10.Visible = True
         Label11.Visible = False
         Label12.Visible = False
+        Button3.Visible = True 'botao do 1
+        Button4.Visible = True
+        Button5.Visible = True
+        Button6.Visible = True
+        Button7.Visible = False
+        Button8.Visible = False
     End Sub
 
     Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
@@ -70,6 +97,12 @@ Public Class Form3
         Label10.Visible = True
         Label11.Visible = True
         Label12.Visible = False
+        Button3.Visible = True 'botao do 1
+        Button4.Visible = True
+        Button5.Visible = True
+        Button6.Visible = True
+        Button7.Visible = True
+        Button8.Visible = False
     End Sub
 
     Private Sub RadioButton6_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged
@@ -84,6 +117,13 @@ Public Class Form3
         Label10.Visible = True
         Label11.Visible = True
         Label12.Visible = True
+        Button3.Visible = True 'botao do 1
+        Button4.Visible = True
+        Button5.Visible = True
+        Button6.Visible = True
+        Button7.Visible = True
+        Button8.Visible = True
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -212,29 +252,27 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o primeiro arquivo referente à amostra: " & nomeAmostra(0))
-            Dim path As String = openFile()
+            Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
             Text = readTxtComplete(path)
-                Dim y() As Double = getColumYOfStringComplete(Text)
-                Dim x() As Double = getColumXOfStringComplete(Text)
+            Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
 
-                For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                    Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
-                Next i
-            End If
-            ' FIM - 1 GRAFICO
-            ' INICIO - 2 GRAFICOS
-            If RadioButton2.Checked Then
+            For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+            Next i
+        End If
+        ' FIM - 1 GRAFICO
+        ' INICIO - 2 GRAFICOS
+        If RadioButton2.Checked Then
             Form1.Chart1.Series.Clear()
             Form1.Chart1.Series.Add(nomeAmostra(0))
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o primeiro arquivo referente à amostra: " & nomeAmostra(0))
-            Dim path As String = openFile()
+            Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -246,13 +284,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(1))
             Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o segundo arquivo referente à amostra: " & nomeAmostra(1))
-            Dim path1 As String = openFile()
+            Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -274,8 +310,7 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o primeiro arquivo referente à amostra: " & nomeAmostra(0))
-            Dim path As String = openFile()
+            Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -287,13 +322,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(1))
             Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o segundo arquivo referente à amostra: " & nomeAmostra(1))
-            Dim path1 As String = openFile()
+            Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -305,13 +338,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(2))
             Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o terceiro arquivo referente à amostra: " & nomeAmostra(2))
-            Dim path2 As String = openFile()
+            Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -333,8 +364,7 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o primeiro arquivo referente à amostra: " & nomeAmostra(0))
-            Dim path As String = openFile()
+            Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -346,13 +376,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(1))
             Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o segundo arquivo referente à amostra: " & nomeAmostra(1))
-            Dim path1 As String = openFile()
+            Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -364,13 +392,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(2))
             Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o terceiro arquivo referente à amostra: " & nomeAmostra(2))
-            Dim path2 As String = openFile()
+            Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -382,13 +408,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(3))
             Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
             Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o quarto arquivo referente à amostra: " & nomeAmostra(3))
-            Dim path3 As String = openFile()
+            Dim path3 As String = GlobalVariables.OpenFileDialog4.FileName
             If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -409,8 +433,7 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o primeiro arquivo referente à amostra: " & nomeAmostra(0))
-            Dim path As String = openFile()
+            Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -422,13 +445,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(1))
             Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o segundo arquivo referente à amostra: " & nomeAmostra(1))
-            Dim path1 As String = openFile()
+            Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -440,13 +461,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(2))
             Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o terceiro arquivo referente à amostra: " & nomeAmostra(2))
-            Dim path2 As String = openFile()
+            Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -458,13 +477,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(3))
             Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
             Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o quarto arquivo referente à amostra: " & nomeAmostra(3))
-            Dim path3 As String = openFile()
+            Dim path3 As String = GlobalVariables.OpenFileDialog4.FileName
             If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -476,13 +493,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(4))
             Form1.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
             Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o quinto arquivo referente à amostra: " & nomeAmostra(4))
-            Dim path4 As String = openFile()
+            Dim path4 As String = GlobalVariables.OpenFileDialog5.FileName
             If path4 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -503,8 +518,7 @@ Public Class Form3
             Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
             Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o primeiro arquivo referente à amostra: " & nomeAmostra(0))
-            Dim path As String = openFile()
+            Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -516,13 +530,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(1))
             Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
             Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o segundo arquivo referente à amostra: " & nomeAmostra(1))
-            Dim path1 As String = openFile()
+            Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -534,13 +546,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(2))
             Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
             Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o terceiro arquivo referente à amostra: " & nomeAmostra(2))
-            Dim path2 As String = openFile()
+            Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -552,13 +562,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(3))
             Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
             Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o quarto arquivo referente à amostra: " & nomeAmostra(3))
-            Dim path3 As String = openFile()
+            Dim path3 As String = GlobalVariables.OpenFileDialog4.FileName
             If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -570,13 +578,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(4))
             Form1.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
             Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o quinto arquivo referente à amostra: " & nomeAmostra(4))
-            Dim path4 As String = openFile()
+            Dim path4 As String = GlobalVariables.OpenFileDialog5.FileName
             If path4 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -588,13 +594,11 @@ Public Class Form3
                 Form1.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
             Next i
 
-
             Form1.Chart1.Series.Add(nomeAmostra(5))
             Form1.Chart1.Series(nomeAmostra(5)).Color = Color.FromKnownColor(KnownColor.Pink)
             Form1.Chart1.Series(nomeAmostra(5)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
-            MsgBox("Selecione o último arquivo referente à amostra: " & nomeAmostra(5))
-            Dim path5 As String = openFile()
+            Dim path5 As String = GlobalVariables.OpenFileDialog6.FileName
             If path5 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
             End If
@@ -614,4 +618,83 @@ Public Class Form3
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Form4.Visible = True
     End Sub
+
+    Public Class GlobalVariables
+        Public Shared OpenFileDialog1 As New OpenFileDialog
+        Public Shared OpenFileDialog2 As New OpenFileDialog
+        Public Shared OpenFileDialog3 As New OpenFileDialog
+        Public Shared OpenFileDialog4 As New OpenFileDialog
+        Public Shared OpenFileDialog5 As New OpenFileDialog
+        Public Shared OpenFileDialog6 As New OpenFileDialog
+
+    End Class
+
+    Public Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+        GlobalVariables.OpenFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a abertura")
+        End If
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        GlobalVariables.OpenFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a abertura")
+        End If
+
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        GlobalVariables.OpenFileDialog3.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog3.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog3.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog3.ShowDialog()
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a abertura")
+        End If
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        GlobalVariables.OpenFileDialog4.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog4.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog4.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog4.ShowDialog()
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a abertura")
+        End If
+
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        GlobalVariables.OpenFileDialog5.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog5.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog5.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog5.ShowDialog()
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a abertura")
+        End If
+
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        GlobalVariables.OpenFileDialog6.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog6.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog6.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog6.ShowDialog()
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a abertura")
+        End If
+
+    End Sub
+
+
 End Class
