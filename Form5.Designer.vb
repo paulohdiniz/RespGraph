@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form4
+Partial Class Form5
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
@@ -22,34 +22,39 @@ Partial Class Form4
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form4))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.CausesValidation = False
         Me.TextBox1.Cursor = System.Windows.Forms.Cursors.No
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(97, 12)
+        Me.TextBox1.Location = New System.Drawing.Point(12, 12)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(800, 750)
+        Me.TextBox1.Size = New System.Drawing.Size(449, 458)
         Me.TextBox1.TabIndex = 1
         Me.TextBox1.TabStop = False
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Form4
+        'Form5
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1044, 775)
+        Me.ClientSize = New System.Drawing.Size(473, 470)
         Me.Controls.Add(Me.TextBox1)
-        Me.Name = "Form4"
+        Me.Location = New System.Drawing.Point(20, 20)
+        Me.Name = "Form5"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Ajuda"
+        Me.Text = "O que escrever?"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

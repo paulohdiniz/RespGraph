@@ -155,7 +155,7 @@ Partial Class Sobre
         Me.Name = "Sobre"
         Me.Padding = New System.Windows.Forms.Padding(12, 11, 12, 11)
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Sobre"
         Me.TableLayoutPanel.ResumeLayout(False)
         Me.TableLayoutPanel.PerformLayout()

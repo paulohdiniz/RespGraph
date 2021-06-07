@@ -43,7 +43,7 @@
     Public Function clearString(ByVal stringWithColumns As String) As String
         'Essa funcao eliminará os valores que não forem , . e números deixando apenas as duas colunas como stringWithColumns
         Dim firstChar As Integer = Asc(stringWithColumns.Substring(0, 1))
-        While firstChar > 57 Or firstChar < 48 'enquanto o primeiro char for 13 ou 10
+        While firstChar > 57 Or firstChar < 48 'enquanto o primeiro char não for número
             stringWithColumns = stringWithColumns.Substring(1) 'retira o primeiro (13 ou 10) da string
             firstChar = Asc(stringWithColumns.Substring(0, 1)) 'pega o novo primeiro
         End While
@@ -67,7 +67,7 @@
         position = InStr(textComplete, stringSearching)
         stringWithColumnsDirty = textComplete.Substring(position + 9)
 
-        stringWithColumns = clearString(stringWithColumnsDirty) 'usa a funcao clearstring (retira todos char 10 e 13) do começo e fim da string, DEIXA SO AS COLUNAS
+        stringWithColumns = clearString(stringWithColumnsDirty) 'usa a funcao clearstring (retira tudo que nao é numero) do começo e fim da string, DEIXA SO AS COLUNAS
 
         Dim linhas As String() = stringWithColumns.Split(vbLf) 'contando quantas linha teremos na string anteriormente retirada
 

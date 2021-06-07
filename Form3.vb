@@ -200,32 +200,35 @@ Public Class Form3
         Dim formatY As String
         formatX = "N"
         formatY = "N"
+
+        Dim NumeroCasasDeX As String
+        NumeroCasasDeX = RichTextBox12.Text
+        If String.IsNullOrEmpty(NumeroCasasDeX) Then
+            NumeroCasasDeX = "1"
+        End If
+
+        Dim NumeroCasasDeY As String
+        NumeroCasasDeY = RichTextBox13.Text
+        If String.IsNullOrEmpty(NumeroCasasDeY) Then
+            NumeroCasasDeY = "1"
+        End If
+
         'X
-        If RadioButton7.Checked Then
-            formatX = "N0"
+        If RadioButton7.Checked Then 'notacao sim
+            formatX = "E" + NumeroCasasDeX
         End If
-        If RadioButton8.Checked Then
-            formatX = "N1"
+        If RadioButton8.Checked Then 'notacao nao
+            formatX = "N" + NumeroCasasDeX
         End If
+
+        'Y
         If RadioButton9.Checked Then
-            formatX = "N2"
+            formatY = "E" + NumeroCasasDeY
         End If
         If RadioButton10.Checked Then
-            formatX = "N3"
+            formatY = "N" + NumeroCasasDeY
         End If
-        'Y - a ordem la ta esquisita mesmo, mas nada demais só olhar la e colocar aqui
-        If RadioButton11.Checked Then
-            formatY = "N0"
-        End If
-        If RadioButton14.Checked Then
-            formatY = "N1"
-        End If
-        If RadioButton13.Checked Then
-            formatY = "N2"
-        End If
-        If RadioButton12.Checked Then
-            formatY = "N3"
-        End If
+
 
         Form1.Chart1.Titles.Clear()
         Form1.Chart1.Titles.Add(titulo) 'specify chart name
@@ -696,5 +699,7 @@ Public Class Form3
 
     End Sub
 
-
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Form5.Visible = True
+    End Sub
 End Class

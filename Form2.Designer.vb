@@ -182,9 +182,9 @@ Partial Class Form2
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(65, 92)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 17)
+        Me.Label4.Size = New System.Drawing.Size(79, 17)
         Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Área (mm)"
+        Me.Label4.Text = "Área (mm²)"
         '
         'Label5
         '
@@ -232,9 +232,9 @@ Partial Class Form2
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(66, 58)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(74, 17)
+        Me.Label6.Size = New System.Drawing.Size(79, 17)
         Me.Label6.TabIndex = 27
-        Me.Label6.Text = "Área (mm)"
+        Me.Label6.Text = "Área (mm²)"
         '
         'Label7
         '
@@ -419,6 +419,7 @@ Partial Class Form2
         Me.Controls.Add(Me.ButtonCalcular)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Form2"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Calculando..."
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
