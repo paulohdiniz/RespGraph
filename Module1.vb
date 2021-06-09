@@ -130,7 +130,7 @@
 
     Public Function menorque(ByVal valor As Double, Arr() As Double) As Integer
         Dim i As Integer = 0
-        While (Arr(i) < valor)
+        While (Arr(i) < valor) 'entra no minimo uma vez, pois o menor valor de referencia esta obrigatoriamente abrangendo todo NewCalib
             i += 1
         End While
         Return i - 1

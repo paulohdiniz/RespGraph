@@ -145,23 +145,22 @@
         End If
 
 
-        Dim maior As Integer = 0
+        Dim maior As Integer = columnXCalib.Length - 1
         If columnXCalib(columnXCalib.Length - 1) < columnXRef(columnXRef.Length - 1) Then
-            maior = columnXCalib.Length
+            maior = columnXCalib.Length - 1
         Else
-            While columnXCalib(maior) < columnXRef(columnXRef.Length - 1)
-                maior += 1
-            End While 'maior -1 é o ultimo indice valido de Xcalib
+            While columnXCalib(maior) > columnXRef(columnXRef.Length - 1)
+                maior -= 1
+            End While 'maior é o ultimo indice valido de Xcalib
         End If
 
 
-
         'filtrando os vetores calib e amostra para valores só dentro do range do fabricante
-        Dim NewColumnXCalib = columnXCalib.Skip(menor).Take(maior - menor).ToArray()
-        Dim NewColumnYCalib = columnYCalib.Skip(menor).Take(maior - menor).ToArray()
+        Dim NewColumnXCalib = columnXCalib.Take(maior + 1).Skip(menor).ToArray()
+        Dim NewColumnYCalib = columnYCalib.Take(maior + 1).Skip(menor).ToArray()
 
-        Dim NewColumnXAmostra = columnXAmostra.Skip(menor).Take(maior - menor).ToArray()
-        Dim NewColumnYAmostra = columnYAmostra.Skip(menor).Take(maior - menor).ToArray()
+        Dim NewColumnXAmostra = columnXAmostra.Take(maior + 1).Skip(menor).ToArray()
+        Dim NewColumnYAmostra = columnYAmostra.Take(maior + 1).Skip(menor).ToArray()
 
         'Em posse de todos os vetores, agora calcularemos a responsividade
         For i = 0 To NewColumnXCalib.Length - 1
@@ -170,8 +169,16 @@
             temporario = ((NewColumnXCalib(i)) * (columnYRef(indice + 1) - columnYRef(indice)) + columnYRef(indice) * columnXRef(indice + 1) - columnXRef(indice) * columnYRef(indice + 1)) / (columnXRef(indice + 1) - columnXRef(indice))
             Add(Of Double)(yInterpolado, temporario)
 
-            Add(Of Double)(potencia, NewColumnYCalib(i) / temporario)
-            Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa) / NewColumnYCalib(i))
+            If temporario.Equals(0) Then
+                Add(Of Double)(potencia, 0)
+            Else
+                Add(Of Double)(potencia, NewColumnYCalib(i) / temporario)
+            End If
+            If (NewColumnYCalib(i).Equals(0)) Then
+                Add(Of Double)(responsividade, 0)
+            Else
+                Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa) / NewColumnYCalib(i))
+            End If
 
         Next i
         Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
