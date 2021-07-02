@@ -48,15 +48,24 @@ Partial Class Form3
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.RichTextBox13 = New System.Windows.Forms.RichTextBox()
+        Me.Panel9 = New System.Windows.Forms.Panel()
         Me.RadioButton10 = New System.Windows.Forms.RadioButton()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.RadioButton9 = New System.Windows.Forms.RadioButton()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.RichTextBox12 = New System.Windows.Forms.RichTextBox()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.RadioButton8 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.RichTextBox10 = New System.Windows.Forms.RichTextBox()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -85,24 +94,15 @@ Partial Class Form3
         Me.OpenFileDialog4 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog5 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog6 = New System.Windows.Forms.OpenFileDialog()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.RichTextBox12 = New System.Windows.Forms.RichTextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.RichTextBox13 = New System.Windows.Forms.RichTextBox()
-        Me.Button9 = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.Panel9.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.Panel8.SuspendLayout()
-        Me.Panel9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label5
@@ -130,11 +130,11 @@ Partial Class Form3
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(71, 92)
+        Me.Label4.Location = New System.Drawing.Point(92, 98)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(179, 20)
+        Me.Label4.Size = New System.Drawing.Size(165, 20)
         Me.Label4.TabIndex = 17
-        Me.Label4.Text = "Nomes da Amostras"
+        Me.Label4.Text = "Nomes das curvas"
         '
         'RichTextBox1
         '
@@ -150,7 +150,7 @@ Partial Class Form3
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
-        Me.RadioButton1.Location = New System.Drawing.Point(31, 56)
+        Me.RadioButton1.Location = New System.Drawing.Point(22, 56)
         Me.RadioButton1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(37, 21)
@@ -163,7 +163,7 @@ Partial Class Form3
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(74, 56)
+        Me.RadioButton2.Location = New System.Drawing.Point(82, 56)
         Me.RadioButton2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(37, 21)
@@ -176,7 +176,7 @@ Partial Class Form3
         'RadioButton3
         '
         Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(117, 56)
+        Me.RadioButton3.Location = New System.Drawing.Point(142, 56)
         Me.RadioButton3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(37, 21)
@@ -189,7 +189,7 @@ Partial Class Form3
         'RadioButton4
         '
         Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(160, 56)
+        Me.RadioButton4.Location = New System.Drawing.Point(202, 56)
         Me.RadioButton4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(37, 21)
@@ -202,7 +202,7 @@ Partial Class Form3
         'RadioButton5
         '
         Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(203, 56)
+        Me.RadioButton5.Location = New System.Drawing.Point(262, 56)
         Me.RadioButton5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton5.Name = "RadioButton5"
         Me.RadioButton5.Size = New System.Drawing.Size(37, 21)
@@ -215,7 +215,7 @@ Partial Class Form3
         'RadioButton6
         '
         Me.RadioButton6.AutoSize = True
-        Me.RadioButton6.Location = New System.Drawing.Point(246, 57)
+        Me.RadioButton6.Location = New System.Drawing.Point(322, 57)
         Me.RadioButton6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton6.Name = "RadioButton6"
         Me.RadioButton6.Size = New System.Drawing.Size(37, 21)
@@ -229,11 +229,11 @@ Partial Class Form3
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(39, 21)
+        Me.Label1.Location = New System.Drawing.Point(82, 12)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(248, 25)
+        Me.Label1.Size = New System.Drawing.Size(224, 25)
         Me.Label1.TabIndex = 26
-        Me.Label1.Text = "Quantidade de amostras"
+        Me.Label1.Text = "Quantidade de curvas" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'RichTextBox3
         '
@@ -394,15 +394,33 @@ Partial Class Form3
         Me.Panel7.TabIndex = 48
         Me.ToolTip1.SetToolTip(Me.Panel7, "Com quantas casas decimais você quer o valor do eixo Y?")
         '
-        'Label18
+        'Label23
         '
-        Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(129, 5)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(56, 18)
-        Me.Label18.TabIndex = 33
-        Me.Label18.Text = "Eixo Y"
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(207, 34)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(84, 17)
+        Me.Label23.TabIndex = 49
+        Me.Label23.Text = "Nº de casas"
+        '
+        'RichTextBox13
+        '
+        Me.RichTextBox13.Location = New System.Drawing.Point(207, 54)
+        Me.RichTextBox13.Name = "RichTextBox13"
+        Me.RichTextBox13.Size = New System.Drawing.Size(81, 33)
+        Me.RichTextBox13.TabIndex = 50
+        Me.RichTextBox13.Text = ""
+        '
+        'Panel9
+        '
+        Me.Panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel9.Controls.Add(Me.RadioButton10)
+        Me.Panel9.Controls.Add(Me.Label21)
+        Me.Panel9.Controls.Add(Me.RadioButton9)
+        Me.Panel9.Location = New System.Drawing.Point(10, 28)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(137, 60)
+        Me.Panel9.TabIndex = 48
         '
         'RadioButton10
         '
@@ -418,6 +436,15 @@ Partial Class Form3
         Me.ToolTip1.SetToolTip(Me.RadioButton10, "Com quantas casas decimais você quer os valores do eixo X?")
         Me.RadioButton10.UseVisualStyleBackColor = True
         '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(4, 12)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(122, 17)
+        Me.Label21.TabIndex = 47
+        Me.Label21.Text = "Notação Científica"
+        '
         'RadioButton9
         '
         Me.RadioButton9.AutoSize = True
@@ -429,6 +456,16 @@ Partial Class Form3
         Me.RadioButton9.Text = "Sim"
         Me.ToolTip1.SetToolTip(Me.RadioButton9, "Com quantas casas decimais você quer os valores do eixo X?")
         Me.RadioButton9.UseVisualStyleBackColor = True
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(129, 5)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(56, 18)
+        Me.Label18.TabIndex = 33
+        Me.Label18.Text = "Eixo Y"
         '
         'Panel6
         '
@@ -443,27 +480,42 @@ Partial Class Form3
         Me.Panel6.TabIndex = 44
         Me.ToolTip1.SetToolTip(Me.Panel6, "Com quantas casas decimais você quer o valor do eixo X?")
         '
-        'Label19
+        'Label22
         '
-        Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(125, 6)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(57, 18)
-        Me.Label19.TabIndex = 33
-        Me.Label19.Text = "Eixo X"
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(206, 35)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(84, 17)
+        Me.Label22.TabIndex = 47
+        Me.Label22.Text = "Nº de casas"
         '
-        'RadioButton7
+        'RichTextBox12
         '
-        Me.RadioButton7.AutoSize = True
-        Me.RadioButton7.Location = New System.Drawing.Point(17, 35)
-        Me.RadioButton7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.RadioButton7.Name = "RadioButton7"
-        Me.RadioButton7.Size = New System.Drawing.Size(52, 21)
-        Me.RadioButton7.TabIndex = 44
-        Me.RadioButton7.Text = "Sim"
-        Me.ToolTip1.SetToolTip(Me.RadioButton7, "Com quantas casas decimais você quer os valores do eixo X?")
-        Me.RadioButton7.UseVisualStyleBackColor = True
+        Me.RichTextBox12.Location = New System.Drawing.Point(206, 55)
+        Me.RichTextBox12.Name = "RichTextBox12"
+        Me.RichTextBox12.Size = New System.Drawing.Size(81, 33)
+        Me.RichTextBox12.TabIndex = 48
+        Me.RichTextBox12.Text = ""
+        '
+        'Panel8
+        '
+        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.Label20)
+        Me.Panel8.Controls.Add(Me.RadioButton8)
+        Me.Panel8.Controls.Add(Me.RadioButton7)
+        Me.Panel8.Location = New System.Drawing.Point(13, 29)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(137, 60)
+        Me.Panel8.TabIndex = 47
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(4, 12)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(122, 17)
+        Me.Label20.TabIndex = 46
+        Me.Label20.Text = "Notação Científica"
         '
         'RadioButton8
         '
@@ -478,6 +530,28 @@ Partial Class Form3
         Me.RadioButton8.Text = "Não"
         Me.ToolTip1.SetToolTip(Me.RadioButton8, "Com quantas casas decimais você quer os valores do eixo X?")
         Me.RadioButton8.UseVisualStyleBackColor = True
+        '
+        'RadioButton7
+        '
+        Me.RadioButton7.AutoSize = True
+        Me.RadioButton7.Location = New System.Drawing.Point(17, 35)
+        Me.RadioButton7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.RadioButton7.Name = "RadioButton7"
+        Me.RadioButton7.Size = New System.Drawing.Size(52, 21)
+        Me.RadioButton7.TabIndex = 44
+        Me.RadioButton7.Text = "Sim"
+        Me.ToolTip1.SetToolTip(Me.RadioButton7, "Com quantas casas decimais você quer os valores do eixo X?")
+        Me.RadioButton7.UseVisualStyleBackColor = True
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(125, 6)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(57, 18)
+        Me.Label19.TabIndex = 33
+        Me.Label19.Text = "Eixo X"
         '
         'Label17
         '
@@ -504,6 +578,16 @@ Partial Class Form3
         Me.Panel4.Size = New System.Drawing.Size(685, 149)
         Me.Panel4.TabIndex = 39
         Me.ToolTip1.SetToolTip(Me.Panel4, "Dê um nome especifico para cada eixo")
+        '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button9.Location = New System.Drawing.Point(642, 54)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(28, 26)
+        Me.Button9.TabIndex = 47
+        Me.Button9.Text = "?"
+        Me.Button9.UseVisualStyleBackColor = False
         '
         'Label14
         '
@@ -804,90 +888,6 @@ Partial Class Form3
         '
         Me.OpenFileDialog6.FileName = "OpenFileDialog6"
         '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(4, 12)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(122, 17)
-        Me.Label20.TabIndex = 46
-        Me.Label20.Text = "Notação Científica"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(4, 12)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(122, 17)
-        Me.Label21.TabIndex = 47
-        Me.Label21.Text = "Notação Científica"
-        '
-        'Panel8
-        '
-        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel8.Controls.Add(Me.Label20)
-        Me.Panel8.Controls.Add(Me.RadioButton8)
-        Me.Panel8.Controls.Add(Me.RadioButton7)
-        Me.Panel8.Location = New System.Drawing.Point(13, 29)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(137, 60)
-        Me.Panel8.TabIndex = 47
-        '
-        'Panel9
-        '
-        Me.Panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel9.Controls.Add(Me.RadioButton10)
-        Me.Panel9.Controls.Add(Me.Label21)
-        Me.Panel9.Controls.Add(Me.RadioButton9)
-        Me.Panel9.Location = New System.Drawing.Point(10, 28)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(137, 60)
-        Me.Panel9.TabIndex = 48
-        '
-        'RichTextBox12
-        '
-        Me.RichTextBox12.Location = New System.Drawing.Point(206, 55)
-        Me.RichTextBox12.Name = "RichTextBox12"
-        Me.RichTextBox12.Size = New System.Drawing.Size(81, 33)
-        Me.RichTextBox12.TabIndex = 48
-        Me.RichTextBox12.Text = ""
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(206, 35)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(84, 17)
-        Me.Label22.TabIndex = 47
-        Me.Label22.Text = "Nº de casas"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(207, 34)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(84, 17)
-        Me.Label23.TabIndex = 49
-        Me.Label23.Text = "Nº de casas"
-        '
-        'RichTextBox13
-        '
-        Me.RichTextBox13.Location = New System.Drawing.Point(207, 54)
-        Me.RichTextBox13.Name = "RichTextBox13"
-        Me.RichTextBox13.Size = New System.Drawing.Size(81, 33)
-        Me.RichTextBox13.TabIndex = 50
-        Me.RichTextBox13.Text = ""
-        '
-        'Button9
-        '
-        Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button9.Location = New System.Drawing.Point(642, 54)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(28, 26)
-        Me.Button9.TabIndex = 47
-        Me.Button9.Text = "?"
-        Me.Button9.UseVisualStyleBackColor = False
-        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -907,18 +907,18 @@ Partial Class Form3
         Me.Panel5.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
-        Me.Panel9.ResumeLayout(False)
-        Me.Panel9.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

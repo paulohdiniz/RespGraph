@@ -18,31 +18,56 @@
         Sobre.Visible = True
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim nomeImagem As String
-        Dim pathDirectory As String
-        Dim pathFileIMG As String
-        If String.IsNullOrEmpty(TextBox1.Text) Then
-            nomeImagem = "ChartImage-RESPGRAPH"
-        Else
-            nomeImagem = TextBox1.Text
-        End If
-        FolderBrowserDialog1.ShowDialog()
+    Private Sub SalvarImagemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalvarImagemToolStripMenuItem.Click
+        Dim sfdPic As New SaveFileDialog()
+        Dim initialDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
 
-        If String.IsNullOrEmpty(FolderBrowserDialog1.SelectedPath) Then
-            MsgBox("Você cancelou a abertura")
-            Exit Sub
-        Else
-            pathDirectory = FolderBrowserDialog1.SelectedPath
-        End If
-        pathFileIMG = pathDirectory & "\" & nomeImagem & ".png"
-        If System.IO.File.Exists(pathFileIMG) = True Then
-            MsgBox("Já existe um arquivo com esse nome, para não sobescrever o mesmo(e perder a imagem antiga) escolha outro nome.")
-            Exit Sub
-        Else
-            Chart1.SaveImage(pathFileIMG, System.Drawing.Imaging.ImageFormat.Png)
-            MsgBox("A imagem " & nomeImagem & " foi salva.")
-        End If
+        Dim title As String = "Veja a imagem."
+        Dim btn = MessageBoxButtons.YesNo
+        Dim ico = MessageBoxIcon.Information
+
+        Try
+
+            With sfdPic
+                .Title = "Salve a imagem como"
+                .Filter = "PNG IMAGEM|*.png"
+                .AddExtension = True
+                .DefaultExt = ".png"
+                .FileName = "Imagem.png"
+                .ValidateNames = True
+                .OverwritePrompt = True
+                .InitialDirectory = initialDirectory
+                .RestoreDirectory = True
+
+                If .ShowDialog = DialogResult.OK Then
+                    Chart1.SaveImage(sfdPic.FileName, System.Drawing.Imaging.ImageFormat.Png)
+                Else
+                    Return
+                End If
+
+            End With
+
+            Dim r As DialogResult
+            Dim msg As String = "A imagem foi salva corretamente." & vbNewLine
+            msg &= "Você quer ver a imagem agora?"
+
+            r = MessageBox.Show(msg, title, btn, ico)
+
+            If r = System.Windows.Forms.DialogResult.Yes Then
+                Dim startInfo As New ProcessStartInfo("mspaint.exe")
+                startInfo.WindowStyle = ProcessWindowStyle.Maximized
+                startInfo.Arguments = sfdPic.FileName
+                Process.Start(startInfo)
+            Else
+                Return
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erro: Salvar a imagem falhou ->> " & ex.Message.ToString())
+        Finally
+            sfdPic.Dispose()
+
+        End Try
 
     End Sub
 End Class

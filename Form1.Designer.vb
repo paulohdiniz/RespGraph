@@ -31,17 +31,14 @@ Partial Class Form1
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GráficoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PlotarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalvarImagemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'openFD
@@ -74,7 +71,7 @@ Partial Class Form1
         '
         'GráficoToolStripMenuItem
         '
-        Me.GráficoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlotarToolStripMenuItem})
+        Me.GráficoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlotarToolStripMenuItem, Me.SalvarImagemToolStripMenuItem})
         Me.GráficoToolStripMenuItem.Name = "GráficoToolStripMenuItem"
         Me.GráficoToolStripMenuItem.Size = New System.Drawing.Size(71, 24)
         Me.GráficoToolStripMenuItem.Text = "Gráfico"
@@ -82,8 +79,14 @@ Partial Class Form1
         'PlotarToolStripMenuItem
         '
         Me.PlotarToolStripMenuItem.Name = "PlotarToolStripMenuItem"
-        Me.PlotarToolStripMenuItem.Size = New System.Drawing.Size(131, 26)
+        Me.PlotarToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
         Me.PlotarToolStripMenuItem.Text = "Plotar"
+        '
+        'SalvarImagemToolStripMenuItem
+        '
+        Me.SalvarImagemToolStripMenuItem.Name = "SalvarImagemToolStripMenuItem"
+        Me.SalvarImagemToolStripMenuItem.Size = New System.Drawing.Size(191, 26)
+        Me.SalvarImagemToolStripMenuItem.Text = "Salvar Imagem"
         '
         'SobreToolStripMenuItem
         '
@@ -104,53 +107,10 @@ Partial Class Form1
         Me.Chart1.TabIndex = 1
         Me.Chart1.Text = "gggg"
         '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Button1.Location = New System.Drawing.Point(46, 98)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(139, 53)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Salvar Imagem"
-        Me.ToolTip1.SetToolTip(Me.Button1, "Salve o gráfico como imagem PNG")
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(46, 35)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(139, 37)
-        Me.TextBox1.TabIndex = 4
-        Me.ToolTip1.SetToolTip(Me.TextBox1, "Coloque o nome do arquivo que será salvo a imagem")
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(43, 14)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(144, 18)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Nomeie a imagem"
-        Me.ToolTip1.SetToolTip(Me.Label1, "Coloque o nome do arquivo que será salvo a imagem")
-        '
-        'Panel1
-        '
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.TextBox1)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Location = New System.Drawing.Point(67, 528)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(239, 166)
-        Me.Panel1.TabIndex = 3
-        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1348, 721)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -160,8 +120,6 @@ Partial Class Form1
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -176,9 +134,7 @@ Partial Class Form1
     Friend WithEvents PlotarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents SobreToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents SalvarImagemToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

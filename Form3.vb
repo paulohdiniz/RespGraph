@@ -192,7 +192,7 @@ Public Class Form3
         Dim renameY As String
         renameY = RichTextBox11.Text
         If String.IsNullOrEmpty(renameY) Then
-            renameY = "Responsividade"
+            renameY = "Responsividade (V/W)"
         End If
 
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
@@ -614,7 +614,6 @@ Public Class Form3
             Next i
         End If
         ' FIM - 6 GRAFICOS
-
         Me.Hide()
     End Sub
 
