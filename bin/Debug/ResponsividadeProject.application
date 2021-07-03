@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ResponsividadeProject.exe.manifest" size="3560">
+    <dependentAssembly dependencyType="install" codebase="ResponsividadeProject.exe.manifest" size="4523">
       <assemblyIdentity name="ResponsividadeProject.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="pt-BR" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NEOnG5tPa1myUdOqDzKklVMP6OlVz5Iq6WYRGtMYw2s=</dsig:DigestValue>
+        <dsig:DigestValue>w/RSb/RjautO9PE+ri0o3vn9QfHT46w7d6GyAL7/ffc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

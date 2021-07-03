@@ -39,7 +39,7 @@ Partial Class Form5
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(449, 458)
+        Me.TextBox1.Size = New System.Drawing.Size(490, 525)
         Me.TextBox1.TabIndex = 1
         Me.TextBox1.TabStop = False
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
@@ -49,7 +49,7 @@ Partial Class Form5
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(473, 470)
+        Me.ClientSize = New System.Drawing.Size(514, 537)
         Me.Controls.Add(Me.TextBox1)
         Me.Location = New System.Drawing.Point(20, 20)
         Me.Name = "Form5"

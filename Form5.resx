@@ -131,6 +131,8 @@ Mas vale a pena destacar que o eixo Y pode ser melhor escrito como:
 Absorção (un. abs.), quando não estamos preocupados com as áreas dos dispostivos e suas respectivas distâncias ao monocromador e queremos apenas uma ideia de proporção.
 
 Responsividade (A/W) ou Responsividade (V/W). Para quando a geometria estiver consolidada com todos os dados de distância e área.
+
+Para uma célula solar, não vai ser Responsividade mas sim Eficiência quântica externa (EQE) sem unidade (de 0 a 1 ou de 0 a 100%).
 </value>
   </data>
 </root>

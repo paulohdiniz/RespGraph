@@ -139,4 +139,47 @@
     Public Function RemoveWhitespace(fullString As String) As String
         Return New String(fullString.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray())
     End Function
+
+    Public Class SensorFabricante
+        Public Property Material As String
+        Public Property Area As String
+        Public Property RespMax As String
+        Public Property FaixaEspectral As String
+
+        Public Sub New(ByVal nameSensor As String)
+            Select Case nameSensor
+                Case "EOS Si S-type detector S-series"
+                    Me.Material = "Silício"
+                    Me.Area = "0.7853981634 mm²"
+                    Me.RespMax = "?????"
+                    Me.FaixaEspectral = "300 - 1000nm"
+                Case "IGA-010-E-LN6N"
+                    Me.Material = "InGaAs"
+                    Me.Area = "0.7853981634 mm²"
+                    Me.RespMax = "0.9 A/W"
+                    Me.FaixaEspectral = "900 - 1550nm @ 77K"
+                Case "IS-010-E-LN6N"
+                    Me.Material = "InSb"
+                    Me.Area = "0.7853981634 mm²"
+                    Me.RespMax = "?????"
+                    Me.FaixaEspectral = "1.0 - 5.5 um"
+                Case "MCT14-010-E-LN6N"
+                    Me.Material = "HgCdTe"
+                    Me.Area = "1 mm²"
+                    Me.RespMax = "?????"
+                    Me.FaixaEspectral = "2 - 15 um ; pk @ ~ 13.5um"
+                Case "MCT20-010-E-LN6N"
+                    Me.Material = "HgCdTe"
+                    Me.Area = "1 mm²"
+                    Me.RespMax = "????"
+                    Me.FaixaEspectral = "2 - 20 um  "
+                Case "Si antigo"
+                    Me.Material = "Silício"
+                    Me.Area = "0.7853981634 mm²"
+                    Me.RespMax = "0.579808"
+                    Me.FaixaEspectral = "?????"
+            End Select
+
+        End Sub
+    End Class
 End Module

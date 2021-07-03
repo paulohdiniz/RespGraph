@@ -4,20 +4,6 @@ Usuário: Paulo Henrique Diniz
 
 Responsividade (A/W)	Comprimento de onda(nm)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 0.280045 2009.590517
 0.281546 2027.561147
 0.283241 2045.998466

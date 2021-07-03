@@ -1,8 +1,49 @@
-﻿Public Class Form2
+﻿Imports System.IO
+
+Public Class Form2
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        Label13.Visible = True
+        Label14.Visible = True
+        Label15.Visible = True
+        Label16.Visible = True
+        TextBox10.Visible = True
+        TextBox11.Visible = True
+        TextBox12.Visible = True
+        TextBox13.Visible = True
+
+        'Si antigo não tem data sheet
+        If ComboBox1.Text.Equals("Si antigo") Then
+            Button1.Visible = False
+        Else
+            Button1.Visible = True
+        End If
+
+        'validar que os LN6N tenham essa mensagem
+        If ComboBox1.Text.Equals("Si antigo") Or ComboBox1.Text.Equals("EOS Si S-type detector S-series") Then
+
+        Else
+            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação")
+        End If
+
+
+        Dim sensor = New SensorFabricante(ComboBox1.Text)
+        TextBox10.Text = sensor.Material
+        TextBox11.Text = sensor.Area
+        TextBox12.Text = sensor.RespMax
+        TextBox13.Text = sensor.FaixaEspectral
+
+        'retira o " mm²" do final.
+        TextBox3.Text = sensor.Area.Substring(0, sensor.Area.Length - 4)
+
+
+
+    End Sub
+
     Private Sub ButtonCalibracao_Click(sender As Object, e As EventArgs) Handles ButtonCalibracao.Click
         GlobalVariables.OpenFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        GlobalVariables.OpenFileDialog1.RestoreDirectory = True
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
@@ -21,6 +62,7 @@
         GlobalVariables.OpenFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        GlobalVariables.OpenFileDialog2.RestoreDirectory = True
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
@@ -30,38 +72,6 @@
         Else
             TextBox2.Text = "Inserido !"
             TextBox2.BackColor = Color.SpringGreen
-        End If
-
-    End Sub
-    Private Sub ButtonSaida_Click(sender As Object, e As EventArgs) Handles ButtonSaida.Click
-        Dim pathFolder As String
-        Dim datahoraAtual As DateTime = Now
-        If String.IsNullOrEmpty(TextBox9.Text) Then
-            GlobalVariables.nameNewArchive = "File" & "-" & Now.Hour & "-" & Now.Minute & "-" & Now.Second & "-" & Now.Day & "-" & Now.Month & "-" & Now.Year
-        Else
-            GlobalVariables.nameNewArchive = TextBox9.Text
-        End If
-
-        FolderBrowserDialog1.ShowDialog()
-
-        If String.IsNullOrEmpty(FolderBrowserDialog1.SelectedPath) Then
-            MsgBox("Você cancelou a abertura")
-            TextBox7.Text = "Fail !"
-            TextBox7.BackColor = Color.Red
-            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
-        Else
-            pathFolder = FolderBrowserDialog1.SelectedPath
-            TextBox7.Text = "Selecionado !"
-            TextBox7.BackColor = Color.SpringGreen
-
-        End If
-        GlobalVariables.pathNewArchive = pathFolder & "\" & GlobalVariables.nameNewArchive & ".txt"
-        If System.IO.File.Exists(GlobalVariables.pathNewArchive) = True Then
-            MsgBox("Já existe um arquivo com esse nome, para não sobescrever o mesmo (e perder o arquivo antigo) escolha outro nome.")
-            Exit Sub
-        Else
-            'Chart1.SaveImage(pathNewArchive, System.Drawing.Imaging.ImageFormat.Png) 'aqui vamos deixar o arquivo criado
-            MsgBox("O arquivo txt " & GlobalVariables.nameNewArchive & " será criado. Clique em Calcular !")
         End If
 
     End Sub
@@ -79,6 +89,10 @@
         Dim PathRef As String
         PathRef = ComboBox1.Text
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
+
+        Dim sensor = New SensorFabricante(ComboBox1.Text)
+        'retira o " mm²" do final
+        TextBox3.Text = sensor.Area.Substring(0, sensor.Area.Length - 4)
 
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
         Dim areaSensorDeReferencia As Double
@@ -183,18 +197,77 @@
         Next i
         Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
 
-        Dim outFile As IO.StreamWriter
-        Dim qlqr As String
-        Dim cabecalho As String
-        Dim datahoraAtual As DateTime = Now
-        cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf & "Usuário: " & TextBox8.Text & vbCrLf & "Amostra: " & TextBox9.Text & vbCrLf & "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf & "Magnitude (mV)	Comprimento de onda(nm)"
-        outFile = My.Computer.FileSystem.OpenTextFileWriter(GlobalVariables.pathNewArchive, True)
-        outFile.WriteLine(cabecalho)
-        For k = 0 To responsividade.Length - 1
-            qlqr = responsividade(k).ToString + " " + NewColumnXAmostra(k).ToString
-            outFile.WriteLine(qlqr)
-        Next k
-        outFile.Close()
+        'aqui começa 
+        Dim sfdPic As New SaveFileDialog()
+        Dim initialDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+
+        Try
+
+            With sfdPic
+                .Title = "Salve o arquivo como"
+                .Filter = "txt|*.txt"
+                .AddExtension = True
+                .DefaultExt = ".txt"
+                .FileName = "Arquivo_RESP.txt"
+                .ValidateNames = True
+                .OverwritePrompt = True
+                .InitialDirectory = initialDirectory
+                .RestoreDirectory = True
+
+                If .ShowDialog = DialogResult.OK Then
+                    Dim outFile As IO.StreamWriter
+                    Dim qlqr As String
+                    Dim cabecalho As String
+                    Dim datahoraAtual As DateTime = Now
+                    cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
+                        "Usuário: " & "" &
+                        "Amostra: " & "" & vbCrLf &
+                        "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+                        "Magnitude (mV)	Comprimento de onda(nm)"
+                    outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, True)
+                    outFile.WriteLine(cabecalho)
+                    For k = 0 To responsividade.Length - 1
+                        qlqr = responsividade(k).ToString + " " + NewColumnXAmostra(k).ToString
+                        outFile.WriteLine(qlqr)
+                    Next k
+                    outFile.Close()
+                Else
+                    Return
+                End If
+
+            End With
+
+            Dim r As DialogResult
+            Dim msg As String = "O arquivo foi salvo corretamente." & vbNewLine
+            msg &= "Você quer abrir o arquivo agora?"
+
+            Dim title As String = "Abrir o arquivo."
+            Dim btn = MessageBoxButtons.YesNo
+            Dim ico = MessageBoxIcon.Information
+
+            r = MessageBox.Show(msg, title, btn, ico)
+
+            If r = System.Windows.Forms.DialogResult.Yes Then
+                Dim startInfo As New ProcessStartInfo("notepad.exe")
+                startInfo.WindowStyle = ProcessWindowStyle.Maximized
+                startInfo.Arguments = sfdPic.FileName
+                Process.Start(startInfo)
+            Else
+                Return
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Erro: Salvar o arquivo falhou ->> " & ex.Message.ToString())
+        Finally
+            sfdPic.Dispose()
+        End Try
         Me.Hide()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim PathRef As String
+        PathRef = ComboBox1.Text
+        Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".pdf")
+        Process.Start(filePath)
     End Sub
 End Class
