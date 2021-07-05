@@ -1,8 +1,8 @@
 ARQUIVO DE REFERENCIA
 AMOSTRA: IS-010-E-LN6N
 Usuário: Paulo Henrique Diniz
-
-Responsividade (A/W)	Comprimento de onda(nm)
+Tipo: Normalizada
+EixoY(0-1)	Comprimento de onda(nm)
 
 0.280045 2009.590517
 0.281546 2027.561147

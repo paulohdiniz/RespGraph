@@ -1,7 +1,7 @@
 ARQUIVO DE REFERENCIA
 AMOSTRA: Si Photodiode S-series 
 Usuário: Paulo Henrique Diniz
-
+Tipo: Absoluta
 Responsividade (A/W)	Comprimento de onda(nm)
 0.01062 204.751353
 0.011818 212.665313

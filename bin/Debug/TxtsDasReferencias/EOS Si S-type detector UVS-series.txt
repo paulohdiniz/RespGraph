@@ -1,7 +1,7 @@
 ARQUIVO DE REFERENCIA
 AMOSTRA: Si Photodiode UVS-series 
 Usuário: Paulo Henrique Diniz
-
+Tipo: Absoluta
 Responsividade (A/W)	Comprimento de onda(nm)
 0.088663 202.113366
 0.096048 208.048836

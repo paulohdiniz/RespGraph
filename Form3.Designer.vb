@@ -94,6 +94,13 @@ Partial Class Form3
         Me.OpenFileDialog4 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog5 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog6 = New System.Windows.Forms.OpenFileDialog()
+        Me.CheckBox12 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox11 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox10 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox9 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox8 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox7 = New System.Windows.Forms.CheckBox()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -150,7 +157,7 @@ Partial Class Form3
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
-        Me.RadioButton1.Location = New System.Drawing.Point(22, 56)
+        Me.RadioButton1.Location = New System.Drawing.Point(25, 56)
         Me.RadioButton1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(37, 21)
@@ -163,7 +170,7 @@ Partial Class Form3
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(82, 56)
+        Me.RadioButton2.Location = New System.Drawing.Point(99, 56)
         Me.RadioButton2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(37, 21)
@@ -176,7 +183,7 @@ Partial Class Form3
         'RadioButton3
         '
         Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(142, 56)
+        Me.RadioButton3.Location = New System.Drawing.Point(173, 56)
         Me.RadioButton3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(37, 21)
@@ -189,7 +196,7 @@ Partial Class Form3
         'RadioButton4
         '
         Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(202, 56)
+        Me.RadioButton4.Location = New System.Drawing.Point(247, 56)
         Me.RadioButton4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(37, 21)
@@ -202,7 +209,7 @@ Partial Class Form3
         'RadioButton5
         '
         Me.RadioButton5.AutoSize = True
-        Me.RadioButton5.Location = New System.Drawing.Point(262, 56)
+        Me.RadioButton5.Location = New System.Drawing.Point(321, 56)
         Me.RadioButton5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton5.Name = "RadioButton5"
         Me.RadioButton5.Size = New System.Drawing.Size(37, 21)
@@ -215,7 +222,7 @@ Partial Class Form3
         'RadioButton6
         '
         Me.RadioButton6.AutoSize = True
-        Me.RadioButton6.Location = New System.Drawing.Point(322, 57)
+        Me.RadioButton6.Location = New System.Drawing.Point(395, 56)
         Me.RadioButton6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RadioButton6.Name = "RadioButton6"
         Me.RadioButton6.Size = New System.Drawing.Size(37, 21)
@@ -229,7 +236,7 @@ Partial Class Form3
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(82, 12)
+        Me.Label1.Location = New System.Drawing.Point(120, 21)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(224, 25)
         Me.Label1.TabIndex = 26
@@ -294,10 +301,10 @@ Partial Class Form3
         '
         Me.Button1.BackColor = System.Drawing.Color.PaleGreen
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(109, 588)
+        Me.Button1.Location = New System.Drawing.Point(255, 583)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(162, 87)
+        Me.Button1.Size = New System.Drawing.Size(148, 59)
         Me.Button1.TabIndex = 32
         Me.Button1.Text = "Plotar"
         Me.ToolTip1.SetToolTip(Me.Button1, "Plote o(s) seu(s) gráfico(s) !")
@@ -362,7 +369,7 @@ Partial Class Form3
         Me.Panel2.Controls.Add(Me.Label13)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.RichTextBox2)
-        Me.Panel2.Location = New System.Drawing.Point(543, 38)
+        Me.Panel2.Location = New System.Drawing.Point(686, 38)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(750, 573)
         Me.Panel2.TabIndex = 45
@@ -678,7 +685,7 @@ Partial Class Form3
         '
         Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(1194, 639)
+        Me.Button2.Location = New System.Drawing.Point(1328, 651)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(108, 57)
         Me.Button2.TabIndex = 46
@@ -693,9 +700,9 @@ Partial Class Form3
         Me.Button8.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Button8.Location = New System.Drawing.Point(310, 420)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(42, 40)
+        Me.Button8.Size = New System.Drawing.Size(136, 40)
         Me.Button8.TabIndex = 49
-        Me.Button8.Text = "6"
+        Me.Button8.Text = "Carregar 6"
         Me.ToolTip1.SetToolTip(Me.Button8, "Busque o arquivo da sua amostra correspondente")
         Me.Button8.UseVisualStyleBackColor = False
         '
@@ -706,9 +713,9 @@ Partial Class Form3
         Me.Button7.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Button7.Location = New System.Drawing.Point(310, 360)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(42, 40)
+        Me.Button7.Size = New System.Drawing.Size(136, 40)
         Me.Button7.TabIndex = 48
-        Me.Button7.Text = "5"
+        Me.Button7.Text = "Carregar 5"
         Me.ToolTip1.SetToolTip(Me.Button7, "Busque o arquivo da sua amostra correspondente")
         Me.Button7.UseVisualStyleBackColor = False
         '
@@ -719,9 +726,9 @@ Partial Class Form3
         Me.Button6.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Button6.Location = New System.Drawing.Point(310, 300)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(42, 40)
+        Me.Button6.Size = New System.Drawing.Size(136, 40)
         Me.Button6.TabIndex = 47
-        Me.Button6.Text = "4"
+        Me.Button6.Text = "Carregar 4"
         Me.ToolTip1.SetToolTip(Me.Button6, "Busque o arquivo da sua amostra correspondente")
         Me.Button6.UseVisualStyleBackColor = False
         '
@@ -732,9 +739,9 @@ Partial Class Form3
         Me.Button5.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Button5.Location = New System.Drawing.Point(310, 240)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(42, 40)
+        Me.Button5.Size = New System.Drawing.Size(136, 40)
         Me.Button5.TabIndex = 46
-        Me.Button5.Text = "3"
+        Me.Button5.Text = "Carregar 3"
         Me.ToolTip1.SetToolTip(Me.Button5, "Busque o arquivo da sua amostra correspondente")
         Me.Button5.UseVisualStyleBackColor = False
         '
@@ -745,9 +752,9 @@ Partial Class Form3
         Me.Button4.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Button4.Location = New System.Drawing.Point(310, 180)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(42, 40)
+        Me.Button4.Size = New System.Drawing.Size(136, 40)
         Me.Button4.TabIndex = 45
-        Me.Button4.Text = "2"
+        Me.Button4.Text = "Carregar 2"
         Me.ToolTip1.SetToolTip(Me.Button4, "Busque o arquivo da sua amostra correspondente")
         Me.Button4.UseVisualStyleBackColor = False
         '
@@ -758,9 +765,9 @@ Partial Class Form3
         Me.Button3.ForeColor = System.Drawing.SystemColors.HotTrack
         Me.Button3.Location = New System.Drawing.Point(310, 120)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(42, 40)
+        Me.Button3.Size = New System.Drawing.Size(136, 40)
         Me.Button3.TabIndex = 44
-        Me.Button3.Text = "1"
+        Me.Button3.Text = "Carregar 1"
         Me.ToolTip1.SetToolTip(Me.Button3, "Busque o arquivo da sua amostra correspondente")
         Me.Button3.UseVisualStyleBackColor = False
         '
@@ -832,6 +839,13 @@ Partial Class Form3
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.Controls.Add(Me.CheckBox12)
+        Me.Panel1.Controls.Add(Me.CheckBox11)
+        Me.Panel1.Controls.Add(Me.CheckBox10)
+        Me.Panel1.Controls.Add(Me.CheckBox9)
+        Me.Panel1.Controls.Add(Me.CheckBox8)
+        Me.Panel1.Controls.Add(Me.CheckBox7)
+        Me.Panel1.Controls.Add(Me.Label24)
         Me.Panel1.Controls.Add(Me.Button8)
         Me.Panel1.Controls.Add(Me.Button7)
         Me.Panel1.Controls.Add(Me.Button6)
@@ -861,7 +875,7 @@ Partial Class Form3
         Me.Panel1.ForeColor = System.Drawing.SystemColors.Desktop
         Me.Panel1.Location = New System.Drawing.Point(31, 38)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(385, 509)
+        Me.Panel1.Size = New System.Drawing.Size(628, 509)
         Me.Panel1.TabIndex = 44
         '
         'OpenFileDialog1
@@ -888,11 +902,86 @@ Partial Class Form3
         '
         Me.OpenFileDialog6.FileName = "OpenFileDialog6"
         '
+        'CheckBox12
+        '
+        Me.CheckBox12.AutoSize = True
+        Me.CheckBox12.Location = New System.Drawing.Point(509, 439)
+        Me.CheckBox12.Name = "CheckBox12"
+        Me.CheckBox12.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox12.TabIndex = 68
+        Me.CheckBox12.Text = "Sim"
+        Me.CheckBox12.UseVisualStyleBackColor = True
+        Me.CheckBox12.Visible = False
+        '
+        'CheckBox11
+        '
+        Me.CheckBox11.AutoSize = True
+        Me.CheckBox11.Location = New System.Drawing.Point(509, 379)
+        Me.CheckBox11.Name = "CheckBox11"
+        Me.CheckBox11.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox11.TabIndex = 67
+        Me.CheckBox11.Text = "Sim"
+        Me.CheckBox11.UseVisualStyleBackColor = True
+        Me.CheckBox11.Visible = False
+        '
+        'CheckBox10
+        '
+        Me.CheckBox10.AutoSize = True
+        Me.CheckBox10.Location = New System.Drawing.Point(509, 319)
+        Me.CheckBox10.Name = "CheckBox10"
+        Me.CheckBox10.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox10.TabIndex = 66
+        Me.CheckBox10.Text = "Sim"
+        Me.CheckBox10.UseVisualStyleBackColor = True
+        Me.CheckBox10.Visible = False
+        '
+        'CheckBox9
+        '
+        Me.CheckBox9.AutoSize = True
+        Me.CheckBox9.Location = New System.Drawing.Point(509, 259)
+        Me.CheckBox9.Name = "CheckBox9"
+        Me.CheckBox9.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox9.TabIndex = 65
+        Me.CheckBox9.Text = "Sim"
+        Me.CheckBox9.UseVisualStyleBackColor = True
+        Me.CheckBox9.Visible = False
+        '
+        'CheckBox8
+        '
+        Me.CheckBox8.AutoSize = True
+        Me.CheckBox8.Location = New System.Drawing.Point(509, 199)
+        Me.CheckBox8.Name = "CheckBox8"
+        Me.CheckBox8.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox8.TabIndex = 64
+        Me.CheckBox8.Text = "Sim"
+        Me.CheckBox8.UseVisualStyleBackColor = True
+        Me.CheckBox8.Visible = False
+        '
+        'CheckBox7
+        '
+        Me.CheckBox7.AutoSize = True
+        Me.CheckBox7.Location = New System.Drawing.Point(509, 139)
+        Me.CheckBox7.Name = "CheckBox7"
+        Me.CheckBox7.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox7.TabIndex = 63
+        Me.CheckBox7.Text = "Sim"
+        Me.CheckBox7.UseVisualStyleBackColor = True
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(506, 98)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(98, 17)
+        Me.Label24.TabIndex = 62
+        Me.Label24.Text = "Normalizado"
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1348, 721)
+        Me.ClientSize = New System.Drawing.Size(1483, 721)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -994,4 +1083,11 @@ Partial Class Form3
     Friend WithEvents Panel8 As Panel
     Friend WithEvents Label20 As Label
     Friend WithEvents Button9 As Button
+    Friend WithEvents CheckBox12 As CheckBox
+    Friend WithEvents CheckBox11 As CheckBox
+    Friend WithEvents CheckBox10 As CheckBox
+    Friend WithEvents CheckBox9 As CheckBox
+    Friend WithEvents CheckBox8 As CheckBox
+    Friend WithEvents CheckBox7 As CheckBox
+    Friend WithEvents Label24 As Label
 End Class

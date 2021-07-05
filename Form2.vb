@@ -11,18 +11,14 @@ Public Class Form2
         TextBox12.Visible = True
         TextBox13.Visible = True
 
-        'Si antigo não tem data sheet
-        If ComboBox1.Text.Equals("Si antigo") Then
-            Button1.Visible = False
-        Else
-            Button1.Visible = True
-        End If
+        Button1.Visible = True
+        Button2.Visible = True
 
         'validar que os LN6N tenham essa mensagem
         If ComboBox1.Text.Equals("Si antigo") Or ComboBox1.Text.Equals("EOS Si S-type detector S-series") Then
 
         Else
-            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação")
+            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação.")
         End If
 
 
@@ -59,6 +55,7 @@ Public Class Form2
 
     End Sub
     Private Sub ButtonAmostra_Click(sender As Object, e As EventArgs) Handles ButtonAmostra.Click
+        TextBox7.Text = CalculaAlfa()
         GlobalVariables.OpenFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
@@ -90,29 +87,13 @@ Public Class Form2
         PathRef = ComboBox1.Text
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
-        Dim sensor = New SensorFabricante(ComboBox1.Text)
-        'retira o " mm²" do final
-        TextBox3.Text = sensor.Area.Substring(0, sensor.Area.Length - 4)
-
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
-        Dim areaSensorDeReferencia As Double
-        Dim distanciaSensorDeReferencia As Double
-        Dim areaAmostra As Double
-        Dim distanciaAmostra As Double
-        Dim sucesso As Boolean
-
-        'variavel booleana que verifica se os valores dos parametros de correção foram inseridos corretamente
-        sucesso = Double.TryParse(TextBox3.Text, areaSensorDeReferencia) And Double.TryParse(TextBox4.Text, distanciaSensorDeReferencia) And Double.TryParse(TextBox5.Text, areaAmostra) And Double.TryParse(TextBox6.Text, distanciaAmostra)
-        'Caso qualquer um dos parâmetros inseridos for zero, dará mensagem de erro
-        If (areaSensorDeReferencia = 0 Or distanciaSensorDeReferencia = 0 Or areaAmostra = 0 Or distanciaAmostra = 0) Then
-            MsgBox("Parâmetro com valor ZERO não existe. Coloque um valor válido e continue.")
-            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
-        End If
         Dim alfa As Double
-        If (sucesso) Then
-            alfa = (areaSensorDeReferencia / areaAmostra) * (distanciaAmostra ^ 2 / distanciaSensorDeReferencia ^ 2)
-        Else
-            alfa = 1 'se faltar algum parametro para o cálculo, deixa o alfa = 1 para poder rodar o programa nesse caso específico.
+
+        alfa = CalculaAlfa()
+        If (alfa = 0) Then
+            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.")
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
         End If
 
         Dim textRef As String 'variável para pegar os dados do txt em forma de string
@@ -200,7 +181,7 @@ Public Class Form2
         'aqui começa 
         Dim sfdPic As New SaveFileDialog()
         Dim initialDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-
+        Dim sensorReferenciaUsado = New SensorFabricante(ComboBox1.Text)
         Try
 
             With sfdPic
@@ -220,10 +201,15 @@ Public Class Form2
                     Dim cabecalho As String
                     Dim datahoraAtual As DateTime = Now
                     cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
-                        "Usuário: " & "" &
-                        "Amostra: " & "" & vbCrLf &
+                        "Usuário: " & Form1.TextBox1.Text & " E-mail: " & Form1.TextBox2.Text & vbCrLf &
                         "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
-                        "Magnitude (mV)	Comprimento de onda(nm)"
+                        "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
+                        "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
+                        "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
+                        "Área da amostra (mm²): " & TextBox5.Text & vbCrLf &
+                        "Distância da amostra (mm): " & TextBox6.Text & vbCrLf &
+                        "Alfa: " & TextBox7.Text & vbCrLf &
+                        sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
                     outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, True)
                     outFile.WriteLine(cabecalho)
                     For k = 0 To responsividade.Length - 1
@@ -269,5 +255,13 @@ Public Class Form2
         PathRef = ComboBox1.Text
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".pdf")
         Process.Start(filePath)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Form6.Visible = True
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Form8.Visible = True
     End Sub
 End Class

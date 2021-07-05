@@ -22,6 +22,14 @@ Public Class Form3
         Button7.Visible = False
         Button8.Visible = False
 
+        'nomarlizacao
+        Label24.Visible = True
+        CheckBox7.Visible = True
+        CheckBox8.Visible = False
+        CheckBox9.Visible = False
+        CheckBox10.Visible = False
+        CheckBox11.Visible = False
+        CheckBox12.Visible = False
 
     End Sub
 
@@ -43,6 +51,15 @@ Public Class Form3
         Button6.Visible = False
         Button7.Visible = False
         Button8.Visible = False
+
+        'nomarlizacao
+        Label24.Visible = True
+        CheckBox7.Visible = True
+        CheckBox8.Visible = True
+        CheckBox9.Visible = False
+        CheckBox10.Visible = False
+        CheckBox11.Visible = False
+        CheckBox12.Visible = False
     End Sub
 
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
@@ -63,6 +80,15 @@ Public Class Form3
         Button6.Visible = False
         Button7.Visible = False
         Button8.Visible = False
+
+        'nomarlizacao
+        Label24.Visible = True
+        CheckBox7.Visible = True
+        CheckBox8.Visible = True
+        CheckBox9.Visible = True
+        CheckBox10.Visible = False
+        CheckBox11.Visible = False
+        CheckBox12.Visible = False
     End Sub
 
     Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
@@ -83,6 +109,15 @@ Public Class Form3
         Button6.Visible = True
         Button7.Visible = False
         Button8.Visible = False
+
+        'nomarlizacao
+        Label24.Visible = True
+        CheckBox7.Visible = True
+        CheckBox8.Visible = True
+        CheckBox9.Visible = True
+        CheckBox10.Visible = True
+        CheckBox11.Visible = False
+        CheckBox12.Visible = False
     End Sub
 
     Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
@@ -103,6 +138,15 @@ Public Class Form3
         Button6.Visible = True
         Button7.Visible = True
         Button8.Visible = False
+
+        'nomarlizacao
+        Label24.Visible = True
+        CheckBox7.Visible = True
+        CheckBox8.Visible = True
+        CheckBox9.Visible = True
+        CheckBox10.Visible = True
+        CheckBox11.Visible = True
+        CheckBox12.Visible = False
     End Sub
 
     Private Sub RadioButton6_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged
@@ -123,6 +167,15 @@ Public Class Form3
         Button6.Visible = True
         Button7.Visible = True
         Button8.Visible = True
+
+        'nomarlizacao
+        Label24.Visible = True
+        CheckBox7.Visible = True
+        CheckBox8.Visible = True
+        CheckBox9.Visible = True
+        CheckBox10.Visible = True
+        CheckBox11.Visible = True
+        CheckBox12.Visible = True
 
     End Sub
 
@@ -230,12 +283,12 @@ Public Class Form3
         End If
 
 
-        Form1.Chart1.Titles.Clear()
-        Form1.Chart1.Titles.Add(titulo) 'specify chart name
-        Form1.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
-        Form1.Chart1.ChartAreas.Clear()
-        Form1.Chart1.ChartAreas.Add(nomeAmostra(0))
-        With Form1.Chart1.ChartAreas(nomeAmostra(0))
+        Form7.Chart1.Titles.Clear()
+        Form7.Chart1.Titles.Add(titulo) 'specify chart name
+        Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
+        Form7.Chart1.ChartAreas.Clear()
+        Form7.Chart1.ChartAreas.Add(nomeAmostra(0))
+        With Form7.Chart1.ChartAreas(nomeAmostra(0))
             .AxisX.Title = renameX 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
@@ -246,14 +299,14 @@ Public Class Form3
             .AxisY.LabelStyle.Format = formatY
         End With
         'specify series plot lines
-        Form1.Chart1.Series.Clear()
+        Form7.Chart1.Series.Clear()
 
         ' INICIO - 1 GRAFICO
         If RadioButton1.Checked Then
-            Form1.Chart1.Series.Clear()
-            Form1.Chart1.Series.Add(nomeAmostra(0))
-            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
-            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Clear()
+            Form7.Chart1.Series.Add(nomeAmostra(0))
+            Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -261,19 +314,22 @@ Public Class Form3
             End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            If (CheckBox7.Checked) Then
+                y = NormalizaVetor(y)
+            End If
             Dim x() As Double = getColumXOfStringComplete(Text)
 
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
         End If
         ' FIM - 1 GRAFICO
         ' INICIO - 2 GRAFICOS
         If RadioButton2.Checked Then
-            Form1.Chart1.Series.Clear()
-            Form1.Chart1.Series.Add(nomeAmostra(0))
-            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
-            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Clear()
+            Form7.Chart1.Series.Add(nomeAmostra(0))
+            Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -281,15 +337,18 @@ Public Class Form3
             End If
             Dim Text As String = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            If (CheckBox7.Checked) Then
+                y = NormalizaVetor(y)
+            End If
             Dim x() As Double = getColumXOfStringComplete(Text)
 
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(1))
-            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
-            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(1))
+            Form7.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form7.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -297,10 +356,13 @@ Public Class Form3
             End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
+            If (CheckBox8.Checked) Then
+                y1 = NormalizaVetor(y1)
+            End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
 
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
         End If
@@ -308,10 +370,10 @@ Public Class Form3
         ' INICIO - 3 GRAFICOS
         If RadioButton3.Checked Then
 
-            Form1.Chart1.Series.Clear()
-            Form1.Chart1.Series.Add(nomeAmostra(0))
-            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
-            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Clear()
+            Form7.Chart1.Series.Add(nomeAmostra(0))
+            Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -319,15 +381,18 @@ Public Class Form3
             End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            If (CheckBox7.Checked) Then
+                y = NormalizaVetor(y)
+            End If
             Dim x() As Double = getColumXOfStringComplete(Text)
 
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(1))
-            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
-            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(1))
+            Form7.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form7.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -335,15 +400,18 @@ Public Class Form3
             End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
+            If (CheckBox8.Checked) Then
+                y1 = NormalizaVetor(y1)
+            End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
 
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(2))
-            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
-            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(2))
+            Form7.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form7.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -351,10 +419,13 @@ Public Class Form3
             End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
+            If (CheckBox9.Checked) Then
+                y2 = NormalizaVetor(y2)
+            End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
 
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
         End If
@@ -362,10 +433,10 @@ Public Class Form3
         ' INICIO - 4 GRAFICOS
         If RadioButton4.Checked Then
 
-            Form1.Chart1.Series.Clear()
-            Form1.Chart1.Series.Add(nomeAmostra(0))
-            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
-            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Clear()
+            Form7.Chart1.Series.Add(nomeAmostra(0))
+            Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -373,15 +444,18 @@ Public Class Form3
             End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            If (CheckBox7.Checked) Then
+                y = NormalizaVetor(y)
+            End If
             Dim x() As Double = getColumXOfStringComplete(Text)
 
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(1))
-            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
-            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(1))
+            Form7.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form7.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -389,15 +463,18 @@ Public Class Form3
             End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
+            If (CheckBox8.Checked) Then
+                y1 = NormalizaVetor(y1)
+            End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
 
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(2))
-            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
-            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(2))
+            Form7.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form7.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -405,15 +482,18 @@ Public Class Form3
             End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
+            If (CheckBox9.Checked) Then
+                y2 = NormalizaVetor(y2)
+            End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
 
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(3))
-            Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
-            Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(3))
+            Form7.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
+            Form7.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path3 As String = GlobalVariables.OpenFileDialog4.FileName
             If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -421,20 +501,23 @@ Public Class Form3
             End If
             Dim Text3 As String = readTxtComplete(path3)
             Dim y3() As Double = getColumYOfStringComplete(Text3)
+            If (CheckBox10.Checked) Then
+                y3 = NormalizaVetor(y3)
+            End If
             Dim x3() As Double = getColumXOfStringComplete(Text3)
 
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
         End If
         ' FIM - 4 GRAFICOS
         ' INICIO - 5 GRAFICOS
         If RadioButton5.Checked Then
 
-            Form1.Chart1.Series.Clear()
-            Form1.Chart1.Series.Add(nomeAmostra(0))
-            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
-            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Clear()
+            Form7.Chart1.Series.Add(nomeAmostra(0))
+            Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -442,15 +525,18 @@ Public Class Form3
             End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            If (CheckBox7.Checked) Then
+                y = NormalizaVetor(y)
+            End If
             Dim x() As Double = getColumXOfStringComplete(Text)
 
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(1))
-            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
-            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(1))
+            Form7.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form7.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -458,15 +544,18 @@ Public Class Form3
             End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
+            If (CheckBox8.Checked) Then
+                y1 = NormalizaVetor(y1)
+            End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
 
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(2))
-            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
-            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(2))
+            Form7.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form7.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -474,15 +563,18 @@ Public Class Form3
             End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
+            If (CheckBox9.Checked) Then
+                y2 = NormalizaVetor(y2)
+            End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
 
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(3))
-            Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
-            Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(3))
+            Form7.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
+            Form7.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path3 As String = GlobalVariables.OpenFileDialog4.FileName
             If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -490,15 +582,18 @@ Public Class Form3
             End If
             Dim Text3 As String = readTxtComplete(path3)
             Dim y3() As Double = getColumYOfStringComplete(Text3)
+            If (CheckBox10.Checked) Then
+                y3 = NormalizaVetor(y3)
+            End If
             Dim x3() As Double = getColumXOfStringComplete(Text3)
 
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(4))
-            Form1.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
-            Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(4))
+            Form7.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
+            Form7.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path4 As String = GlobalVariables.OpenFileDialog5.FileName
             If path4 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -506,20 +601,23 @@ Public Class Form3
             End If
             Dim Text4 As String = readTxtComplete(path4)
             Dim y4() As Double = getColumYOfStringComplete(Text4)
+            If (CheckBox11.Checked) Then
+                y4 = NormalizaVetor(y4)
+            End If
             Dim x4() As Double = getColumXOfStringComplete(Text4)
 
             For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
             Next i
         End If
         ' FIM - 5 GRAFICOS
         ' INICIO - 6 GRAFICOS
         If RadioButton6.Checked Then
 
-            Form1.Chart1.Series.Clear()
-            Form1.Chart1.Series.Add(nomeAmostra(0))
-            Form1.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
-            Form1.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Clear()
+            Form7.Chart1.Series.Add(nomeAmostra(0))
+            Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -527,15 +625,18 @@ Public Class Form3
             End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            If (CheckBox7.Checked) Then
+                y = NormalizaVetor(y)
+            End If
             Dim x() As Double = getColumXOfStringComplete(Text)
 
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(1))
-            Form1.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
-            Form1.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(1))
+            Form7.Chart1.Series(nomeAmostra(1)).Color = Color.FromKnownColor(KnownColor.Blue)
+            Form7.Chart1.Series(nomeAmostra(1)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path1 As String = GlobalVariables.OpenFileDialog2.FileName
             If path1 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -543,15 +644,18 @@ Public Class Form3
             End If
             Dim Text1 As String = readTxtComplete(path1)
             Dim y1() As Double = getColumYOfStringComplete(Text1)
+            If (CheckBox8.Checked) Then
+                y1 = NormalizaVetor(y1)
+            End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
 
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(2))
-            Form1.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
-            Form1.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(2))
+            Form7.Chart1.Series(nomeAmostra(2)).Color = Color.FromKnownColor(KnownColor.Green)
+            Form7.Chart1.Series(nomeAmostra(2)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path2 As String = GlobalVariables.OpenFileDialog3.FileName
             If path2 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -559,15 +663,18 @@ Public Class Form3
             End If
             Dim Text2 As String = readTxtComplete(path2)
             Dim y2() As Double = getColumYOfStringComplete(Text2)
+            If (CheckBox9.Checked) Then
+                y2 = NormalizaVetor(y2)
+            End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
 
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(3))
-            Form1.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
-            Form1.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(3))
+            Form7.Chart1.Series(nomeAmostra(3)).Color = Color.FromKnownColor(KnownColor.Black)
+            Form7.Chart1.Series(nomeAmostra(3)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path3 As String = GlobalVariables.OpenFileDialog4.FileName
             If path3 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -575,15 +682,18 @@ Public Class Form3
             End If
             Dim Text3 As String = readTxtComplete(path3)
             Dim y3() As Double = getColumYOfStringComplete(Text3)
+            If (CheckBox10.Checked) Then
+                y3 = NormalizaVetor(y3)
+            End If
             Dim x3() As Double = getColumXOfStringComplete(Text3)
 
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(4))
-            Form1.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
-            Form1.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(4))
+            Form7.Chart1.Series(nomeAmostra(4)).Color = Color.FromKnownColor(KnownColor.Yellow)
+            Form7.Chart1.Series(nomeAmostra(4)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path4 As String = GlobalVariables.OpenFileDialog5.FileName
             If path4 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -591,15 +701,18 @@ Public Class Form3
             End If
             Dim Text4 As String = readTxtComplete(path4)
             Dim y4() As Double = getColumYOfStringComplete(Text4)
+            If (CheckBox11.Checked) Then
+                y4 = NormalizaVetor(y4)
+            End If
             Dim x4() As Double = getColumXOfStringComplete(Text4)
 
             For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
             Next i
 
-            Form1.Chart1.Series.Add(nomeAmostra(5))
-            Form1.Chart1.Series(nomeAmostra(5)).Color = Color.FromKnownColor(KnownColor.Pink)
-            Form1.Chart1.Series(nomeAmostra(5)).ChartType = DataVisualization.Charting.SeriesChartType.Line
+            Form7.Chart1.Series.Add(nomeAmostra(5))
+            Form7.Chart1.Series(nomeAmostra(5)).Color = Color.FromKnownColor(KnownColor.Pink)
+            Form7.Chart1.Series(nomeAmostra(5)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path5 As String = GlobalVariables.OpenFileDialog6.FileName
             If path5 = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
@@ -607,14 +720,18 @@ Public Class Form3
             End If
             Dim Text5 As String = readTxtComplete(path5)
             Dim y5() As Double = getColumYOfStringComplete(Text5)
+            If (CheckBox12.Checked) Then
+                y5 = NormalizaVetor(y5)
+            End If
             Dim x5() As Double = getColumXOfStringComplete(Text5)
 
             For i = 0 To x5.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form1.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
+                Form7.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
             Next i
         End If
         ' FIM - 6 GRAFICOS
         Me.Hide()
+        Form7.Visible = True
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

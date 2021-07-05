@@ -140,46 +140,108 @@
         Return New String(fullString.Where(Function(x) Not Char.IsWhiteSpace(x)).ToArray())
     End Function
 
+    Public Function NormalizaVetor(ByVal vetor() As Double) As Double()
+        Dim maiorValor As Double = 0.0
+        For i = 0 To vetor.Length - 1
+            If (vetor(i) > maiorValor) Then
+                maiorValor = vetor(i)
+            End If
+        Next
+        For i = 0 To vetor.Length - 1
+            vetor(i) = vetor(i) / maiorValor
+            Console.WriteLine(vetor(i))
+        Next
+        Return vetor
+    End Function
+
+    Public Function CalculaAlfa() As Double
+
+        Dim areaSensorDeReferencia As Double
+        Dim distanciaSensorDeReferencia As Double
+        Dim areaAmostra As Double
+        Dim distanciaAmostra As Double
+        Dim sucesso As Boolean
+
+        'variavel booleana que verifica se os valores dos parametros de correção foram inseridos corretamente
+        sucesso = Double.TryParse(Form2.TextBox3.Text.Replace(".", ","), areaSensorDeReferencia) And Double.TryParse(Form2.TextBox4.Text.Replace(".", ","), distanciaSensorDeReferencia) And Double.TryParse(Form2.TextBox5.Text.Replace(".", ","), areaAmostra) And Double.TryParse(Form2.TextBox6.Text.Replace(".", ","), distanciaAmostra)
+        'Caso qualquer um dos parâmetros inseridos for zero, dará mensagem de erro
+        If (areaSensorDeReferencia = 0 Or distanciaSensorDeReferencia = 0 Or areaAmostra = 0 Or distanciaAmostra = 0) Then
+            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.")
+        End If
+        Dim alfa As Double
+        If (sucesso) Then
+            alfa = (areaSensorDeReferencia / areaAmostra) * (distanciaAmostra ^ 2 / distanciaSensorDeReferencia ^ 2)
+        Else
+            alfa = 0
+        End If
+        Return alfa
+    End Function
+
     Public Class SensorFabricante
+        Public Property Nome As String
         Public Property Material As String
         Public Property Area As String
         Public Property RespMax As String
         Public Property FaixaEspectral As String
+        Public Property UnidadeResponsividade As String
+        Public Property PathSensor As String
 
         Public Sub New(ByVal nameSensor As String)
             Select Case nameSensor
                 Case "EOS Si S-type detector S-series"
+                    Me.Nome = "EOS Si S-type detector S-series"
                     Me.Material = "Silício"
                     Me.Area = "0.7853981634 mm²"
                     Me.RespMax = "?????"
                     Me.FaixaEspectral = "300 - 1000nm"
+                    Me.UnidadeResponsividade = "Responsividade (A/W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "EOS Si S-type detector S-series" + ".txt")
                 Case "IGA-010-E-LN6N"
+                    Me.Nome = "IGA-010-E-LN6N"
                     Me.Material = "InGaAs"
                     Me.Area = "0.7853981634 mm²"
                     Me.RespMax = "0.9 A/W"
                     Me.FaixaEspectral = "900 - 1550nm @ 77K"
+                    Me.UnidadeResponsividade = "Responsividade (A/W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IGA-010-E-LN6N" + ".txt")
                 Case "IS-010-E-LN6N"
+                    Me.Nome = "IS-010-E-LN6N"
                     Me.Material = "InSb"
                     Me.Area = "0.7853981634 mm²"
                     Me.RespMax = "?????"
                     Me.FaixaEspectral = "1.0 - 5.5 um"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IS-010-E-LN6N" + ".txt")
                 Case "MCT14-010-E-LN6N"
+                    Me.Nome = "MCT14-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1 mm²"
                     Me.RespMax = "?????"
                     Me.FaixaEspectral = "2 - 15 um ; pk @ ~ 13.5um"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT14-010-E-LN6N" + ".txt")
                 Case "MCT20-010-E-LN6N"
+                    Me.Nome = "MCT20-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1 mm²"
                     Me.RespMax = "????"
                     Me.FaixaEspectral = "2 - 20 um  "
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT20-010-E-LN6N" + ".txt")
                 Case "Si antigo"
+                    Me.Nome = "Si antigo"
                     Me.Material = "Silício"
                     Me.Area = "0.7853981634 mm²"
                     Me.RespMax = "0.579808"
                     Me.FaixaEspectral = "?????"
+                    Me.UnidadeResponsividade = "Responsividade (A/W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "Si antigo" + ".txt")
             End Select
 
         End Sub
+        Public Function Normalized() As SensorFabricante
+            Me.PathSensor = Me.PathSensor.Substring(0, Me.PathSensor.Length - 4) + "_norm.txt"
+            Return Me
+        End Function
     End Class
 End Module

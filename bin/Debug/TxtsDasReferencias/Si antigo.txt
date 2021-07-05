@@ -7,6 +7,7 @@ Area: 0.785
 Com filtros
 Todas Grades
 Parâmetros: vmode 1 sen 27 acgain 0 tc 10
+Tipo: Absoluta
 Responsividade (A/W)	Comprimento de onda(nm)
 0.010577	203.177516
 0.010577	205.285245
