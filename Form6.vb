@@ -9,7 +9,6 @@
 
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
         Dim sfdPic As New SaveFileDialog()
-        Dim initialDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
 
         Dim title As String = "Veja a imagem."
         Dim btn = MessageBoxButtons.YesNo
@@ -25,7 +24,6 @@
                 .FileName = "Imagem.png"
                 .ValidateNames = True
                 .OverwritePrompt = True
-                .InitialDirectory = initialDirectory
                 .RestoreDirectory = True
 
                 If .ShowDialog = DialogResult.OK Then
@@ -167,7 +165,7 @@
             .AxisX.Minimum = Double.NaN 'LIMITANDO O GRAFICO EM X ENTRE O VALOR MINIMUM E MAXIMUM
             .AxisX.Maximum = Double.NaN
             .AxisY.Maximum = maximoY
-            .AxisX.LabelStyle.Format = formatX
+            .AxisX.LabelStyle.Format = "N0"
             .AxisY.LabelStyle.Format = formatY
         End With
 
@@ -177,7 +175,6 @@
             Me.Chart1.Series.Add(listaSensores(0).Nome)
             Me.Chart1.Series(listaSensores(0).Nome).Color = Color.FromKnownColor(KnownColor.Red)
             Me.Chart1.Series(listaSensores(0).Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
-
             Dim path As String = listaSensores(0).PathSensor
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub

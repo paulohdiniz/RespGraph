@@ -750,7 +750,7 @@ Public Class Form3
 
     Public Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
-        GlobalVariables.OpenFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog1.RestoreDirectory = True
         GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
@@ -761,7 +761,7 @@ Public Class Form3
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        GlobalVariables.OpenFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog2.RestoreDirectory = True
         GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
@@ -772,7 +772,7 @@ Public Class Form3
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        GlobalVariables.OpenFileDialog3.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog3.RestoreDirectory = True
         GlobalVariables.OpenFileDialog3.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog3.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog3.ShowDialog()
@@ -783,7 +783,7 @@ Public Class Form3
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        GlobalVariables.OpenFileDialog4.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog4.RestoreDirectory = True
         GlobalVariables.OpenFileDialog4.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog4.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog4.ShowDialog()
@@ -794,7 +794,7 @@ Public Class Form3
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        GlobalVariables.OpenFileDialog5.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog5.RestoreDirectory = True
         GlobalVariables.OpenFileDialog5.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog5.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog5.ShowDialog()
@@ -805,7 +805,7 @@ Public Class Form3
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        GlobalVariables.OpenFileDialog6.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        GlobalVariables.OpenFileDialog6.RestoreDirectory = True
         GlobalVariables.OpenFileDialog6.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog6.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog6.ShowDialog()

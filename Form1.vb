@@ -8,7 +8,7 @@
         Form3.Visible = True
     End Sub
 
-    Private Sub SobreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SobreToolStripMenuItem.Click
+    Private Sub SobreToolStripMenuItem_Click(sender As Object, e As EventArgs) 
         Sobre.Visible = True
     End Sub
 

@@ -36,7 +36,6 @@ Public Class Form2
     End Sub
 
     Private Sub ButtonCalibracao_Click(sender As Object, e As EventArgs) Handles ButtonCalibracao.Click
-        GlobalVariables.OpenFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         GlobalVariables.OpenFileDialog1.RestoreDirectory = True
@@ -56,7 +55,6 @@ Public Class Form2
     End Sub
     Private Sub ButtonAmostra_Click(sender As Object, e As EventArgs) Handles ButtonAmostra.Click
         TextBox7.Text = CalculaAlfa()
-        GlobalVariables.OpenFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         GlobalVariables.OpenFileDialog2.RestoreDirectory = True
@@ -178,9 +176,11 @@ Public Class Form2
         Next i
         Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
 
-        'aqui começa 
+        'receber nome do usuário.
+        Dim nomeUsuario = InputBox("Digite seu nome: ", "Nome do usuário")
+
+        'aqui começa criação do arquivo
         Dim sfdPic As New SaveFileDialog()
-        Dim initialDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         Dim sensorReferenciaUsado = New SensorFabricante(ComboBox1.Text)
         Try
 
@@ -192,7 +192,6 @@ Public Class Form2
                 .FileName = "Arquivo_RESP.txt"
                 .ValidateNames = True
                 .OverwritePrompt = True
-                .InitialDirectory = initialDirectory
                 .RestoreDirectory = True
 
                 If .ShowDialog = DialogResult.OK Then
@@ -201,7 +200,7 @@ Public Class Form2
                     Dim cabecalho As String
                     Dim datahoraAtual As DateTime = Now
                     cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
-                        "Usuário: " & Form1.TextBox1.Text & " E-mail: " & Form1.TextBox2.Text & vbCrLf &
+                        "Usuário: " & nomeUsuario & vbCrLf &
                         "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
                         "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
                         "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &

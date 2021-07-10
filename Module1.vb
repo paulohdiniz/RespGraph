@@ -2,8 +2,8 @@
     Public Function openFile() As String
         Dim openFD As New OpenFileDialog
         Dim strFileName As String
-        openFD.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
         openFD.Title = "Buscando arquivo..."
+        openFD.RestoreDirectory = True
         openFD.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         Dim DidWork As Integer = openFD.ShowDialog()
         strFileName = openFD.FileName
@@ -149,7 +149,6 @@
         Next
         For i = 0 To vetor.Length - 1
             vetor(i) = vetor(i) / maiorValor
-            Console.WriteLine(vetor(i))
         Next
         Return vetor
     End Function

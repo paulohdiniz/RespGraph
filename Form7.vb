@@ -9,7 +9,7 @@
 
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
         Dim sfdPic As New SaveFileDialog()
-        Dim initialDirectory As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+        sfdPic.RestoreDirectory = True
 
         Dim title As String = "Veja a imagem."
         Dim btn = MessageBoxButtons.YesNo
@@ -23,7 +23,6 @@
                 .FileName = "Imagem.png"
                 .ValidateNames = True
                 .OverwritePrompt = True
-                .InitialDirectory = initialDirectory
                 .RestoreDirectory = True
 
                 If .ShowDialog = DialogResult.OK Then
