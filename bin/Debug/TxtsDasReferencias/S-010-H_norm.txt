@@ -3,7 +3,6 @@ AMOSTRA: Si Photodiode S-series
 Usuário: Paulo Henrique Diniz
 Tipo: Normalizada
 EixoY(0-1)	Comprimento de onda(nm)
-
 0.0182703076534009 204.751353
 0.0203313084602535 212.665313
 0.0225626256943835 220.579274

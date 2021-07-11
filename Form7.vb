@@ -7,6 +7,22 @@
         End If
     End Sub
 
+    Public Sub Chart1_FormatNumber(sender As Object, e As DataVisualization.Charting.FormatNumberEventArgs) Handles Chart1.FormatNumber
+        If (e.ElementType = DataVisualization.Charting.ChartElementType.AxisLabels) Then
+            If e.Value > 20 And e.Format.Equals("eixoX") Then
+                If e.Value < 100 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                ElseIf e.Value < 1000 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                ElseIf e.Value < 10000 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                ElseIf e.Value < 100000 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                End If
+            End If
+        End If
+    End Sub
+
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
         Dim sfdPic As New SaveFileDialog()
         sfdPic.RestoreDirectory = True

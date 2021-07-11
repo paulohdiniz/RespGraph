@@ -1,8 +1,10 @@
 ARQUIVO DE REFERENCIA
-Usuário: LEONARDO
+Usuário: PAULO
 Amostra: DETECTOR DE SILICIO
 Comentário: 4 A e 23.8 V
-Area: 0.785
+Area: 5.1070515574919 mm²
+Interpolação pro 830nm: ≈0.949262307412221 
+Responsividade máxima: 0,6320697612 A/W
 320 Hz
 Com filtros
 Todas Grades

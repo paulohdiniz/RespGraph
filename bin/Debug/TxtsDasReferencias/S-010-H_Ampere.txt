@@ -1,6 +1,8 @@
 ARQUIVO DE REFERENCIA
 AMOSTRA: Si Photodiode S-series 
 Usuário: Paulo Henrique Diniz
+Área: 0.7853981634 mm²
+Responsividade máxima: 0.581271 A/W @ ~899nm
 Tipo: Absoluta
 Responsividade (A/W)	Comprimento de onda(nm)
 0.01062 204.751353

@@ -7,6 +7,22 @@
         End If
     End Sub
 
+    Public Sub Chart1_FormatNumber(sender As Object, e As DataVisualization.Charting.FormatNumberEventArgs) Handles Chart1.FormatNumber
+        If (e.ElementType = DataVisualization.Charting.ChartElementType.AxisLabels) Then
+            If e.Value > 20 And e.Format.Equals("eixoX") Then
+                If e.Value < 100 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                ElseIf e.Value < 1000 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                ElseIf e.Value < 10000 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                ElseIf e.Value < 100000 Then
+                    e.LocalizedValue = e.Value - (e.Value Mod 10)
+                End If
+            End If
+        End If
+    End Sub
+
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
         Dim sfdPic As New SaveFileDialog()
 
@@ -130,26 +146,25 @@
         'Começa a mexer no chart
         Dim titulo As String
         If quantidadeDeCurvas = 1 Then
-            titulo = "Curva do sensor"
+            titulo = "Curva do sensor    " & listaSensores(0).Nome
         Else
             titulo = "Curvas dos sensores"
         End If
 
-        Dim nomeEixoY As String
+        Dim nomeEixoY As String = " "
         Dim maximoY As Double
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
-        Dim formatX As String
+        Dim formatX As String = "eixoX"
         Dim formatY As String
         If (CheckBox7.Checked Or CheckBox8.Checked Or CheckBox9.Checked Or CheckBox10.Checked Or CheckBox11.Checked Or CheckBox12.Checked) Then
-            nomeEixoY = "%"
             maximoY = 1.0
-            formatX = "N0"
             formatY = "N1"
         Else
-            nomeEixoY = "Responsividade"
+            If listaSensores.Count = 1 Then
+                nomeEixoY = listaSensores(0).UnidadeResponsividade
+            End If
             maximoY = Double.NaN
-            formatX = "N0"
-            formatY = "N"
+            formatY = "N1"
         End If
 
         Me.Chart1.Titles.Clear()
@@ -157,6 +172,7 @@
         Me.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
         Me.Chart1.ChartAreas.Clear()
         Me.Chart1.ChartAreas.Add(titulo)
+        Me.Chart1.AntiAliasing = True
         With Me.Chart1.ChartAreas(titulo)
             .AxisX.Title = "Comprimento de onda(nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
@@ -165,7 +181,7 @@
             .AxisX.Minimum = Double.NaN 'LIMITANDO O GRAFICO EM X ENTRE O VALOR MINIMUM E MAXIMUM
             .AxisX.Maximum = Double.NaN
             .AxisY.Maximum = maximoY
-            .AxisX.LabelStyle.Format = "N0"
+            .AxisX.LabelStyle.Format = formatX
             .AxisY.LabelStyle.Format = formatY
         End With
 

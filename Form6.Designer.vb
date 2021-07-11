@@ -51,6 +51,7 @@ Partial Class Form6
         '
         'Chart1
         '
+        Me.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid
         ChartArea1.Name = "ChartArea1"
         Me.Chart1.ChartAreas.Add(ChartArea1)
         Legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom
@@ -88,9 +89,9 @@ Partial Class Form6
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Location = New System.Drawing.Point(1166, 94)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(232, 21)
+        Me.CheckBox1.Size = New System.Drawing.Size(83, 21)
         Me.CheckBox1.TabIndex = 41
-        Me.CheckBox1.Text = "EOS Si S-type detector S-series"
+        Me.CheckBox1.Text = "S-010-H"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'CheckBox2
@@ -138,9 +139,9 @@ Partial Class Form6
         Me.CheckBox6.AutoSize = True
         Me.CheckBox6.Location = New System.Drawing.Point(1166, 291)
         Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(85, 21)
+        Me.CheckBox6.Size = New System.Drawing.Size(98, 21)
         Me.CheckBox6.TabIndex = 46
-        Me.CheckBox6.Text = "Si antigo"
+        Me.CheckBox6.Text = "818-BB-22"
         Me.CheckBox6.UseVisualStyleBackColor = True
         '
         'Label1

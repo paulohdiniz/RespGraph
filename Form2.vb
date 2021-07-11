@@ -12,24 +12,24 @@ Public Class Form2
         TextBox13.Visible = True
 
         Button1.Visible = True
-        Button2.Visible = True
+        Button4.Visible = True
 
         'validar que os LN6N tenham essa mensagem
-        If ComboBox1.Text.Equals("Si antigo") Or ComboBox1.Text.Equals("EOS Si S-type detector S-series") Then
+        If ComboBox1.Text.Equals("818-BB-22") Or ComboBox1.Text.Equals("S-010-H") Then
 
         Else
-            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação.")
+            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação.",, "Atenção !")
         End If
 
 
         Dim sensor = New SensorFabricante(ComboBox1.Text)
         TextBox10.Text = sensor.Material
-        TextBox11.Text = sensor.Area
+        TextBox11.Text = sensor.Area.Substring(0, 6) & " mm²"
         TextBox12.Text = sensor.RespMax
         TextBox13.Text = sensor.FaixaEspectral
 
         'retira o " mm²" do final.
-        TextBox3.Text = sensor.Area.Substring(0, sensor.Area.Length - 4)
+        TextBox3.Text = sensor.Area.Substring(0, 6)
 
 
 
@@ -42,7 +42,7 @@ Public Class Form2
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
-            TextBox1.Text = "Fail !"
+            TextBox1.Text = "Falhou !"
             TextBox1.BackColor = Color.Red
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
 
@@ -54,14 +54,28 @@ Public Class Form2
 
     End Sub
     Private Sub ButtonAmostra_Click(sender As Object, e As EventArgs) Handles ButtonAmostra.Click
-        TextBox7.Text = CalculaAlfa()
+        'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
+        Dim alfa As Double
+
+        alfa = CalculaAlfa()
+        If (alfa = 0) Then
+            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        End If
+
+        If alfa.ToString.Length > 6 Then
+            TextBox7.Text = alfa.ToString.Substring(0, 6)
+        Else
+            TextBox7.Text = alfa.ToString
+        End If
+
         GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
         GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
         GlobalVariables.OpenFileDialog2.RestoreDirectory = True
         Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
-            TextBox2.Text = "Fail !"
+            TextBox2.Text = "Falhou !"
             TextBox2.BackColor = Color.Red
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
         Else
@@ -86,12 +100,17 @@ Public Class Form2
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
-        Dim alfa As Double
+        Dim alfa As Double = CalculaAlfa()
 
-        alfa = CalculaAlfa()
         If (alfa = 0) Then
-            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.")
+            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        End If
+
+        If alfa.ToString.Length > 6 Then
+            TextBox7.Text = alfa.ToString.Substring(0, 6)
+        Else
+            TextBox7.Text = alfa.ToString
         End If
 
         Dim textRef As String 'variável para pegar os dados do txt em forma de string
@@ -179,19 +198,23 @@ Public Class Form2
         'receber nome do usuário.
         Dim nomeUsuario = InputBox("Digite seu nome: ", "Nome do usuário")
 
+        'recebe So O nome Da Amostra
+        Dim nomeAmostra As String
+        nomeAmostra = GlobalVariables.OpenFileDialog2.FileName.Substring(GlobalVariables.OpenFileDialog2.FileName.LastIndexOf("\") + 1, GlobalVariables.OpenFileDialog2.FileName.Length - GlobalVariables.OpenFileDialog2.FileName.LastIndexOf("\") - 5)
+
         'aqui começa criação do arquivo
         Dim sfdPic As New SaveFileDialog()
+        sfdPic.OverwritePrompt = True
         Dim sensorReferenciaUsado = New SensorFabricante(ComboBox1.Text)
         Try
-
             With sfdPic
                 .Title = "Salve o arquivo como"
                 .Filter = "txt|*.txt"
                 .AddExtension = True
                 .DefaultExt = ".txt"
-                .FileName = "Arquivo_RESP.txt"
+                .FileName = nomeAmostra & "_RESPONSIVIDADE_" & Now.ToShortDateString.Replace("/", "") & "_" & Now.ToShortTimeString.Replace(":", "")
                 .ValidateNames = True
-                .OverwritePrompt = True
+
                 .RestoreDirectory = True
 
                 If .ShowDialog = DialogResult.OK Then
@@ -209,7 +232,7 @@ Public Class Form2
                         "Distância da amostra (mm): " & TextBox6.Text & vbCrLf &
                         "Alfa: " & TextBox7.Text & vbCrLf &
                         sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
-                    outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, True)
+                    outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, False)
                     outFile.WriteLine(cabecalho)
                     For k = 0 To responsividade.Length - 1
                         qlqr = responsividade(k).ToString + " " + NewColumnXAmostra(k).ToString
@@ -263,4 +286,60 @@ Public Class Form2
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Form8.Visible = True
     End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim sensorSelected = New SensorFabricante(ComboBox1.Text)
+        sensorSelected = sensorSelected.Normalized()
+
+        ' N indica o numero como ele realmente é, o NX indica com X casas decimais
+        Dim formatX As String
+        Dim formatY As String
+        formatX = "eixoX"
+        formatY = "N1"
+
+        Dim maximo As Double
+        Dim renameY As String
+        If sensorSelected.isNormalized() Then
+            maximo = 1.0
+            renameY = " "
+        Else
+            maximo = Double.NaN
+            renameY = sensorSelected.UnidadeResponsividade
+        End If
+
+        Form7.Chart1.Titles.Clear()
+        Form7.Chart1.Titles.Add(sensorSelected.Nome) 'specify chart name
+        Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
+        Form7.Chart1.ChartAreas.Clear()
+        Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
+        With Form7.Chart1.ChartAreas(sensorSelected.Nome)
+            .AxisX.Title = "Comprimento de onda(nm)" 'x label
+            .AxisX.MajorGrid.LineColor = Color.SkyBlue
+            .AxisY.MajorGrid.LineColor = Color.SkyBlue
+            .AxisY.Maximum = maximo
+            .AxisY.Title = renameY 'y label
+            .AxisX.LabelStyle.Format = formatX
+            .AxisY.LabelStyle.Format = formatY
+        End With
+
+        Form7.Chart1.Series.Clear()
+
+        Form7.Chart1.Series.Add(sensorSelected.Nome)
+        Form7.Chart1.Series(sensorSelected.Nome).Color = Color.FromKnownColor(KnownColor.Red)
+        Form7.Chart1.Series(sensorSelected.Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+        Dim path As String = sensorSelected.PathSensor
+        If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
+            Exit Sub
+        End If
+        Text = readTxtComplete(path)
+        Dim y() As Double = getColumYOfStringComplete(Text)
+        Dim x() As Double = getColumXOfStringComplete(Text)
+
+        For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+            Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(x(i), y(i))
+        Next i
+        Form7.Visible = True
+    End Sub
+
 End Class

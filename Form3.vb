@@ -251,27 +251,13 @@ Public Class Form3
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
         Dim formatX As String
         Dim formatY As String
-        formatX = "N"
+        formatX = "eixoX"
         formatY = "N"
-
-        Dim NumeroCasasDeX As String
-        NumeroCasasDeX = RichTextBox12.Text
-        If String.IsNullOrEmpty(NumeroCasasDeX) Then
-            NumeroCasasDeX = "1"
-        End If
 
         Dim NumeroCasasDeY As String
         NumeroCasasDeY = RichTextBox13.Text
         If String.IsNullOrEmpty(NumeroCasasDeY) Then
             NumeroCasasDeY = "1"
-        End If
-
-        'X
-        If RadioButton7.Checked Then 'notacao sim
-            formatX = "E" + NumeroCasasDeX
-        End If
-        If RadioButton8.Checked Then 'notacao nao
-            formatX = "N" + NumeroCasasDeX
         End If
 
         'Y
@@ -730,7 +716,6 @@ Public Class Form3
             Next i
         End If
         ' FIM - 6 GRAFICOS
-        Me.Hide()
         Form7.Visible = True
     End Sub
 

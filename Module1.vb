@@ -36,7 +36,7 @@
 
             Return TextLine
         Else
-            MessageBox.Show("File Does Not Exist")
+            MessageBox.Show("O arquivo buscado não existe.")
             Return Nothing
         End If
     End Function
@@ -100,7 +100,7 @@
         stringSearching = "onda(nm)"
         position = InStr(textComplete, stringSearching)
         If position = 0 Then
-            MsgBox("O programa será reiniciado, você selecionou um arquivo inválido ou cancelou a abertura. Clique no botão AJUDA para saber mais")
+            MsgBox("O programa será reiniciado, você selecionou um arquivo inválido ou cancelou a abertura. Clique no botão AJUDA para saber mais",, "Erro Fatal !")
             'Fecha o programa e reabre.
             Application.Exit()
             Process.Start(Application.ExecutablePath)
@@ -163,10 +163,7 @@
 
         'variavel booleana que verifica se os valores dos parametros de correção foram inseridos corretamente
         sucesso = Double.TryParse(Form2.TextBox3.Text.Replace(".", ","), areaSensorDeReferencia) And Double.TryParse(Form2.TextBox4.Text.Replace(".", ","), distanciaSensorDeReferencia) And Double.TryParse(Form2.TextBox5.Text.Replace(".", ","), areaAmostra) And Double.TryParse(Form2.TextBox6.Text.Replace(".", ","), distanciaAmostra)
-        'Caso qualquer um dos parâmetros inseridos for zero, dará mensagem de erro
-        If (areaSensorDeReferencia = 0 Or distanciaSensorDeReferencia = 0 Or areaAmostra = 0 Or distanciaAmostra = 0) Then
-            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.")
-        End If
+
         Dim alfa As Double
         If (sucesso) Then
             alfa = (areaSensorDeReferencia / areaAmostra) * (distanciaAmostra ^ 2 / distanciaSensorDeReferencia ^ 2)
@@ -187,60 +184,64 @@
 
         Public Sub New(ByVal nameSensor As String)
             Select Case nameSensor
-                Case "EOS Si S-type detector S-series"
-                    Me.Nome = "EOS Si S-type detector S-series"
+                Case "S-010-H"
+                    Me.Nome = "S-010-H"
                     Me.Material = "Silício"
                     Me.Area = "0.7853981634 mm²"
-                    Me.RespMax = "?????"
+                    Me.RespMax = "500.000.000 V/W @ 889nm"
                     Me.FaixaEspectral = "300 - 1000nm"
-                    Me.UnidadeResponsividade = "Responsividade (A/W)"
-                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "EOS Si S-type detector S-series" + ".txt")
+                    Me.UnidadeResponsividade = "Responsividade ( A / W )"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "S-010-H" + ".txt")
                 Case "IGA-010-E-LN6N"
                     Me.Nome = "IGA-010-E-LN6N"
                     Me.Material = "InGaAs"
                     Me.Area = "0.7853981634 mm²"
-                    Me.RespMax = "0.9 A/W"
-                    Me.FaixaEspectral = "900 - 1550nm @ 77K"
-                    Me.UnidadeResponsividade = "Responsividade (A/W)"
+                    Me.RespMax = "0,9407 A/W @ 1481 nm"
+                    Me.FaixaEspectral = "900 - 1550nm"
+                    Me.UnidadeResponsividade = "Responsividade (A / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IGA-010-E-LN6N" + ".txt")
                 Case "IS-010-E-LN6N"
                     Me.Nome = "IS-010-E-LN6N"
                     Me.Material = "InSb"
                     Me.Area = "0.7853981634 mm²"
-                    Me.RespMax = "?????"
+                    Me.RespMax = "430.000 V/W @ 5.3um"
                     Me.FaixaEspectral = "1.0 - 5.5 um"
-                    Me.UnidadeResponsividade = "Responsividade (V/W)"
+                    Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IS-010-E-LN6N" + ".txt")
                 Case "MCT14-010-E-LN6N"
                     Me.Nome = "MCT14-010-E-LN6N"
                     Me.Material = "HgCdTe"
-                    Me.Area = "1 mm²"
-                    Me.RespMax = "?????"
-                    Me.FaixaEspectral = "2 - 15 um ; pk @ ~ 13.5um"
-                    Me.UnidadeResponsividade = "Responsividade (V/W)"
+                    Me.Area = "1,0000 mm²"
+                    Me.RespMax = "500.000 @ 13.5um"
+                    Me.FaixaEspectral = "2 - 15 um"
+                    Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT14-010-E-LN6N" + ".txt")
                 Case "MCT20-010-E-LN6N"
                     Me.Nome = "MCT20-010-E-LN6N"
                     Me.Material = "HgCdTe"
-                    Me.Area = "1 mm²"
-                    Me.RespMax = "????"
+                    Me.Area = "1,0000 mm²"
+                    Me.RespMax = "780.000 V/W @ 18 um"
                     Me.FaixaEspectral = "2 - 20 um  "
-                    Me.UnidadeResponsividade = "Responsividade (V/W)"
+                    Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT20-010-E-LN6N" + ".txt")
-                Case "Si antigo"
-                    Me.Nome = "Si antigo"
+                Case "818-BB-22"
+                    Me.Nome = "818-BB-22"
                     Me.Material = "Silício"
-                    Me.Area = "0.7853981634 mm²"
-                    Me.RespMax = "0.579808"
-                    Me.FaixaEspectral = "?????"
-                    Me.UnidadeResponsividade = "Responsividade (A/W)"
-                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "Si antigo" + ".txt")
+                    Me.Area = "5,1070515574919 mm²"
+                    Me.RespMax = "0,6321 A/W @ 890nm"
+                    Me.FaixaEspectral = "200 - 1100 nm"
+                    Me.UnidadeResponsividade = "Responsividade (A / W)"
+                    Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "818-BB-22" + ".txt")
             End Select
 
         End Sub
         Public Function Normalized() As SensorFabricante
             Me.PathSensor = Me.PathSensor.Substring(0, Me.PathSensor.Length - 4) + "_norm.txt"
+            Me.Nome = Me.Nome + " (normalizado)"
             Return Me
+        End Function
+        Public Function isNormalized() As Boolean
+            Return Me.PathSensor.Substring(Me.PathSensor.Length - 8, 8).Equals("norm.txt")
         End Function
     End Class
 End Module
