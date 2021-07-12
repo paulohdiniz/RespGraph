@@ -159,18 +159,32 @@
         Dim distanciaSensorDeReferencia As Double
         Dim areaAmostra As Double
         Dim distanciaAmostra As Double
+        Dim transmissaoSensor As Double
+        Dim transmissaoCriostato As Double
+
         Dim sucesso As Boolean
 
         'variavel booleana que verifica se os valores dos parametros de correção foram inseridos corretamente
-        sucesso = Double.TryParse(Form2.TextBox3.Text.Replace(".", ","), areaSensorDeReferencia) And Double.TryParse(Form2.TextBox4.Text.Replace(".", ","), distanciaSensorDeReferencia) And Double.TryParse(Form2.TextBox5.Text.Replace(".", ","), areaAmostra) And Double.TryParse(Form2.TextBox6.Text.Replace(".", ","), distanciaAmostra)
+        sucesso = Double.TryParse(Form2.TextBox3.Text.Replace(".", ","), areaSensorDeReferencia) And
+            Double.TryParse(Form2.TextBox4.Text.Replace(".", ","), distanciaSensorDeReferencia) And
+            Double.TryParse(Form2.TextBox5.Text.Replace(".", ","), areaAmostra) And
+            Double.TryParse(Form2.TextBox6.Text.Replace(".", ","), distanciaAmostra) And
+            Double.TryParse(Form2.TextBox7.Text.Replace(".", ","), transmissaoSensor) And
+            Double.TryParse(Form2.TextBox8.Text.Replace(".", ","), transmissaoCriostato)
 
         Dim alfa As Double
         If (sucesso) Then
-            alfa = (areaSensorDeReferencia / areaAmostra) * (distanciaAmostra ^ 2 / distanciaSensorDeReferencia ^ 2)
+            alfa = (areaSensorDeReferencia / areaAmostra) * (distanciaAmostra ^ 2 / distanciaSensorDeReferencia ^ 2) * (transmissaoSensor / transmissaoCriostato)
         Else
             alfa = 0
         End If
         Return alfa
+    End Function
+
+    Public Function GetNameOfArchive(ByVal pathArquivo As String) As String
+        Dim nomeAmostra As String
+        nomeAmostra = pathArquivo.Substring(pathArquivo.LastIndexOf("\") + 1, pathArquivo.Length - pathArquivo.LastIndexOf("\") - 5)
+        Return nomeAmostra
     End Function
 
     Public Class SensorFabricante
@@ -187,7 +201,7 @@
                 Case "S-010-H"
                     Me.Nome = "S-010-H"
                     Me.Material = "Silício"
-                    Me.Area = "0.7853981634 mm²"
+                    Me.Area = "0,7853981634 mm²"
                     Me.RespMax = "500.000.000 V/W @ 889nm"
                     Me.FaixaEspectral = "300 - 1000nm"
                     Me.UnidadeResponsividade = "Responsividade ( A / W )"
@@ -195,7 +209,7 @@
                 Case "IGA-010-E-LN6N"
                     Me.Nome = "IGA-010-E-LN6N"
                     Me.Material = "InGaAs"
-                    Me.Area = "0.7853981634 mm²"
+                    Me.Area = "0,7853981634 mm²"
                     Me.RespMax = "0,9407 A/W @ 1481 nm"
                     Me.FaixaEspectral = "900 - 1550nm"
                     Me.UnidadeResponsividade = "Responsividade (A / W)"
@@ -203,16 +217,16 @@
                 Case "IS-010-E-LN6N"
                     Me.Nome = "IS-010-E-LN6N"
                     Me.Material = "InSb"
-                    Me.Area = "0.7853981634 mm²"
-                    Me.RespMax = "430.000 V/W @ 5.3um"
-                    Me.FaixaEspectral = "1.0 - 5.5 um"
+                    Me.Area = "0,7853981634 mm²"
+                    Me.RespMax = "430.000 V/W @ 5,3um"
+                    Me.FaixaEspectral = "1,0 - 5,5 um"
                     Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IS-010-E-LN6N" + ".txt")
                 Case "MCT14-010-E-LN6N"
                     Me.Nome = "MCT14-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1,0000 mm²"
-                    Me.RespMax = "500.000 @ 13.5um"
+                    Me.RespMax = "500.000 @ 13,5um"
                     Me.FaixaEspectral = "2 - 15 um"
                     Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT14-010-E-LN6N" + ".txt")

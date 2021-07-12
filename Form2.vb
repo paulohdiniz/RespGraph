@@ -1,6 +1,24 @@
 ﻿Imports System.IO
 
 Public Class Form2
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged,
+        TextBox4.TextChanged,
+        TextBox5.TextChanged,
+        TextBox6.TextChanged,
+        TextBox7.TextChanged,
+        TextBox8.TextChanged
+
+        Dim alfa As Double = CalculaAlfa()
+
+        If alfa.ToString.Length > 5 Then
+            TextBoxAlfa.Text = alfa.ToString.Substring(0, 6)
+        Else
+            TextBoxAlfa.Text = alfa.ToString
+        End If
+
+    End Sub
+
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         Label13.Visible = True
         Label14.Visible = True
@@ -24,55 +42,51 @@ Public Class Form2
 
         Dim sensor = New SensorFabricante(ComboBox1.Text)
         TextBox10.Text = sensor.Material
-        TextBox11.Text = sensor.Area.Substring(0, 6) & " mm²"
+
+        If sensor.Area.Length > 5 Then
+            TextBox11.Text = sensor.Area.Substring(0, 6) & " mm²"
+        Else
+            TextBox11.Text = sensor.Area & " mm²"
+        End If
+
         TextBox12.Text = sensor.RespMax
         TextBox13.Text = sensor.FaixaEspectral
 
-        'retira o " mm²" do final.
-        TextBox3.Text = sensor.Area.Substring(0, 6)
+        'retira o " mm²" do final e arredonda para 4 casas decimais
+        Dim areaDouble As Double
+        Dim ok As Boolean = Double.TryParse(sensor.Area.Substring(0, sensor.Area.Length - 4), areaDouble)
+        If ok Then
+            areaDouble = Math.Round(areaDouble, 4, MidpointRounding.AwayFromZero)
+            TextBox3.Text = areaDouble.ToString
+        Else
+            TextBox3.Text = sensor.Area.Substring(0, sensor.Area.Length - 4)
+        End If
 
 
 
     End Sub
 
     Private Sub ButtonCalibracao_Click(sender As Object, e As EventArgs) Handles ButtonCalibracao.Click
-        GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        GlobalVariables.OpenFileDialog1.RestoreDirectory = True
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
+        GlobalVariables.OpenFileDialogSensor.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialogSensor.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        GlobalVariables.OpenFileDialogSensor.RestoreDirectory = True
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialogSensor.ShowDialog()
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
             TextBox1.Text = "Falhou !"
             TextBox1.BackColor = Color.Red
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
-
         Else
             TextBox1.Text = "Inserido !"
             TextBox1.BackColor = Color.SpringGreen
-
         End If
 
     End Sub
     Private Sub ButtonAmostra_Click(sender As Object, e As EventArgs) Handles ButtonAmostra.Click
-        'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
-        Dim alfa As Double
-
-        alfa = CalculaAlfa()
-        If (alfa = 0) Then
-            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
-            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
-        End If
-
-        If alfa.ToString.Length > 6 Then
-            TextBox7.Text = alfa.ToString.Substring(0, 6)
-        Else
-            TextBox7.Text = alfa.ToString
-        End If
-
-        GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        GlobalVariables.OpenFileDialog2.RestoreDirectory = True
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
+        GlobalVariables.OpenFileDialogAmostra.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialogAmostra.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        GlobalVariables.OpenFileDialogAmostra.RestoreDirectory = True
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialogAmostra.ShowDialog()
         If DidWork = DialogResult.Cancel Then
             MessageBox.Show("Você cancelou a abertura")
             TextBox2.Text = "Falhou !"
@@ -86,8 +100,8 @@ Public Class Form2
     End Sub
 
     Public Class GlobalVariables
-        Public Shared OpenFileDialog1 As New OpenFileDialog
-        Public Shared OpenFileDialog2 As New OpenFileDialog
+        Public Shared OpenFileDialogSensor As New OpenFileDialog
+        Public Shared OpenFileDialogAmostra As New OpenFileDialog
         Public Shared FolderBrowserDialog1 As New FolderBrowserDialog
         Public Shared pathNewArchive As String
         Public Shared nameNewArchive As String
@@ -105,12 +119,6 @@ Public Class Form2
         If (alfa = 0) Then
             MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
-        End If
-
-        If alfa.ToString.Length > 6 Then
-            TextBox7.Text = alfa.ToString.Substring(0, 6)
-        Else
-            TextBox7.Text = alfa.ToString
         End If
 
         Dim textRef As String 'variável para pegar os dados do txt em forma de string
@@ -138,11 +146,11 @@ Public Class Form2
         columnYRef = getColumYOfStringComplete(textRef) 'column y é a primeira coluna do txt
         columnXRef = getColumXOfStringComplete(textRef)  'column x é a segunda coluna do txt
         'curva do sensor de referencia no SETUP
-        textCalib = readTxtComplete(GlobalVariables.OpenFileDialog1.FileName) 'aqui ele vai pegar o caminho do arquivo 
+        textCalib = readTxtComplete(GlobalVariables.OpenFileDialogSensor.FileName) 'aqui ele vai pegar o caminho do arquivo 
         columnYCalib = getColumYOfStringComplete(textCalib)
         columnXCalib = getColumXOfStringComplete(textCalib)
         'curva da amostra no SETUP
-        textAmostra = readTxtComplete(GlobalVariables.OpenFileDialog2.FileName)
+        textAmostra = readTxtComplete(GlobalVariables.OpenFileDialogAmostra.FileName)
         columnYAmostra = getColumYOfStringComplete(textAmostra)
         columnXAmostra = getColumXOfStringComplete(textAmostra)
 
@@ -199,8 +207,7 @@ Public Class Form2
         Dim nomeUsuario = InputBox("Digite seu nome: ", "Nome do usuário")
 
         'recebe So O nome Da Amostra
-        Dim nomeAmostra As String
-        nomeAmostra = GlobalVariables.OpenFileDialog2.FileName.Substring(GlobalVariables.OpenFileDialog2.FileName.LastIndexOf("\") + 1, GlobalVariables.OpenFileDialog2.FileName.Length - GlobalVariables.OpenFileDialog2.FileName.LastIndexOf("\") - 5)
+        Dim nomeAmostra As String = GetNameOfArchive(GlobalVariables.OpenFileDialogAmostra.FileName)
 
         'aqui começa criação do arquivo
         Dim sfdPic As New SaveFileDialog()
@@ -214,7 +221,6 @@ Public Class Form2
                 .DefaultExt = ".txt"
                 .FileName = nomeAmostra & "_RESPONSIVIDADE_" & Now.ToShortDateString.Replace("/", "") & "_" & Now.ToShortTimeString.Replace(":", "")
                 .ValidateNames = True
-
                 .RestoreDirectory = True
 
                 If .ShowDialog = DialogResult.OK Then
@@ -230,7 +236,7 @@ Public Class Form2
                         "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
                         "Área da amostra (mm²): " & TextBox5.Text & vbCrLf &
                         "Distância da amostra (mm): " & TextBox6.Text & vbCrLf &
-                        "Alfa: " & TextBox7.Text & vbCrLf &
+                        "Alfa: " & TextBoxAlfa.Text & vbCrLf &
                         sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
                     outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, False)
                     outFile.WriteLine(cabecalho)

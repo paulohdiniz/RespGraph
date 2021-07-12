@@ -132,7 +132,6 @@
 7) O usuário pode plotar qualquer natureza de curvas nesse ambiente (desde que sejam cumpridas as especificações já citadas nos itens acima). 
          Exemplo: caso o usuário tenha um arquivo sem cabeçalho em que constem nele apenas duas colunas de valores, o usuário pode escrever na primeira linha desse arquivo "onda(nm)" e executar o programa que ele plotará as duas colunas perfeitamente.
 8) Ao passar o ponteiro do mouse sobre o gráfico é possível ver os valores (x, y) da região plotada.
-9) No caso em que se plotará mais de uma curva, o sistema requisitará a quantidade de arquivos igual ao número de curvas que você selecionou. Selecione os arquivos texto na ordem indicada das amostras que você escreveu, caso cancele algum desses envios (clicando no X ou em cancelar) você pode clicar novamente para plotar e terá que selecionar do começo na ordem indicada por você das amostras.
-</value>
+9) No caso em que se plotará mais de uma curva, o sistema requisitará a quantidade de arquivos igual ao número de curvas que você selecionou.</value>
   </data>
 </root>

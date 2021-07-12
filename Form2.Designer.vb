@@ -60,9 +60,13 @@ Partial Class Form2
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBoxAlfa = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -487,15 +491,15 @@ Partial Class Form2
         Me.Label8.TabIndex = 30
         Me.Label8.Text = "Alfa"
         '
-        'TextBox7
+        'TextBoxAlfa
         '
-        Me.TextBox7.Enabled = False
-        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(1017, 628)
-        Me.TextBox7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(96, 28)
-        Me.TextBox7.TabIndex = 29
+        Me.TextBoxAlfa.Enabled = False
+        Me.TextBoxAlfa.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxAlfa.Location = New System.Drawing.Point(1017, 628)
+        Me.TextBoxAlfa.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBoxAlfa.Name = "TextBoxAlfa"
+        Me.TextBoxAlfa.Size = New System.Drawing.Size(96, 28)
+        Me.TextBoxAlfa.TabIndex = 29
         '
         'Button3
         '
@@ -512,11 +516,55 @@ Partial Class Form2
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.Panel3.Controls.Add(Me.TextBox8)
+        Me.Panel3.Controls.Add(Me.TextBox7)
+        Me.Panel3.Controls.Add(Me.Label11)
+        Me.Panel3.Controls.Add(Me.Label10)
         Me.Panel3.Controls.Add(Me.Label9)
         Me.Panel3.Location = New System.Drawing.Point(1019, 25)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(334, 574)
         Me.Panel3.TabIndex = 48
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox8.Location = New System.Drawing.Point(51, 409)
+        Me.TextBox8.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(103, 27)
+        Me.TextBox8.TabIndex = 30
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox7.Location = New System.Drawing.Point(51, 168)
+        Me.TextBox7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(103, 27)
+        Me.TextBox7.TabIndex = 29
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(47, 319)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(250, 40)
+        Me.Label11.TabIndex = 26
+        Me.Label11.Text = "Curva de transmissão da janela " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "do criostato "
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(47, 92)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(250, 40)
+        Me.Label10.TabIndex = 25
+        Me.Label10.Text = "Curva de transmissão da janela " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "do sensor de referência" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label9
         '
@@ -538,7 +586,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.TextBoxAlfa)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -596,9 +644,13 @@ Partial Class Form2
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TextBoxAlfa As TextBox
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label9 As Label
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
 End Class

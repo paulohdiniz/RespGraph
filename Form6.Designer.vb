@@ -29,7 +29,6 @@ Partial Class Form6
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
@@ -45,8 +44,10 @@ Partial Class Form6
         Me.CheckBox12 = New System.Windows.Forms.CheckBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.CheckBox13 = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Chart1
@@ -70,19 +71,12 @@ Partial Class Form6
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1509, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1509, 24)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'FileToolStripMenuItem
-        '
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(122, 24)
-        Me.FileToolStripMenuItem.Text = "Salvar Imagem"
         '
         'CheckBox1
         '
@@ -218,10 +212,10 @@ Partial Class Form6
         '
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button1.Font = New System.Drawing.Font("Times New Roman", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1268, 358)
+        Me.Button1.Location = New System.Drawing.Point(1166, 393)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(114, 38)
+        Me.Button1.Size = New System.Drawing.Size(137, 38)
         Me.Button1.TabIndex = 64
         Me.Button1.Text = "Ver gráfico"
         Me.Button1.UseVisualStyleBackColor = False
@@ -236,11 +230,48 @@ Partial Class Form6
         Me.Label2.TabIndex = 65
         Me.Label2.Text = "Sensores"
         '
+        'CheckBox13
+        '
+        Me.CheckBox13.AutoSize = True
+        Me.CheckBox13.Checked = True
+        Me.CheckBox13.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox13.Location = New System.Drawing.Point(1404, 345)
+        Me.CheckBox13.Name = "CheckBox13"
+        Me.CheckBox13.Size = New System.Drawing.Size(53, 21)
+        Me.CheckBox13.TabIndex = 66
+        Me.CheckBox13.Text = "Sim"
+        Me.CheckBox13.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(1163, 345)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(163, 17)
+        Me.Label3.TabIndex = 67
+        Me.Label3.Text = "Linha vertical auxiliar"
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Button2.Font = New System.Drawing.Font("Times New Roman", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(1347, 393)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(137, 38)
+        Me.Button2.TabIndex = 68
+        Me.Button2.Text = "Salvar Imagem"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
         'Form6
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1509, 835)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.CheckBox13)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CheckBox12)
@@ -262,8 +293,6 @@ Partial Class Form6
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Gráfico do sensor"
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -272,7 +301,6 @@ Partial Class Form6
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents CheckBox3 As CheckBox
@@ -288,4 +316,7 @@ Partial Class Form6
     Friend WithEvents CheckBox12 As CheckBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Label2 As Label
+    Friend WithEvents CheckBox13 As CheckBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Button2 As Button
 End Class

@@ -5,22 +5,22 @@ Public Class Form3
 
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
         RichTextBox1.Visible = True 'Todo esse código só deixa dinamico os radiobuttons.
+        RichTextBox2.Visible = False
         RichTextBox3.Visible = False
         RichTextBox4.Visible = False
         RichTextBox5.Visible = False
         RichTextBox6.Visible = False
-        RichTextBox7.Visible = False
         Label8.Visible = False
         Label9.Visible = False
         Label10.Visible = False
         Label11.Visible = False
         Label12.Visible = False
-        Button3.Visible = True 'botao do 1
+        Button1.Visible = True 'botao do 1
+        Button2.Visible = False
+        Button3.Visible = False
         Button4.Visible = False
         Button5.Visible = False
         Button6.Visible = False
-        Button7.Visible = False
-        Button8.Visible = False
 
         'nomarlizacao
         Label24.Visible = True
@@ -31,26 +31,36 @@ Public Class Form3
         CheckBox11.Visible = False
         CheckBox12.Visible = False
 
+        'status
+        TextBox1.Visible = True
+        TextBox2.Visible = False
+        TextBox3.Visible = False
+        TextBox4.Visible = False
+        TextBox5.Visible = False
+        TextBox6.Visible = False
+
+
     End Sub
 
     Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
         RichTextBox1.Visible = True
-        RichTextBox3.Visible = True
+        RichTextBox2.Visible = True
+        RichTextBox3.Visible = False
         RichTextBox4.Visible = False
         RichTextBox5.Visible = False
         RichTextBox6.Visible = False
-        RichTextBox7.Visible = False
         Label8.Visible = True
         Label9.Visible = False
         Label10.Visible = False
         Label11.Visible = False
         Label12.Visible = False
-        Button3.Visible = True 'botao do 1
-        Button4.Visible = True
+        Button1.Visible = True 'botao do 1
+        Button2.Visible = True
+        Button2.Visible = True
+        Button3.Visible = False
+        Button4.Visible = False
         Button5.Visible = False
         Button6.Visible = False
-        Button7.Visible = False
-        Button8.Visible = False
 
         'nomarlizacao
         Label24.Visible = True
@@ -60,26 +70,34 @@ Public Class Form3
         CheckBox10.Visible = False
         CheckBox11.Visible = False
         CheckBox12.Visible = False
+
+        'status
+        TextBox1.Visible = True
+        TextBox2.Visible = True
+        TextBox3.Visible = False
+        TextBox4.Visible = False
+        TextBox5.Visible = False
+        TextBox6.Visible = False
     End Sub
 
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
         RichTextBox1.Visible = True
+        RichTextBox2.Visible = True
         RichTextBox3.Visible = True
-        RichTextBox4.Visible = True
+        RichTextBox4.Visible = False
         RichTextBox5.Visible = False
         RichTextBox6.Visible = False
-        RichTextBox7.Visible = False
         Label8.Visible = True
         Label9.Visible = True
         Label10.Visible = False
         Label11.Visible = False
         Label12.Visible = False
-        Button3.Visible = True 'botao do 1
-        Button4.Visible = True
-        Button5.Visible = True
+        Button1.Visible = True 'botao do 1
+        Button2.Visible = True
+        Button3.Visible = True
+        Button4.Visible = False
+        Button5.Visible = False
         Button6.Visible = False
-        Button7.Visible = False
-        Button8.Visible = False
 
         'nomarlizacao
         Label24.Visible = True
@@ -89,26 +107,34 @@ Public Class Form3
         CheckBox10.Visible = False
         CheckBox11.Visible = False
         CheckBox12.Visible = False
+
+        'status
+        TextBox1.Visible = True
+        TextBox2.Visible = True
+        TextBox3.Visible = True
+        TextBox4.Visible = False
+        TextBox5.Visible = False
+        TextBox6.Visible = False
     End Sub
 
     Private Sub RadioButton4_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton4.CheckedChanged
         RichTextBox1.Visible = True
+        RichTextBox2.Visible = True
         RichTextBox3.Visible = True
         RichTextBox4.Visible = True
-        RichTextBox5.Visible = True
+        RichTextBox5.Visible = False
         RichTextBox6.Visible = False
-        RichTextBox7.Visible = False
         Label8.Visible = True
         Label9.Visible = True
         Label10.Visible = True
         Label11.Visible = False
         Label12.Visible = False
-        Button3.Visible = True 'botao do 1
+        Button1.Visible = True 'botao do 1
+        Button2.Visible = True
+        Button3.Visible = True
         Button4.Visible = True
-        Button5.Visible = True
-        Button6.Visible = True
-        Button7.Visible = False
-        Button8.Visible = False
+        Button5.Visible = False
+        Button6.Visible = False
 
         'nomarlizacao
         Label24.Visible = True
@@ -118,26 +144,34 @@ Public Class Form3
         CheckBox10.Visible = True
         CheckBox11.Visible = False
         CheckBox12.Visible = False
+
+        'status
+        TextBox1.Visible = True
+        TextBox2.Visible = True
+        TextBox3.Visible = True
+        TextBox4.Visible = True
+        TextBox5.Visible = False
+        TextBox6.Visible = False
     End Sub
 
     Private Sub RadioButton5_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton5.CheckedChanged
         RichTextBox1.Visible = True
+        RichTextBox2.Visible = True
         RichTextBox3.Visible = True
         RichTextBox4.Visible = True
         RichTextBox5.Visible = True
-        RichTextBox6.Visible = True
-        RichTextBox7.Visible = False
+        RichTextBox6.Visible = False
         Label8.Visible = True
         Label9.Visible = True
         Label10.Visible = True
         Label11.Visible = True
         Label12.Visible = False
-        Button3.Visible = True 'botao do 1
+        Button1.Visible = True 'botao do 1
+        Button2.Visible = True
+        Button3.Visible = True
         Button4.Visible = True
         Button5.Visible = True
-        Button6.Visible = True
-        Button7.Visible = True
-        Button8.Visible = False
+        Button6.Visible = False
 
         'nomarlizacao
         Label24.Visible = True
@@ -147,26 +181,35 @@ Public Class Form3
         CheckBox10.Visible = True
         CheckBox11.Visible = True
         CheckBox12.Visible = False
+
+        'status
+        TextBox1.Visible = True
+        TextBox2.Visible = True
+        TextBox3.Visible = True
+        TextBox4.Visible = True
+        TextBox5.Visible = True
+        TextBox6.Visible = False
+
     End Sub
 
     Private Sub RadioButton6_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged
         RichTextBox1.Visible = True
+        RichTextBox2.Visible = True
         RichTextBox3.Visible = True
         RichTextBox4.Visible = True
         RichTextBox5.Visible = True
         RichTextBox6.Visible = True
-        RichTextBox7.Visible = True
         Label8.Visible = True
         Label9.Visible = True
         Label10.Visible = True
         Label11.Visible = True
         Label12.Visible = True
-        Button3.Visible = True 'botao do 1
+        Button1.Visible = True 'botao do 1
+        Button2.Visible = True
+        Button3.Visible = True
         Button4.Visible = True
         Button5.Visible = True
         Button6.Visible = True
-        Button7.Visible = True
-        Button8.Visible = True
 
         'nomarlizacao
         Label24.Visible = True
@@ -177,12 +220,181 @@ Public Class Form3
         CheckBox11.Visible = True
         CheckBox12.Visible = True
 
+        'status
+        TextBox1.Visible = True
+        TextBox2.Visible = True
+        TextBox3.Visible = True
+        TextBox4.Visible = True
+        TextBox5.Visible = True
+        TextBox6.Visible = True
+
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Public Class GlobalVariables
+        Public Shared OpenFileDialog1 As New OpenFileDialog
+        Public Shared OpenFileDialog2 As New OpenFileDialog
+        Public Shared OpenFileDialog3 As New OpenFileDialog
+        Public Shared OpenFileDialog4 As New OpenFileDialog
+        Public Shared OpenFileDialog5 As New OpenFileDialog
+        Public Shared OpenFileDialog6 As New OpenFileDialog
+
+    End Class
+
+    Public Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        GlobalVariables.OpenFileDialog1.RestoreDirectory = True
+        GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
+        Dim nomeArquivo As String
+
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a busca.", "Atenção !")
+            TextBox1.Text = "Falhou !"
+            TextBox1.BackColor = Color.Red
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        Else
+            TextBox1.Text = "Inserido !"
+            TextBox1.BackColor = Color.SpringGreen
+
+            If String.IsNullOrEmpty(RichTextBox1.Text) Then
+                nomeArquivo = GetNameOfArchive(GlobalVariables.OpenFileDialog1.FileName)
+                RichTextBox1.Text = nomeArquivo
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        GlobalVariables.OpenFileDialog2.RestoreDirectory = True
+        GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
+        Dim nomeArquivo As String
+
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a busca.", "Atenção !")
+            TextBox2.Text = "Falhou !"
+            TextBox2.BackColor = Color.Red
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        Else
+            TextBox2.Text = "Inserido !"
+            TextBox2.BackColor = Color.SpringGreen
+
+            If String.IsNullOrEmpty(RichTextBox2.Text) Then
+                nomeArquivo = GetNameOfArchive(GlobalVariables.OpenFileDialog2.FileName)
+                RichTextBox2.Text = nomeArquivo
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        GlobalVariables.OpenFileDialog3.RestoreDirectory = True
+        GlobalVariables.OpenFileDialog3.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog3.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog3.ShowDialog()
+        Dim nomeArquivo As String
+
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a busca.", "Atenção !")
+            TextBox3.Text = "Falhou !"
+            TextBox3.BackColor = Color.Red
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        Else
+            TextBox3.Text = "Inserido !"
+            TextBox3.BackColor = Color.SpringGreen
+
+            If String.IsNullOrEmpty(RichTextBox3.Text) Then
+                nomeArquivo = GetNameOfArchive(GlobalVariables.OpenFileDialog3.FileName)
+                RichTextBox3.Text = nomeArquivo
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        GlobalVariables.OpenFileDialog4.RestoreDirectory = True
+        GlobalVariables.OpenFileDialog4.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog4.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog4.ShowDialog()
+        Dim nomeArquivo As String
+
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a busca.", "Atenção !")
+            TextBox4.Text = "Falhou !"
+            TextBox4.BackColor = Color.Red
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        Else
+            TextBox4.Text = "Inserido !"
+            TextBox4.BackColor = Color.SpringGreen
+
+            If String.IsNullOrEmpty(RichTextBox4.Text) Then
+                nomeArquivo = GetNameOfArchive(GlobalVariables.OpenFileDialog4.FileName)
+                RichTextBox4.Text = nomeArquivo
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        GlobalVariables.OpenFileDialog5.RestoreDirectory = True
+        GlobalVariables.OpenFileDialog5.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog5.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog5.ShowDialog()
+        Dim nomeArquivo As String
+
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a busca.", "Atenção !")
+            TextBox5.Text = "Falhou !"
+            TextBox5.BackColor = Color.Red
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        Else
+            TextBox5.Text = "Inserido !"
+            TextBox5.BackColor = Color.SpringGreen
+
+            If String.IsNullOrEmpty(RichTextBox5.Text) Then
+                nomeArquivo = GetNameOfArchive(GlobalVariables.OpenFileDialog5.FileName)
+                RichTextBox5.Text = nomeArquivo
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        GlobalVariables.OpenFileDialog6.RestoreDirectory = True
+        GlobalVariables.OpenFileDialog6.Title = "Buscando arquivo..."
+        GlobalVariables.OpenFileDialog6.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
+        Dim DidWork As Integer = GlobalVariables.OpenFileDialog6.ShowDialog()
+        Dim nomeArquivo As String
+
+        If DidWork = DialogResult.Cancel Then
+            MessageBox.Show("Você cancelou a busca.", "Atenção !")
+            TextBox6.Text = "Falhou !"
+            TextBox6.BackColor = Color.Red
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        Else
+            TextBox6.Text = "Inserido !"
+            TextBox6.BackColor = Color.SpringGreen
+
+            If String.IsNullOrEmpty(RichTextBox6.Text) Then
+                nomeArquivo = GetNameOfArchive(GlobalVariables.OpenFileDialog6.FileName)
+                RichTextBox6.Text = nomeArquivo
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub ButtonPlot_Click(sender As Object, e As EventArgs) Handles ButtonPlot.Click
         'setup the chart area 
         Dim titulo As String 'Titulo do gráfico
-        titulo = RichTextBox2.Text
+        titulo = RichTextBoxTitulo.Text
         If String.IsNullOrEmpty(titulo) Then
             titulo = "Título"
         End If
@@ -193,27 +405,27 @@ Public Class Form3
             nomeAmostra(0) = "Amostra_1"
         End If
 
-        nomeAmostra(1) = RichTextBox3.Text
+        nomeAmostra(1) = RichTextBox2.Text
         If String.IsNullOrEmpty(nomeAmostra(1)) Then
             nomeAmostra(1) = "Amostra_2"
         End If
 
-        nomeAmostra(2) = RichTextBox4.Text
+        nomeAmostra(2) = RichTextBox3.Text
         If String.IsNullOrEmpty(nomeAmostra(2)) Then
             nomeAmostra(2) = "Amostra_3"
         End If
 
-        nomeAmostra(3) = RichTextBox5.Text
+        nomeAmostra(3) = RichTextBox4.Text
         If String.IsNullOrEmpty(nomeAmostra(3)) Then
             nomeAmostra(3) = "Amostra_4"
         End If
 
-        nomeAmostra(4) = RichTextBox6.Text
+        nomeAmostra(4) = RichTextBox5.Text
         If String.IsNullOrEmpty(nomeAmostra(4)) Then
             nomeAmostra(4) = "Amostra_5"
         End If
 
-        nomeAmostra(5) = RichTextBox7.Text
+        nomeAmostra(5) = RichTextBox6.Text
         If String.IsNullOrEmpty(nomeAmostra(5)) Then
             nomeAmostra(5) = "Amostra_6"
         End If
@@ -245,7 +457,7 @@ Public Class Form3
         Dim renameY As String
         renameY = RichTextBox11.Text
         If String.IsNullOrEmpty(renameY) Then
-            renameY = "Responsividade (V/W)"
+            renameY = " "
         End If
 
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
@@ -273,6 +485,8 @@ Public Class Form3
         Form7.Chart1.Titles.Add(titulo) 'specify chart name
         Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
         Form7.Chart1.ChartAreas.Clear()
+        Form7.Chart1.Series.Clear()
+        Form7.Chart1.Annotations.Clear()
         Form7.Chart1.ChartAreas.Add(nomeAmostra(0))
         With Form7.Chart1.ChartAreas(nomeAmostra(0))
             .AxisX.Title = renameX 'x label
@@ -286,12 +500,12 @@ Public Class Form3
         End With
         'specify series plot lines
         Form7.Chart1.Series.Clear()
-
         ' INICIO - 1 GRAFICO
         If RadioButton1.Checked Then
             Form7.Chart1.Series.Clear()
             Form7.Chart1.Series.Add(nomeAmostra(0))
             Form7.Chart1.Series(nomeAmostra(0)).Color = Color.FromKnownColor(KnownColor.Red)
+            'Form7.Chart1.Series(nomeAmostra(0)).BorderWidth = 3
             Form7.Chart1.Series(nomeAmostra(0)).ChartType = DataVisualization.Charting.SeriesChartType.Line
 
             Dim path As String = GlobalVariables.OpenFileDialog1.FileName
@@ -719,85 +933,8 @@ Public Class Form3
         Form7.Visible = True
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub ButtonHelp_Click(sender As Object, e As EventArgs) Handles ButtonHelp.Click
         Form4.Visible = True
-    End Sub
-
-    Public Class GlobalVariables
-        Public Shared OpenFileDialog1 As New OpenFileDialog
-        Public Shared OpenFileDialog2 As New OpenFileDialog
-        Public Shared OpenFileDialog3 As New OpenFileDialog
-        Public Shared OpenFileDialog4 As New OpenFileDialog
-        Public Shared OpenFileDialog5 As New OpenFileDialog
-        Public Shared OpenFileDialog6 As New OpenFileDialog
-
-    End Class
-
-    Public Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-        GlobalVariables.OpenFileDialog1.RestoreDirectory = True
-        GlobalVariables.OpenFileDialog1.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog1.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog1.ShowDialog()
-        If DidWork = DialogResult.Cancel Then
-            MessageBox.Show("Você cancelou a abertura")
-        End If
-
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        GlobalVariables.OpenFileDialog2.RestoreDirectory = True
-        GlobalVariables.OpenFileDialog2.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog2.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog2.ShowDialog()
-        If DidWork = DialogResult.Cancel Then
-            MessageBox.Show("Você cancelou a abertura")
-        End If
-
-    End Sub
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        GlobalVariables.OpenFileDialog3.RestoreDirectory = True
-        GlobalVariables.OpenFileDialog3.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog3.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog3.ShowDialog()
-        If DidWork = DialogResult.Cancel Then
-            MessageBox.Show("Você cancelou a abertura")
-        End If
-
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        GlobalVariables.OpenFileDialog4.RestoreDirectory = True
-        GlobalVariables.OpenFileDialog4.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog4.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog4.ShowDialog()
-        If DidWork = DialogResult.Cancel Then
-            MessageBox.Show("Você cancelou a abertura")
-        End If
-
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        GlobalVariables.OpenFileDialog5.RestoreDirectory = True
-        GlobalVariables.OpenFileDialog5.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog5.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog5.ShowDialog()
-        If DidWork = DialogResult.Cancel Then
-            MessageBox.Show("Você cancelou a abertura")
-        End If
-
-    End Sub
-
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        GlobalVariables.OpenFileDialog6.RestoreDirectory = True
-        GlobalVariables.OpenFileDialog6.Title = "Buscando arquivo..."
-        GlobalVariables.OpenFileDialog6.Filter = "Text Files|*.txt;*.doc;*.med;*.ref|All files|*.*" 'med e ref sao formatos que saem os arquivos do programa principal
-        Dim DidWork As Integer = GlobalVariables.OpenFileDialog6.ShowDialog()
-        If DidWork = DialogResult.Cancel Then
-            MessageBox.Show("Você cancelou a abertura")
-        End If
-
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click

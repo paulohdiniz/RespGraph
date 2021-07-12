@@ -1,4 +1,6 @@
-﻿Public Class Form6
+﻿Imports System.Windows.Forms.DataVisualization.Charting
+
+Public Class Form6
     'esse codigo abaixo eu peguei pronto. Ao descansar o mouse no gráfico ele da o ponto q vc passou por cima.
     Private Sub Chart1_MouseMove(sender As Object, e As MouseEventArgs) Handles Chart1.MouseMove
         Dim h As Windows.Forms.DataVisualization.Charting.HitTestResult = Chart1.HitTest(e.X, e.Y)
@@ -23,7 +25,7 @@
         End If
     End Sub
 
-    Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim sfdPic As New SaveFileDialog()
 
         Dim title As String = "Veja a imagem."
@@ -98,6 +100,11 @@
         Dim quantidadeDeCurvas = IIf(CheckBox1.Checked, 1, 0) + IIf(CheckBox2.Checked, 1, 0) + IIf(CheckBox3.Checked, 1, 0) +
             IIf(CheckBox4.Checked, 1, 0) + IIf(CheckBox5.Checked, 1, 0) + IIf(CheckBox6.Checked, 1, 0)
 
+        If quantidadeDeCurvas = 0 Then
+            MsgBox("Selecione alguma curva para ser exibida !",, "Atenção !")
+            Exit Sub
+        End If
+
         Dim listaSensores As New List(Of SensorFabricante)
 
         If (CheckBox1.Checked) Then
@@ -171,6 +178,8 @@
         Me.Chart1.Titles.Add(titulo) 'specify chart name
         Me.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
         Me.Chart1.ChartAreas.Clear()
+        Me.Chart1.Series.Clear()
+        Me.Chart1.Annotations.Clear()
         Me.Chart1.ChartAreas.Add(titulo)
         Me.Chart1.AntiAliasing = True
         With Me.Chart1.ChartAreas(titulo)
@@ -191,6 +200,7 @@
             Me.Chart1.Series.Add(listaSensores(0).Nome)
             Me.Chart1.Series(listaSensores(0).Nome).Color = Color.FromKnownColor(KnownColor.Red)
             Me.Chart1.Series(listaSensores(0).Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
             Dim path As String = listaSensores(0).PathSensor
             If path = Nothing Then 'caso em que a abertura foi cancelada, o path ira vir nothinh e vc cancela o evento do butao
                 Exit Sub
@@ -203,6 +213,7 @@
                 Me.Chart1.Series(listaSensores(0).Nome).Points.AddXY(x(i), y(i))
             Next i
         End If
+
         ' FIM - 1 GRAFICO
         ' INICIO - 2 GRAFICOS
         If quantidadeDeCurvas = 2 Then
@@ -536,6 +547,100 @@
             Next i
         End If
         ' FIM - 6 GRAFICOS
+
+        Dim verticalLine = New VerticalLineAnnotation()
+        verticalLine.AxisX = Chart1.ChartAreas.First.AxisX
+        verticalLine.AllowMoving = True
+        verticalLine.IsInfinitive = True
+        verticalLine.LineColor = Color.Navy
+        verticalLine.LineWidth = 2
+        verticalLine.AnchorOffsetX = 50
+        verticalLine.ClipToChartArea = Chart1.ChartAreas.First.Name
+        verticalLine.Name = "VA"
+        verticalLine.LineDashStyle = 1
+        verticalLine.AnchorDataPoint = Chart1.Series.First.Points(0)
+        'verticalLine.X = 1
+
+        Dim RA = New RectangleAnnotation()
+        RA.AxisX = verticalLine.AxisX
+        RA.IsSizeAlwaysRelative = False
+        RA.Width = 50
+        RA.Height = 3
+        RA.Name = "RA"
+        RA.LineColor = Color.Blue
+        RA.BackColor = Color.Red
+        'RA.AxisY = verticalLine.AxisY
+        RA.Y = RA.Height
+        RA.X = verticalLine.X - RA.Width / 2
+        RA.Text = "Hello"
+        RA.ForeColor = Color.White
+        RA.Font = New System.Drawing.Font("Arial", 8.0F)
+
+
+        Chart1.Annotations.Add(verticalLine)
+        Chart1.Annotations.Add(RA)
     End Sub
 
+    Private Sub CheckBox13_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox13.CheckedChanged
+
+        If Chart1.Annotations.Count = 0 Then
+
+        Else
+            If CheckBox13.Checked Then
+                For i = 0 To Chart1.Annotations.Count - 1
+                    Chart1.Annotations(i).Visible = True
+                Next
+            Else
+                For i = 0 To Chart1.Annotations.Count - 1
+                    Chart1.Annotations(i).Visible = False
+                Next
+            End If
+        End If
+
+    End Sub
+    Public Sub chart1_AnnotationPositionChanged(sender As Object, e As EventArgs) Handles Chart1.AnnotationPositionChanged
+        Dim VA = Chart1.Annotations.FindByName("VA")
+        Dim RA As RectangleAnnotation = Chart1.Annotations.FindByName("RA")
+
+        VA.X = Int(VA.X + 0.5)
+        RA.X = VA.X - RA.Width / 2
+
+        RA.Text = VA.X
+
+        'redimensionando
+        Dim S1 = Chart1.Series.First
+        Dim N = S1.Points.Count
+        Dim xFactor = (Chart1.Width) / 10
+
+        RA.Width = 250
+        'RA.ResizeToContent()
+
+    End Sub
+    Public Sub chart1_AnnotationPositionChanging(sender As Object, e As AnnotationPositionChangingEventArgs) Handles Chart1.AnnotationPositionChanging
+        Dim VA = Chart1.Annotations.FindByName("VA")
+        Dim RA As RectangleAnnotation = Chart1.Annotations.FindByName("RA")
+
+        If sender.Equals(VA) Then
+            RA.X = VA.X - RA.Width / 2
+        End If
+
+        'Dim S1 = Chart1.Series.First
+        'Dim CA = Chart1.ChartAreas.First
+        'Dim xv = e.NewLocationX
+
+        'Dim px = Int(CA.AxisX.ValueToPixelPosition(xv))
+        'Dim dp = S1.Points.Where(Function(x) x.XValue >= xv).FirstOrDefault()
+        'Dim py
+        'If dp IsNot Nothing Then
+        '    py = Int(CA.AxisX.ValueToPixelPosition(S1.Points(0).YValues(0))) - 20
+        'End If
+
+        ''If px.ToString IsNot Nothing And py IsNot Nothing Then
+        ''    RA.Text = px.ToString & "," & py.ToString
+        ''End If
+
+
+        Chart1.Update()
+
+    End Sub
 End Class

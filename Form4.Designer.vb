@@ -28,6 +28,8 @@ Partial Class Form4
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBox1.CausesValidation = False
         Me.TextBox1.Cursor = System.Windows.Forms.Cursors.No
@@ -36,7 +38,7 @@ Partial Class Form4
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(800, 750)
+        Me.TextBox1.Size = New System.Drawing.Size(800, 680)
         Me.TextBox1.TabIndex = 1
         Me.TextBox1.TabStop = False
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
@@ -45,7 +47,7 @@ Partial Class Form4
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1044, 775)
+        Me.ClientSize = New System.Drawing.Size(962, 741)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form4"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

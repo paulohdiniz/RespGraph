@@ -124,7 +124,7 @@
     <value>O default para ambos os eixos é:
 
 X -&gt; Comprimento de onda (nm)
-Y -&gt; Responsividade
+Y -&gt; Vazio
 
 Mas vale a pena destacar que o eixo Y pode ser melhor escrito como:
 
@@ -132,7 +132,7 @@ Absorção (un. abs.), quando não estamos preocupados com as áreas dos dispost
 
 Responsividade (A/W) ou Responsividade (V/W). Para quando a geometria estiver consolidada com todos os dados de distância e área.
 
-Para uma célula solar, não vai ser Responsividade mas sim Eficiência quântica externa (EQE) sem unidade (de 0 a 1 ou de 0 a 100%).
+Para uma célula solar, não vai ser Responsividade, mas sim Eficiência quântica externa (EQE) sem unidade (de 0 a 1 ou de 0 a 100%).
 </value>
   </data>
 </root>
