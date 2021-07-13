@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class Form2
 
@@ -345,7 +346,49 @@ Public Class Form2
         For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
             Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(x(i), y(i))
         Next i
+
+        Dim verticalLine = New VerticalLineAnnotation()
+        verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
+        verticalLine.AllowMoving = True
+        verticalLine.IsInfinitive = True
+        verticalLine.LineColor = Color.Navy
+        verticalLine.LineWidth = 2
+        verticalLine.AnchorOffsetX = 50
+        verticalLine.ClipToChartArea = Form7.Chart1.ChartAreas.First.Name
+        verticalLine.Name = "VA"
+        verticalLine.LineDashStyle = 1
+        verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
+        'verticalLine.X = 1
+        Form7.Chart1.Annotations.Add(verticalLine)
+
+        Dim RA = New RectangleAnnotation()
+        RA.AxisX = verticalLine.AxisX
+        RA.IsSizeAlwaysRelative = False
+        RA.Width = MaiorRange() / 17
+        RA.Height = 3
+        RA.Name = "RA"
+        RA.LineColor = Color.Blue
+        RA.BackColor = Color.White
+        RA.Y = 82.5
+        RA.Text = "Hello"
+        RA.ForeColor = Color.Navy
+        RA.Font = New System.Drawing.Font("Arial", 8.0F)
+        Form7.Chart1.Annotations.Add(RA)
+
         Form7.Visible = True
     End Sub
-
+    Private Function MaiorRange() As Double
+        'redimensionando
+        Dim maiorRang As Double = 0
+        Dim lastPoint As Integer
+        Dim range As Double
+        For Each serie In Form7.Chart1.Series
+            lastPoint = serie.Points.Count - 1
+            range = serie.Points(lastPoint).XValue - serie.Points(0).XValue
+            If range > maiorRang Then
+                maiorRang = range
+            End If
+        Next
+        Return maiorRang
+    End Function
 End Class

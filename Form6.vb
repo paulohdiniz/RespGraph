@@ -560,29 +560,25 @@ Public Class Form6
         verticalLine.LineDashStyle = 1
         verticalLine.AnchorDataPoint = Chart1.Series.First.Points(0)
         'verticalLine.X = 1
+        Chart1.Annotations.Add(verticalLine)
 
         Dim RA = New RectangleAnnotation()
         RA.AxisX = verticalLine.AxisX
         RA.IsSizeAlwaysRelative = False
-        RA.Width = 50
+        RA.Width = MaiorRange() / 17
         RA.Height = 3
         RA.Name = "RA"
         RA.LineColor = Color.Blue
-        RA.BackColor = Color.Red
-        'RA.AxisY = verticalLine.AxisY
-        RA.Y = RA.Height
-        RA.X = verticalLine.X - RA.Width / 2
+        RA.BackColor = Color.White
+        RA.Y = 82.5
         RA.Text = "Hello"
-        RA.ForeColor = Color.White
+        RA.ForeColor = Color.Navy
         RA.Font = New System.Drawing.Font("Arial", 8.0F)
-
-
-        Chart1.Annotations.Add(verticalLine)
         Chart1.Annotations.Add(RA)
     End Sub
 
     Private Sub CheckBox13_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox13.CheckedChanged
-
+        'mostrar ou não mostrar a linha vertical auxiliar
         If Chart1.Annotations.Count = 0 Then
 
         Else
@@ -607,13 +603,8 @@ Public Class Form6
 
         RA.Text = VA.X
 
-        'redimensionando
-        Dim S1 = Chart1.Series.First
-        Dim N = S1.Points.Count
-        Dim xFactor = (Chart1.Width) / 10
-
-        RA.Width = 250
-        'RA.ResizeToContent()
+        RA.Width = MaiorRange() / 17 'number magic !!!
+        Chart1.Update()
 
     End Sub
     Public Sub chart1_AnnotationPositionChanging(sender As Object, e As AnnotationPositionChangingEventArgs) Handles Chart1.AnnotationPositionChanging
@@ -624,23 +615,21 @@ Public Class Form6
             RA.X = VA.X - RA.Width / 2
         End If
 
-        'Dim S1 = Chart1.Series.First
-        'Dim CA = Chart1.ChartAreas.First
-        'Dim xv = e.NewLocationX
-
-        'Dim px = Int(CA.AxisX.ValueToPixelPosition(xv))
-        'Dim dp = S1.Points.Where(Function(x) x.XValue >= xv).FirstOrDefault()
-        'Dim py
-        'If dp IsNot Nothing Then
-        '    py = Int(CA.AxisX.ValueToPixelPosition(S1.Points(0).YValues(0))) - 20
-        'End If
-
-        ''If px.ToString IsNot Nothing And py IsNot Nothing Then
-        ''    RA.Text = px.ToString & "," & py.ToString
-        ''End If
-
-
         Chart1.Update()
 
     End Sub
+    Private Function MaiorRange() As Double
+        'redimensionando
+        Dim maiorRang As Double = 0
+        Dim lastPoint As Integer
+        Dim range As Double
+        For Each serie In Chart1.Series
+            lastPoint = serie.Points.Count - 1
+            range = serie.Points(lastPoint).XValue - serie.Points(0).XValue
+            If range > maiorRang Then
+                maiorRang = range
+            End If
+        Next
+        Return maiorRang
+    End Function
 End Class

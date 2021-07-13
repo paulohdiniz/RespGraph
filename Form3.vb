@@ -1,6 +1,8 @@
 ﻿
 
 
+Imports System.Windows.Forms.DataVisualization.Charting
+
 Public Class Form3
 
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
@@ -230,6 +232,14 @@ Public Class Form3
 
     End Sub
 
+    Private Sub ButtonHelp_Click(sender As Object, e As EventArgs) Handles ButtonHelp.Click
+        Form4.Visible = True
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Form5.Visible = True
+    End Sub
+
     Public Class GlobalVariables
         Public Shared OpenFileDialog1 As New OpenFileDialog
         Public Shared OpenFileDialog2 As New OpenFileDialog
@@ -430,22 +440,39 @@ Public Class Form3
             nomeAmostra(5) = "Amostra_6"
         End If
 
-        Dim minimo As Double
+        'verificar algum nome igual
+        If Not nomeAmostra.Distinct().ToList().Count.Equals(nomeAmostra.Count) Then
+            MsgBox("Não é permitido que duas amostras tenham o mesmo nome.",, "Atenção")
+            Exit Sub
+        End If
+
+        Dim minimoX As Double
         Dim minimoTxt As String
         minimoTxt = RichTextBox8.Text
         If String.IsNullOrEmpty(minimoTxt) Then
-            minimo = Double.NaN
+            minimoX = Double.NaN
         Else
-            Double.TryParse(RichTextBox8.Text, minimo) 'transformando a string em double
+            Double.TryParse(RichTextBox8.Text, minimoX) 'transformando a string em double
         End If
 
-        Dim maximo As Double
+        Dim maximoX As Double
         Dim maximoTxt As String
         maximoTxt = RichTextBox9.Text
         If String.IsNullOrEmpty(maximoTxt) Then
-            maximo = Double.NaN
+            maximoX = Double.NaN
         Else
-            Double.TryParse(RichTextBox9.Text, maximo) 'transformando a string em double
+            Double.TryParse(RichTextBox9.Text, maximoX) 'transformando a string em double
+        End If
+        Dim maximoY As Double
+        If CheckBox7.Checked Or
+            CheckBox8.Checked Or
+            CheckBox9.Checked Or
+            CheckBox10.Checked Or
+            CheckBox11.Checked Or
+            CheckBox12.Checked Then
+            maximoY = 1.0
+        Else
+            maximoY = Double.NaN
         End If
 
         Dim renameX As String
@@ -492,8 +519,9 @@ Public Class Form3
             .AxisX.Title = renameX 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
-            .AxisX.Minimum = minimo 'LIMITANDO O GRAFICO EM X ENTRE O VALOR MINIMUM E MAXIMUM
-            .AxisX.Maximum = maximo
+            .AxisX.Minimum = minimoX 'LIMITANDO O GRAFICO EM X ENTRE O VALOR MINIMUM E MAXIMUM
+            .AxisX.Maximum = maximoX
+            .AxisY.Maximum = maximoY
             .AxisY.Title = renameY 'y label
             .AxisX.LabelStyle.Format = formatX
             .AxisY.LabelStyle.Format = formatY
@@ -930,14 +958,51 @@ Public Class Form3
             Next i
         End If
         ' FIM - 6 GRAFICOS
+
+        Dim verticalLine = New VerticalLineAnnotation()
+        verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
+        verticalLine.AllowMoving = True
+        verticalLine.IsInfinitive = True
+        verticalLine.LineColor = Color.Navy
+        verticalLine.LineWidth = 2
+        verticalLine.AnchorOffsetX = 50
+        verticalLine.ClipToChartArea = Form7.Chart1.ChartAreas.First.Name
+        verticalLine.Name = "VA"
+        verticalLine.LineDashStyle = 1
+        verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
+        'verticalLine.X = 1
+        Form7.Chart1.Annotations.Add(verticalLine)
+
+        Dim RA = New RectangleAnnotation()
+        RA.AxisX = verticalLine.AxisX
+        RA.IsSizeAlwaysRelative = False
+        RA.Width = MaiorRange() / 17
+        RA.Height = 3
+        RA.Name = "RA"
+        RA.LineColor = Color.Blue
+        RA.BackColor = Color.White
+        RA.Y = 82.5
+        RA.Text = "Hello"
+        RA.ForeColor = Color.Navy
+        RA.Font = New System.Drawing.Font("Arial", 8.0F)
+        Form7.Chart1.Annotations.Add(RA)
+
         Form7.Visible = True
     End Sub
 
-    Private Sub ButtonHelp_Click(sender As Object, e As EventArgs) Handles ButtonHelp.Click
-        Form4.Visible = True
-    End Sub
+    Private Function MaiorRange() As Double
+        'redimensionando
+        Dim maiorRang As Double = 0
+        Dim lastPoint As Integer
+        Dim range As Double
+        For Each serie In Form7.Chart1.Series
+            lastPoint = serie.Points.Count - 1
+            range = serie.Points(lastPoint).XValue - serie.Points(0).XValue
+            If range > maiorRang Then
+                maiorRang = range
+            End If
+        Next
+        Return maiorRang
+    End Function
 
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        Form5.Visible = True
-    End Sub
 End Class

@@ -1,4 +1,6 @@
-﻿Public Class Form7
+﻿Imports System.Windows.Forms.DataVisualization.Charting
+
+Public Class Form7
     'esse codigo abaixo eu peguei pronto. Ao descansar o mouse no gráfico ele da o ponto q vc passou por cima.
     Private Sub Chart1_MouseMove(sender As Object, e As MouseEventArgs) Handles Chart1.MouseMove
         Dim h As Windows.Forms.DataVisualization.Charting.HitTestResult = Chart1.HitTest(e.X, e.Y)
@@ -70,5 +72,60 @@
             sfdPic.Dispose()
 
         End Try
+    End Sub
+
+    Public Sub chart1_AnnotationPositionChanged(sender As Object, e As EventArgs) Handles Chart1.AnnotationPositionChanged
+        Dim VA = Chart1.Annotations.FindByName("VA")
+        Dim RA As RectangleAnnotation = Chart1.Annotations.FindByName("RA")
+
+        VA.X = Int(VA.X + 0.5)
+        RA.X = VA.X - RA.Width / 2
+
+        RA.Text = VA.X
+
+        RA.Width = MaiorRange() / 16.5 'number magic !!!
+        Chart1.Update()
+
+    End Sub
+    Public Sub chart1_AnnotationPositionChanging(sender As Object, e As AnnotationPositionChangingEventArgs) Handles Chart1.AnnotationPositionChanging
+        Dim VA = Chart1.Annotations.FindByName("VA")
+        Dim RA As RectangleAnnotation = Chart1.Annotations.FindByName("RA")
+
+        If sender.Equals(VA) Then
+            RA.X = VA.X - RA.Width / 2
+        End If
+        Chart1.Update()
+
+    End Sub
+    Private Function MaiorRange() As Double
+        'redimensionando
+        Dim maiorRang As Double = 0
+        Dim lastPoint As Integer
+        Dim range As Double
+        For Each serie In Chart1.Series
+            lastPoint = serie.Points.Count - 1
+            range = serie.Points(lastPoint).XValue - serie.Points(0).XValue
+            If range > maiorRang Then
+                maiorRang = range
+            End If
+        Next
+        Return maiorRang
+    End Function
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        'mostrar ou não mostrar a linha vertical auxiliar
+        If Chart1.Annotations.Count = 0 Then
+
+        Else
+            If CheckBox1.Checked Then
+                For i = 0 To Chart1.Annotations.Count - 1
+                    Chart1.Annotations(i).Visible = True
+                Next
+            Else
+                For i = 0 To Chart1.Annotations.Count - 1
+                    Chart1.Annotations(i).Visible = False
+                Next
+            End If
+        End If
     End Sub
 End Class

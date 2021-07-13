@@ -29,6 +29,7 @@ Partial Class Form7
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -54,7 +55,7 @@ Partial Class Form7
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1118, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1175, 28)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -64,11 +65,24 @@ Partial Class Form7
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(122, 24)
         Me.FileToolStripMenuItem.Text = "Salvar Imagem"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Checked = True
+        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox1.Location = New System.Drawing.Point(1060, 72)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(77, 38)
+        Me.CheckBox1.TabIndex = 4
+        Me.CheckBox1.Text = "Linha" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Vertical" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'Form7
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1118, 971)
+        Me.ClientSize = New System.Drawing.Size(1175, 971)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Chart1)
         Me.Name = "Form7"
@@ -86,4 +100,5 @@ Partial Class Form7
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
