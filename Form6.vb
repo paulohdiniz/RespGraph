@@ -570,11 +570,23 @@ Public Class Form6
         RA.Name = "RA"
         RA.LineColor = Color.Blue
         RA.BackColor = Color.White
-        RA.Y = 82.5
+        RA.Y = 82.7
         RA.Text = "Hello"
+
         RA.ForeColor = Color.Navy
         RA.Font = New System.Drawing.Font("Arial", 8.0F)
         Chart1.Annotations.Add(RA)
+
+        If CheckBox13.Checked Then
+            For i = 0 To Chart1.Annotations.Count - 1
+                Chart1.Annotations(i).Visible = True
+            Next
+        Else
+            For i = 0 To Chart1.Annotations.Count - 1
+                Chart1.Annotations(i).Visible = False
+            Next
+        End If
+
     End Sub
 
     Private Sub CheckBox13_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox13.CheckedChanged
@@ -604,6 +616,17 @@ Public Class Form6
         RA.Text = VA.X
 
         RA.Width = MaiorRange() / 17 'number magic !!!
+
+        If CheckBox2.Checked And (CheckBox1.Checked Or CheckBox6.Checked) And Not CheckBox3.Checked And Not CheckBox4.Checked And Not CheckBox5.Checked Then 'ajuste do tamanho do retangulo
+            RA.Width = MaiorRange() / 10
+        End If
+
+        Dim quantidadeDeCurvas = IIf(CheckBox1.Checked, 1, 0) + IIf(CheckBox2.Checked, 1, 0) + IIf(CheckBox3.Checked, 1, 0) +
+            IIf(CheckBox4.Checked, 1, 0) + IIf(CheckBox5.Checked, 1, 0) + IIf(CheckBox6.Checked, 1, 0)
+
+        If quantidadeDeCurvas > 4 Then
+            RA.Y = 80.8
+        End If
         Chart1.Update()
 
     End Sub
@@ -613,6 +636,8 @@ Public Class Form6
 
         If sender.Equals(VA) Then
             RA.X = VA.X - RA.Width / 2
+            VA.X = Int(VA.X + 0.5)
+            RA.Text = VA.X
         End If
 
         Chart1.Update()

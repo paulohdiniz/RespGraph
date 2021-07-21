@@ -988,6 +988,8 @@ Public Class Form3
         Form7.Chart1.Annotations.Add(RA)
 
         Form7.Visible = True
+        Form7.WindowState = FormWindowState.Normal
+        Form7.BringToFront()
     End Sub
 
     Private Function MaiorRange() As Double

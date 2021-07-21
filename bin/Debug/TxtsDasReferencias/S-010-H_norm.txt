@@ -2,6 +2,7 @@ ARQUIVO DE REFERENCIA
 AMOSTRA: Si Photodiode S-series 
 Usuário: Paulo Henrique Diniz
 Tipo: Normalizada
+Método para achar os pontos abaixo: Normalização da curva da imagem da segunda página do data sheet.
 EixoY(0-1)	Comprimento de onda(nm)
 0.0182703076534009 204.751353
 0.0203313084602535 212.665313

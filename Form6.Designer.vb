@@ -23,9 +23,9 @@ Partial Class Form6
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -53,18 +53,18 @@ Partial Class Form6
         'Chart1
         '
         Me.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea3.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea3)
+        Legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom
+        Legend3.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend3)
         Me.Chart1.Location = New System.Drawing.Point(0, 31)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(1144, 792)
+        Series3.ChartArea = "ChartArea1"
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Me.Chart1.Series.Add(Series3)
+        Me.Chart1.Size = New System.Drawing.Size(1290, 865)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
@@ -74,14 +74,14 @@ Partial Class Form6
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1509, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1676, 30)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(1166, 94)
+        Me.CheckBox1.Location = New System.Drawing.Point(1319, 51)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(83, 21)
         Me.CheckBox1.TabIndex = 41
@@ -91,7 +91,7 @@ Partial Class Form6
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(1166, 133)
+        Me.CheckBox2.Location = New System.Drawing.Point(1319, 90)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(137, 21)
         Me.CheckBox2.TabIndex = 42
@@ -101,7 +101,7 @@ Partial Class Form6
         'CheckBox3
         '
         Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(1166, 176)
+        Me.CheckBox3.Location = New System.Drawing.Point(1319, 133)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(126, 21)
         Me.CheckBox3.TabIndex = 43
@@ -111,7 +111,7 @@ Partial Class Form6
         'CheckBox4
         '
         Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(1166, 215)
+        Me.CheckBox4.Location = New System.Drawing.Point(1319, 172)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(159, 21)
         Me.CheckBox4.TabIndex = 44
@@ -121,7 +121,7 @@ Partial Class Form6
         'CheckBox5
         '
         Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(1166, 254)
+        Me.CheckBox5.Location = New System.Drawing.Point(1319, 211)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(159, 21)
         Me.CheckBox5.TabIndex = 45
@@ -131,7 +131,7 @@ Partial Class Form6
         'CheckBox6
         '
         Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(1166, 291)
+        Me.CheckBox6.Location = New System.Drawing.Point(1319, 248)
         Me.CheckBox6.Name = "CheckBox6"
         Me.CheckBox6.Size = New System.Drawing.Size(98, 21)
         Me.CheckBox6.TabIndex = 46
@@ -142,7 +142,7 @@ Partial Class Form6
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1401, 74)
+        Me.Label1.Location = New System.Drawing.Point(1554, 31)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(98, 17)
         Me.Label1.TabIndex = 55
@@ -151,7 +151,7 @@ Partial Class Form6
         'CheckBox7
         '
         Me.CheckBox7.AutoSize = True
-        Me.CheckBox7.Location = New System.Drawing.Point(1404, 94)
+        Me.CheckBox7.Location = New System.Drawing.Point(1557, 51)
         Me.CheckBox7.Name = "CheckBox7"
         Me.CheckBox7.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox7.TabIndex = 56
@@ -161,7 +161,7 @@ Partial Class Form6
         'CheckBox8
         '
         Me.CheckBox8.AutoSize = True
-        Me.CheckBox8.Location = New System.Drawing.Point(1404, 133)
+        Me.CheckBox8.Location = New System.Drawing.Point(1557, 90)
         Me.CheckBox8.Name = "CheckBox8"
         Me.CheckBox8.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox8.TabIndex = 57
@@ -171,7 +171,7 @@ Partial Class Form6
         'CheckBox9
         '
         Me.CheckBox9.AutoSize = True
-        Me.CheckBox9.Location = New System.Drawing.Point(1404, 176)
+        Me.CheckBox9.Location = New System.Drawing.Point(1557, 133)
         Me.CheckBox9.Name = "CheckBox9"
         Me.CheckBox9.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox9.TabIndex = 58
@@ -181,7 +181,7 @@ Partial Class Form6
         'CheckBox10
         '
         Me.CheckBox10.AutoSize = True
-        Me.CheckBox10.Location = New System.Drawing.Point(1404, 215)
+        Me.CheckBox10.Location = New System.Drawing.Point(1557, 172)
         Me.CheckBox10.Name = "CheckBox10"
         Me.CheckBox10.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox10.TabIndex = 59
@@ -191,7 +191,7 @@ Partial Class Form6
         'CheckBox11
         '
         Me.CheckBox11.AutoSize = True
-        Me.CheckBox11.Location = New System.Drawing.Point(1404, 254)
+        Me.CheckBox11.Location = New System.Drawing.Point(1557, 211)
         Me.CheckBox11.Name = "CheckBox11"
         Me.CheckBox11.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox11.TabIndex = 60
@@ -201,7 +201,7 @@ Partial Class Form6
         'CheckBox12
         '
         Me.CheckBox12.AutoSize = True
-        Me.CheckBox12.Location = New System.Drawing.Point(1404, 291)
+        Me.CheckBox12.Location = New System.Drawing.Point(1557, 248)
         Me.CheckBox12.Name = "CheckBox12"
         Me.CheckBox12.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox12.TabIndex = 61
@@ -212,7 +212,7 @@ Partial Class Form6
         '
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button1.Font = New System.Drawing.Font("Times New Roman", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1166, 393)
+        Me.Button1.Location = New System.Drawing.Point(1319, 350)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(137, 38)
@@ -224,7 +224,7 @@ Partial Class Form6
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(1163, 74)
+        Me.Label2.Location = New System.Drawing.Point(1316, 31)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(76, 17)
         Me.Label2.TabIndex = 65
@@ -235,7 +235,7 @@ Partial Class Form6
         Me.CheckBox13.AutoSize = True
         Me.CheckBox13.Checked = True
         Me.CheckBox13.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox13.Location = New System.Drawing.Point(1404, 345)
+        Me.CheckBox13.Location = New System.Drawing.Point(1557, 302)
         Me.CheckBox13.Name = "CheckBox13"
         Me.CheckBox13.Size = New System.Drawing.Size(53, 21)
         Me.CheckBox13.TabIndex = 66
@@ -246,7 +246,7 @@ Partial Class Form6
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(1163, 345)
+        Me.Label3.Location = New System.Drawing.Point(1316, 302)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(163, 17)
         Me.Label3.TabIndex = 67
@@ -256,7 +256,7 @@ Partial Class Form6
         '
         Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button2.Font = New System.Drawing.Font("Times New Roman", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(1347, 393)
+        Me.Button2.Location = New System.Drawing.Point(1500, 350)
         Me.Button2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(137, 38)
@@ -268,7 +268,9 @@ Partial Class Form6
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1509, 835)
+        Me.AutoSize = True
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.ClientSize = New System.Drawing.Size(1676, 943)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.CheckBox13)

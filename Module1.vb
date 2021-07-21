@@ -218,7 +218,7 @@
                     Me.Nome = "IS-010-E-LN6N"
                     Me.Material = "InSb"
                     Me.Area = "0,7853981634 mm²"
-                    Me.RespMax = "430.000 V/W @ 5,3um"
+                    Me.RespMax = "430.000 V/W @ 5,2um"
                     Me.FaixaEspectral = "1,0 - 5,5 um"
                     Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IS-010-E-LN6N" + ".txt")
@@ -226,7 +226,7 @@
                     Me.Nome = "MCT14-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1,0000 mm²"
-                    Me.RespMax = "500.000 @ 13,5um"
+                    Me.RespMax = "500.000 @ 12,5um"
                     Me.FaixaEspectral = "2 - 15 um"
                     Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT14-010-E-LN6N" + ".txt")
@@ -234,7 +234,7 @@
                     Me.Nome = "MCT20-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1,0000 mm²"
-                    Me.RespMax = "780.000 V/W @ 18 um"
+                    Me.RespMax = "780.000 V/W @ 17,8 um"
                     Me.FaixaEspectral = "2 - 20 um  "
                     Me.UnidadeResponsividade = "Responsividade (V / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT20-010-E-LN6N" + ".txt")
@@ -242,8 +242,8 @@
                     Me.Nome = "818-BB-22"
                     Me.Material = "Silício"
                     Me.Area = "5,1070515574919 mm²"
-                    Me.RespMax = "0,6321 A/W @ 890nm"
-                    Me.FaixaEspectral = "200 - 1100 nm"
+                    Me.RespMax = "0,61396 A/W @ 910nm"
+                    Me.FaixaEspectral = "200 - 1200 nm"
                     Me.UnidadeResponsividade = "Responsividade (A / W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "818-BB-22" + ".txt")
             End Select

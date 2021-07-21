@@ -4,6 +4,7 @@ Usuário: Paulo Henrique Diniz
 Área: 0.7853981634 mm²
 Responsividade máxima: 430000 V/W 
 Tipo: Absoluta
+Método para achar os pontos abaixo: Multiplicação da curva normalizada pela responsividade máxima.
 Responsividade(V/W)	Comprimento de onda(nm)
 120419.35 2009.590517
 121064.78 2027.561147

@@ -1,11 +1,9 @@
 ARQUIVO DE REFERENCIA
 AMOSTRA: IGA-010-E-LN6N (-196)
 Usuário: Paulo Henrique Diniz
-Interpolação do 1300nm = x≈0.956701327923082 (0,9 A/W)
-Responsividade máxima = 0,9407324666 em 1481 nm
 Tipo: Normalizada
+Método para achar os pontos abaixo: Normalização da curva absoluta.
 EixoY(0-1)	Comprimento de onda(nm)
-
 0,219153414405987 800,544929
 0,222883536014967 804,665476
 0,228870439663237 807,619325
@@ -397,5 +395,9 @@ EixoY(0-1)	Comprimento de onda(nm)
 0,0106290926099158 1788,758356
 0,0101188451398928 1792,742512
 0,00960753465430734 1796,861802
+
+
+
+
 
 

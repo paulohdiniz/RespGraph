@@ -93,6 +93,8 @@ Public Class Form7
 
         If sender.Equals(VA) Then
             RA.X = VA.X - RA.Width / 2
+            VA.X = Int(VA.X + 0.5)
+            RA.Text = VA.X
         End If
         Chart1.Update()
 

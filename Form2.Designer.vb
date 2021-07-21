@@ -548,7 +548,7 @@ Partial Class Form2
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(47, 319)
+        Me.Label11.Location = New System.Drawing.Point(36, 319)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(250, 40)
         Me.Label11.TabIndex = 26
@@ -559,7 +559,7 @@ Partial Class Form2
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(47, 92)
+        Me.Label10.Location = New System.Drawing.Point(36, 92)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(250, 40)
         Me.Label10.TabIndex = 25
@@ -570,11 +570,11 @@ Partial Class Form2
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(35, 19)
+        Me.Label9.Location = New System.Drawing.Point(35, 29)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(276, 58)
+        Me.Label9.Size = New System.Drawing.Size(276, 29)
         Me.Label9.TabIndex = 25
-        Me.Label9.Text = "Espectro de transmissão" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " dos criostatos"
+        Me.Label9.Text = "Espectro de transmissão" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Form2

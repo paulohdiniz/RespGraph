@@ -318,6 +318,8 @@ Public Class Form2
         Form7.Chart1.Titles.Add(sensorSelected.Nome) 'specify chart name
         Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
         Form7.Chart1.ChartAreas.Clear()
+        Form7.Chart1.Series.Clear()
+        Form7.Chart1.Annotations.Clear()
         Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
         With Form7.Chart1.ChartAreas(sensorSelected.Nome)
             .AxisX.Title = "Comprimento de onda(nm)" 'x label
@@ -376,6 +378,9 @@ Public Class Form2
         Form7.Chart1.Annotations.Add(RA)
 
         Form7.Visible = True
+        Form7.WindowState = FormWindowState.Normal
+        Form7.BringToFront()
+
     End Sub
     Private Function MaiorRange() As Double
         'redimensionando

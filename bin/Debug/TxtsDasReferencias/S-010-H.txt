@@ -2,7 +2,8 @@ ARQUIVO DE REFERENCIA
 AMOSTRA: Si Photodiode S-series 
 Usuário: Paulo Henrique Diniz
 Área: 0.7853981634 mm²
-Responsividade máxima: 500000000 V/W @ ~899nm
+Responsividade máxima: 500000000 V/W @ ~889nm
+Método para achar os pontos abaixo: A partir da curva normalizada e com esse ponto acima achamos os pontos abaixo.
 Tipo: Absoluta
 Responsividade (V/W)	Comprimento de onda(nm)
 9135153.82670045 204.751353

@@ -2,8 +2,9 @@ ARQUIVO DE REFERENCIA
 AMOSTRA: MCT14-010-E-LN6N
 Usuário: Paulo Henrique Diniz
 Tipo: Normalizada
+Método para achar os pontos abaixo: Obtenção da curva da imagem do data sheet.
+Observação: o ponto máxima da responsividade do gráfico é 12,5 um e não 13,5um como aponta nas especificações.
 EixoY(0-1)	Comprimento de onda(nm)
-
 0.200597 2200.063425
 0.205057 2255.955338
 0.208196 2303.514639

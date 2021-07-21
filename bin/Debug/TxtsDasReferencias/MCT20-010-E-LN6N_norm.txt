@@ -2,8 +2,8 @@ ARQUIVO DE REFERENCIA
 AMOSTRA: MCT20-010-E-LN6N
 Usuário: Paulo Henrique Diniz
 Tipo: Normalizada
+Método para achar os pontos abaixo: Obtenção dos pontos da imagem normalizada do data sheet.
 EixoY(0-1)	Comprimento de onda(nm)
-
 0.120466 2032.209371
 0.122907 2122.901135
 0.124787 2213.632409
