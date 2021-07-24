@@ -68,6 +68,7 @@ Partial Class Form2
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -179,13 +180,13 @@ Partial Class Form2
         'ButtonCalcular
         '
         Me.ButtonCalcular.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.ButtonCalcular.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCalcular.Location = New System.Drawing.Point(1220, 627)
+        Me.ButtonCalcular.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCalcular.Location = New System.Drawing.Point(1204, 629)
         Me.ButtonCalcular.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ButtonCalcular.Name = "ButtonCalcular"
-        Me.ButtonCalcular.Size = New System.Drawing.Size(133, 57)
+        Me.ButtonCalcular.Size = New System.Drawing.Size(149, 57)
         Me.ButtonCalcular.TabIndex = 12
-        Me.ButtonCalcular.Text = "Salvar"
+        Me.ButtonCalcular.Text = "Salvar responsividade"
         Me.ToolTip1.SetToolTip(Me.ButtonCalcular, "Crie seu arquivo com a curva espectral de responsividade.")
         Me.ButtonCalcular.UseVisualStyleBackColor = False
         '
@@ -485,7 +486,7 @@ Partial Class Form2
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(1038, 602)
+        Me.Label8.Location = New System.Drawing.Point(872, 601)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(45, 24)
         Me.Label8.TabIndex = 30
@@ -495,7 +496,7 @@ Partial Class Form2
         '
         Me.TextBoxAlfa.Enabled = False
         Me.TextBoxAlfa.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxAlfa.Location = New System.Drawing.Point(1017, 628)
+        Me.TextBoxAlfa.Location = New System.Drawing.Point(851, 627)
         Me.TextBoxAlfa.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBoxAlfa.Name = "TextBoxAlfa"
         Me.TextBoxAlfa.Size = New System.Drawing.Size(96, 28)
@@ -505,7 +506,7 @@ Partial Class Form2
         '
         Me.Button3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.Button3.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(1017, 660)
+        Me.Button3.Location = New System.Drawing.Point(851, 659)
         Me.Button3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(96, 40)
@@ -577,11 +578,25 @@ Partial Class Form2
         Me.Label9.Text = "Espectro de transmissão" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'Button5
+        '
+        Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Location = New System.Drawing.Point(1019, 629)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(149, 57)
+        Me.Button5.TabIndex = 49
+        Me.Button5.Text = "Salvar espectro de potência"
+        Me.ToolTip1.SetToolTip(Me.Button5, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.Button5.UseVisualStyleBackColor = False
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 711)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button3)
@@ -653,4 +668,5 @@ Partial Class Form2
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents Button5 As Button
 End Class
