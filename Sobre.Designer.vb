@@ -64,7 +64,7 @@ Partial Class Sobre
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel.Size = New System.Drawing.Size(778, 501)
+        Me.TableLayoutPanel.Size = New System.Drawing.Size(792, 513)
         Me.TableLayoutPanel.TabIndex = 0
         '
         'LogoPictureBox
@@ -75,7 +75,7 @@ Partial Class Sobre
         Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4)
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 6)
-        Me.LogoPictureBox.Size = New System.Drawing.Size(248, 493)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(253, 505)
         Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
@@ -83,11 +83,11 @@ Partial Class Sobre
         'LabelProductName
         '
         Me.LabelProductName.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelProductName.Location = New System.Drawing.Point(264, 0)
+        Me.LabelProductName.Location = New System.Drawing.Point(269, 0)
         Me.LabelProductName.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         Me.LabelProductName.MaximumSize = New System.Drawing.Size(0, 21)
         Me.LabelProductName.Name = "LabelProductName"
-        Me.LabelProductName.Size = New System.Drawing.Size(510, 21)
+        Me.LabelProductName.Size = New System.Drawing.Size(519, 21)
         Me.LabelProductName.TabIndex = 0
         Me.LabelProductName.Text = "Programa RESPGRAPH"
         Me.LabelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -95,11 +95,11 @@ Partial Class Sobre
         'LabelVersion
         '
         Me.LabelVersion.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelVersion.Location = New System.Drawing.Point(264, 50)
+        Me.LabelVersion.Location = New System.Drawing.Point(269, 51)
         Me.LabelVersion.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         Me.LabelVersion.MaximumSize = New System.Drawing.Size(0, 21)
         Me.LabelVersion.Name = "LabelVersion"
-        Me.LabelVersion.Size = New System.Drawing.Size(510, 21)
+        Me.LabelVersion.Size = New System.Drawing.Size(519, 21)
         Me.LabelVersion.TabIndex = 0
         Me.LabelVersion.Text = "Versão 1.0"
         Me.LabelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -107,11 +107,11 @@ Partial Class Sobre
         'LabelCompanyName
         '
         Me.LabelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelCompanyName.Location = New System.Drawing.Point(264, 150)
+        Me.LabelCompanyName.Location = New System.Drawing.Point(269, 153)
         Me.LabelCompanyName.Margin = New System.Windows.Forms.Padding(8, 0, 4, 0)
         Me.LabelCompanyName.MaximumSize = New System.Drawing.Size(0, 21)
         Me.LabelCompanyName.Name = "LabelCompanyName"
-        Me.LabelCompanyName.Size = New System.Drawing.Size(510, 21)
+        Me.LabelCompanyName.Size = New System.Drawing.Size(519, 21)
         Me.LabelCompanyName.TabIndex = 0
         Me.LabelCompanyName.Text = "Instituto de Física da USP - IFUSP" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.LabelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -119,13 +119,13 @@ Partial Class Sobre
         'TextBoxDescription
         '
         Me.TextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBoxDescription.Location = New System.Drawing.Point(264, 204)
+        Me.TextBoxDescription.Location = New System.Drawing.Point(269, 208)
         Me.TextBoxDescription.Margin = New System.Windows.Forms.Padding(8, 4, 4, 4)
         Me.TextBoxDescription.Multiline = True
         Me.TextBoxDescription.Name = "TextBoxDescription"
         Me.TextBoxDescription.ReadOnly = True
         Me.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBoxDescription.Size = New System.Drawing.Size(510, 242)
+        Me.TextBoxDescription.Size = New System.Drawing.Size(519, 248)
         Me.TextBoxDescription.TabIndex = 0
         Me.TextBoxDescription.TabStop = False
         Me.TextBoxDescription.Text = resources.GetString("TextBoxDescription.Text")
@@ -134,7 +134,7 @@ Partial Class Sobre
         '
         Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.OKButton.Location = New System.Drawing.Point(674, 470)
+        Me.OKButton.Location = New System.Drawing.Point(688, 482)
         Me.OKButton.Margin = New System.Windows.Forms.Padding(4)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(100, 27)
@@ -146,7 +146,7 @@ Partial Class Sobre
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.OKButton
-        Me.ClientSize = New System.Drawing.Size(802, 523)
+        Me.ClientSize = New System.Drawing.Size(816, 535)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Margin = New System.Windows.Forms.Padding(4)

@@ -32,6 +32,15 @@ Public Class Form2
 
         Button1.Visible = True
         Button4.Visible = True
+        If (String.IsNullOrEmpty(TextBox4.Text)) Then
+            TextBox4.Text = "50"
+        End If
+        If (String.IsNullOrEmpty(TextBox6.Text)) Then
+            TextBox6.Text = "50"
+        End If
+
+        TextBox9.Text = CalculaBeta().ToString("0.00E+00")
+        TextBox15.Text = CalculaGamma().ToString("0.00E+00")
 
         'validar que os LN6N tenham essa mensagem
         If ComboBox1.Text.Equals("818-BB-22") Or ComboBox1.Text.Equals("S-010-H") Then
@@ -39,7 +48,6 @@ Public Class Form2
         Else
             MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação.",, "Atenção !")
         End If
-
 
         Dim sensor = New SensorFabricante(ComboBox1.Text)
         TextBox10.Text = sensor.Material
@@ -63,7 +71,17 @@ Public Class Form2
             TextBox3.Text = sensor.Area.Substring(0, sensor.Area.Length - 4)
         End If
 
+        If (String.IsNullOrEmpty(TextBox5.Text)) Then
+            TextBox5.Text = areaDouble
+        End If
 
+        If (String.IsNullOrEmpty(TextBox7.Text)) Then
+            TextBox7.Text = "1"
+        End If
+
+        If (String.IsNullOrEmpty(TextBox8.Text)) Then
+            TextBox8.Text = "1"
+        End If
 
     End Sub
 
@@ -116,7 +134,8 @@ Public Class Form2
 
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
         Dim alfa As Double = CalculaAlfa()
-
+        Dim beta As Double = CalculaBeta()
+        Dim gamma As Double = CalculaGamma()
         If (alfa = 0) Then
             MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
@@ -198,7 +217,12 @@ Public Class Form2
             If (NewColumnYCalib(i).Equals(0)) Then
                 Add(Of Double)(responsividade, 0)
             Else
-                Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa) / NewColumnYCalib(i))
+                If CheckBox1.Checked Then
+                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta) / NewColumnYCalib(i))
+                End If
+                If CheckBox2.Checked Then
+                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta * gamma) / (NewColumnYCalib(i) * NewColumnXCalib(i) * 0.000000001))
+                End If
             End If
 
         Next i
@@ -214,31 +238,65 @@ Public Class Form2
         Dim sfdPic As New SaveFileDialog()
         sfdPic.OverwritePrompt = True
         Dim sensorReferenciaUsado = New SensorFabricante(ComboBox1.Text)
+
+        Dim cabecalho As String = ""
+        Dim tipoDeMedida As String = "_RESPONSIVIDADE_"
+        Dim switchTemp As String = ""
+        If CheckBox5.Checked Then
+            switchTemp = "Posição HI, " & TextBox16.Text
+        End If
+        If CheckBox6.Checked Then
+            switchTemp = "Posição LO, " & TextBox16.Text
+        End If
+        Dim datahoraAtual As DateTime = Now
+        If CheckBox1.Checked Then
+            tipoDeMedida = "_RESPONSIVIDADE_"
+            cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
+             "Usuário: " & nomeUsuario & vbCrLf &
+             "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+             "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
+             "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
+             "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
+             "Área da amostra (mm²): " & TextBox5.Text & vbCrLf &
+             "Distância da amostra (mm): " & TextBox6.Text & vbCrLf &
+             "Janela do sensor: " & TextBox7.Text & vbCrLf &
+             "Janela do Criostato: " & TextBox8.Text & vbCrLf &
+             "Switch: " & switchTemp & vbCrLf &
+             "Alfa: " & TextBoxAlfa.Text & vbCrLf &
+             "Ganho Keithley: " & TextBox14.Text & vbCrLf &
+             sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
+        End If
+        If CheckBox2.Checked Then
+            tipoDeMedida = "_EQE_"
+            cabecalho = "ARQUIVO DE MEDIDA DE EQE" & vbCrLf &
+             "Usuário: " & nomeUsuario & vbCrLf &
+             "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+             "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
+             "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
+             "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
+             "Área da amostra (mm²): " & TextBox5.Text & vbCrLf &
+             "Distância da amostra (mm): " & TextBox6.Text & vbCrLf &
+             "Janela do sensor: " & TextBox7.Text & vbCrLf &
+             "Janela do Criostato: " & TextBox8.Text & vbCrLf &
+             "Switch: " & switchTemp & vbCrLf &
+             "Alfa: " & TextBoxAlfa.Text & vbCrLf &
+             "Ganho lockin: " & TextBox14.Text & vbCrLf &
+             "EQE " & " Comprimento de onda(nm)"
+        End If
+
         Try
             With sfdPic
                 .Title = "Salve o arquivo como"
                 .Filter = "txt|*.txt"
                 .AddExtension = True
                 .DefaultExt = ".txt"
-                .FileName = nomeAmostra & "_RESPONSIVIDADE_" & Now.ToShortDateString.Replace("/", "") & "_" & Now.ToShortTimeString.Replace(":", "")
+                .FileName = nomeAmostra & tipoDeMedida & Now.ToShortDateString.Replace("/", "") & "_" & Now.ToShortTimeString.Replace(":", "")
                 .ValidateNames = True
                 .RestoreDirectory = True
 
                 If .ShowDialog = DialogResult.OK Then
                     Dim outFile As IO.StreamWriter
                     Dim qlqr As String
-                    Dim cabecalho As String
-                    Dim datahoraAtual As DateTime = Now
-                    cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
-                        "Usuário: " & nomeUsuario & vbCrLf &
-                        "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
-                        "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
-                        "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
-                        "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
-                        "Área da amostra (mm²): " & TextBox5.Text & vbCrLf &
-                        "Distância da amostra (mm): " & TextBox6.Text & vbCrLf &
-                        "Alfa: " & TextBoxAlfa.Text & vbCrLf &
-                        sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
                     outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, False)
                     outFile.WriteLine(cabecalho)
                     For k = 0 To responsividade.Length - 1
@@ -288,10 +346,14 @@ Public Class Form2
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Form6.Visible = True
+        Form6.WindowState = FormWindowState.Normal
+        Form6.BringToFront()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Form8.Visible = True
+        Form8.WindowState = FormWindowState.Normal
+        Form8.BringToFront()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -538,5 +600,87 @@ Public Class Form2
             sfdPic.Dispose()
         End Try
         Me.Hide()
+    End Sub
+
+    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
+        TrackBar1.TickStyle = TickStyle.None
+        TextBox14.Text = (10 ^ (TrackBar1.Value)).ToString("0.00E+00")
+        TextBox9.Text = CalculaBeta().ToString("0.00E+00")
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If (CheckBox1.Checked) Then
+            CheckBox2.Checked = False
+            Label19.Text = "Ganho do pré-amplificador" & vbCrLf & "de transimpedância Keithley"
+            Label19.Left = (Label19.Parent.Width \ 2) - (Label19.Width \ 2)
+            TrackBar1.Visible = True
+            Label17.Visible = False
+            TextBox14.Text = "1,00E+03"
+            ButtonCalcular.Text = "Salvar Responsividade"
+        End If
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If (CheckBox2.Checked) Then
+            CheckBox1.Checked = False
+            Label19.Text = "Ganho de conversão" & vbCrLf & "do lockin novo"
+            Label19.Left = (Label19.Parent.Width \ 2) - (Label19.Width \ 2)
+            TrackBar1.Visible = False
+            Label17.Visible = True
+            CheckBox3.Visible = True
+            CheckBox4.Visible = True
+            TextBox14.Text = "2,35E+05"
+            ButtonCalcular.Text = "Salvar EQE"
+        End If
+    End Sub
+
+    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
+        If (CheckBox4.Checked) Then
+            CheckBox3.Checked = False
+            TextBox14.Text = "2,35E+05"
+        End If
+    End Sub
+
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+        If (CheckBox3.Checked) Then
+            CheckBox4.Checked = False
+            TextBox14.Text = "1,0"
+        End If
+    End Sub
+
+    Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
+        If (CheckBox5.Checked) Then
+            CheckBox6.Checked = False
+            TextBox16.Text = "1,0"
+        End If
+    End Sub
+
+    Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
+        If (CheckBox6.Checked) Then
+            CheckBox5.Checked = False
+            TextBox16.Text = "0,1"
+            If ComboBox1.Text.Equals("818-BB-22") Then
+                TextBox16.Text = "1,0"
+                MsgBox("O sensor 818 (Silício antigo) não tem switch, logo sempre vale 1.",, "Atenção !")
+            End If
+
+        End If
+    End Sub
+
+    Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
+        Form9.Visible = True
+        Form9.WindowState = FormWindowState.Normal
+        Form9.BringToFront()
+    End Sub
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Label2.Left = (Label2.Parent.Width \ 2) - (Label2.Width \ 2)
+        Label3.Left = (Label3.Parent.Width \ 2) - (Label3.Width \ 2)
+        Label9.Left = (Label9.Parent.Width \ 2) - (Label9.Width \ 2)
+        Label19.Left = (Label19.Parent.Width \ 2) - (Label19.Width \ 2)
+        Label22.Left = (Label22.Parent.Width \ 2) - (Label22.Width \ 2)
+        Label23.Left = (Label23.Parent.Width \ 2) - (Label23.Width \ 2)
+        TextBox15.Text = CalculaGamma().ToString("0.00E+00")
+
     End Sub
 End Class

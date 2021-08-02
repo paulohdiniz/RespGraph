@@ -181,6 +181,35 @@
         Return alfa
     End Function
 
+    Public Function CalculaBeta() As Double
+        Dim switch As Double
+        Dim ganho As Double
+        Dim sucesso As Boolean
+        Dim beta As Double
+
+        sucesso = Double.TryParse(Form2.TextBox16.Text.Replace(".", ","), switch) And
+        Double.TryParse(Form2.TextBox14.Text.Replace(".", ","), ganho)
+
+        If (sucesso) Then
+            beta = switch / ganho
+        Else
+            beta = 1
+        End If
+        Return beta
+
+    End Function
+
+    Public Function CalculaGamma() As Double
+        Dim planck As Double = 6.62607015E-34
+        Dim veloLuz As Double = 299792458
+        Dim cargaEletron As Double = 1.602176565E-19
+
+        Dim gamma As Double
+        gamma = planck * veloLuz / cargaEletron
+        Return gamma
+
+    End Function
+
     Public Function GetNameOfArchive(ByVal pathArquivo As String) As String
         Dim nomeAmostra As String
         nomeAmostra = pathArquivo.Substring(pathArquivo.LastIndexOf("\") + 1, pathArquivo.Length - pathArquivo.LastIndexOf("\") - 5)
@@ -202,49 +231,49 @@
                     Me.Nome = "S-010-H"
                     Me.Material = "Silício"
                     Me.Area = "0,7853981634 mm²"
-                    Me.RespMax = "500.000.000 V/W @ 889nm"
-                    Me.FaixaEspectral = "300 - 1000nm"
-                    Me.UnidadeResponsividade = "Responsividade ( A / W )"
+                    Me.RespMax = "5,8E+08 V/W @ 889nm"
+                    Me.FaixaEspectral = "200 - 1000nm"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "S-010-H" + ".txt")
                 Case "IGA-010-E-LN6N"
                     Me.Nome = "IGA-010-E-LN6N"
                     Me.Material = "InGaAs"
                     Me.Area = "0,7853981634 mm²"
-                    Me.RespMax = "0,9407 A/W @ 1481 nm"
-                    Me.FaixaEspectral = "900 - 1550nm"
-                    Me.UnidadeResponsividade = "Responsividade (A / W)"
+                    Me.RespMax = "9,4E+09 V/W @ 1481nm"
+                    Me.FaixaEspectral = "800 - 1550nm"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IGA-010-E-LN6N" + ".txt")
                 Case "IS-010-E-LN6N"
                     Me.Nome = "IS-010-E-LN6N"
                     Me.Material = "InSb"
                     Me.Area = "0,7853981634 mm²"
-                    Me.RespMax = "430.000 V/W @ 5,2um"
-                    Me.FaixaEspectral = "1,0 - 5,5 um"
-                    Me.UnidadeResponsividade = "Responsividade (V / W)"
+                    Me.RespMax = "4,3E+05 V/W @ 5,2um"
+                    Me.FaixaEspectral = "2,0 - 5,7 um"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "IS-010-E-LN6N" + ".txt")
                 Case "MCT14-010-E-LN6N"
                     Me.Nome = "MCT14-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1,0000 mm²"
-                    Me.RespMax = "500.000 @ 12,5um"
-                    Me.FaixaEspectral = "2 - 15 um"
-                    Me.UnidadeResponsividade = "Responsividade (V / W)"
+                    Me.RespMax = "5,0E+05 V/W @ 12,4um"
+                    Me.FaixaEspectral = "2 - 15,2 um"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT14-010-E-LN6N" + ".txt")
                 Case "MCT20-010-E-LN6N"
                     Me.Nome = "MCT20-010-E-LN6N"
                     Me.Material = "HgCdTe"
                     Me.Area = "1,0000 mm²"
-                    Me.RespMax = "780.000 V/W @ 17,8 um"
-                    Me.FaixaEspectral = "2 - 20 um  "
-                    Me.UnidadeResponsividade = "Responsividade (V / W)"
+                    Me.RespMax = "7,8E+05 V/W @ 17,8um"
+                    Me.FaixaEspectral = "2,1 - 21 um"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "MCT20-010-E-LN6N" + ".txt")
                 Case "818-BB-22"
                     Me.Nome = "818-BB-22"
                     Me.Material = "Silício"
                     Me.Area = "5,1070515574919 mm²"
-                    Me.RespMax = "0,61396 A/W @ 910nm"
-                    Me.FaixaEspectral = "200 - 1200 nm"
-                    Me.UnidadeResponsividade = "Responsividade (A / W)"
+                    Me.RespMax = "6,1E+05 V/W @ 910nm"
+                    Me.FaixaEspectral = "200 - 1100 nm"
+                    Me.UnidadeResponsividade = "Responsividade (V/W)"
                     Me.PathSensor = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", "818-BB-22" + ".txt")
             End Select
 

@@ -1,7 +1,4 @@
-﻿
-
-
-Imports System.Windows.Forms.DataVisualization.Charting
+﻿Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class Form3
 
@@ -234,10 +231,14 @@ Public Class Form3
 
     Private Sub ButtonHelp_Click(sender As Object, e As EventArgs) Handles ButtonHelp.Click
         Form4.Visible = True
+        Form4.WindowState = FormWindowState.Normal
+        Form4.BringToFront()
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         Form5.Visible = True
+        Form5.WindowState = FormWindowState.Normal
+        Form5.BringToFront()
     End Sub
 
     Public Class GlobalVariables

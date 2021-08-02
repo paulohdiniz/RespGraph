@@ -117,26 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TextBox1.Text" xml:space="preserve">
-    <value>Alfa:
-
-O índice 1 se refere ao sensor de referência e o índice 2 à nossa amostra.
- 
-"S" designa a área. 
-
-"d" a distância dos dispositivos ao monocromador.
-
-"T" o espectro de transmissão das eventuais janelas dos criostatos.</value>
-  </data>
   <data name="TextBox2.Text" xml:space="preserve">
-    <value>Beta:
+    <value>Todas as curvas de responsividade dos sensores de referência fornecidas pelos fabricantes foram dadas em V/W, já que todos os sensores (exceto o Si antigo 818-BB-22) possuem na saída do fotodiodo/fotodetector interno um amplificador de transimpedância (circuito que converte corrente em tensão). Portanto, para todos eles (exceto o Si antigo), o sinal de saída dos detectores é uma tensão que tem que ser lida pela entrada de tensão do lockin. 
 
-Switch: posição do switch Hi/LO. Vale 1 para HI e 0.1 para LO (default). Não pôr o o campo de switch para o Si antigo (para ele sempre vale 1 pois não tem switch).
-
-Ganho: 
-Fotodetector = Ganho do pré-amplificador de transimpedância Keithley (só para os fotodetectores)  = 10^3 – 10^10 V/A (de dez em dez) em função do usuário (default = 10^3 V/A).
-
-Célular solar = Ganho de conversão do lockin novo (só para as células solares) = 2.35*10^5 V/A (default) se usar a entrada de tensão (A) ou 1 para a entrada de corrente (I). 
-</value>
+A curva de responsividade do sensor de InGaAs (IGA-010-E-LN6N) é dada em A/W (ver datasheet), mas o fabricante forneceu o ganho do amplificador de transimpedância interno (10^10 V/A), o que possibilitou montar uma curva final em V/W. Mas o sinal de saída dele é uma tensão e deve ser lido na entrada de tensão do lockin. O caso do sensor antigo de Si é diferente, pois ele é muito velho e não veio com amplificador de transimpedância interno. O sinal de saída é uma corrente e deveria ser lido corretamente usando a entrada de corrente do lockin. Infelizmente, o programa de aquisição de dados tem um problema de resolução para ler baixas correntes e os últimos algarismos das medidas são todos iguais devido a um erro de aquisição do lockin no programa. Todavia, o manual do sensor menciona que o sinal pode também ser lido na entrada de tensão do lockin. Fizemos o teste e vimos que as duas curvas medidas pela entrada de corrente e de tensão são idênticas (fora o problema de resolução para os baixos valores) e que a razão entre elas é 10^6 V/A. Assim sendo, usamos esse fator como ganho de transimpedância do lockin e geramos uma curva de responsividade do fabricante em V/W, como para todos os outros sensores de referência. Mas tem que ficar claro que esse fator depende do lockin, e que se a gente mudar de lockin, esse fator pode mudar e deverá ser eventualmente modificado no cálculo. A mesma coisa acontece para as nossas células solares. Elas gerem uma corrente que tem que ser lida na entrada de tensão do lockin (por causa do mesmo problema de resolução). Medimos o fator de conversão no lockin entre uma corrente de uma célula solar lida na entrada de corrente e de tensão. O valor ficou em 2.35*10^5 V/A e foi usado no fator de ganho para converter a leitura de tensão em um valor de corrente para calcular a EQE. </value>
   </data>
 </root>

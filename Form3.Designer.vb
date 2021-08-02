@@ -535,9 +535,9 @@ Partial Class Form3
         'Button9
         '
         Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button9.Location = New System.Drawing.Point(642, 54)
+        Me.Button9.Location = New System.Drawing.Point(637, 50)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(28, 26)
+        Me.Button9.Size = New System.Drawing.Size(33, 30)
         Me.Button9.TabIndex = 47
         Me.Button9.Text = "?"
         Me.Button9.UseVisualStyleBackColor = False
@@ -1049,7 +1049,7 @@ Partial Class Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1517, 721)
+        Me.ClientSize = New System.Drawing.Size(1514, 721)
         Me.Controls.Add(Me.ButtonHelp)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)

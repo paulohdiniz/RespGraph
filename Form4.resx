@@ -126,7 +126,7 @@
 1) O usuário pode escolher até 6 curvas para plotar no mesmo gráfico. Isso foi feito para que se possa comparar diferentes curvas de diferentes dispositivos.
 2) Essas curvas devem estar em arquivos de texto (Dê preferência aos arquivos tipo .txt, .med, .ref). Esses dois últimos tipos são tipos de saídas do programa principal em uso no laboratório.
 3) Esses arquivos de texto devem ter um cabeçalho na qual a última linha dele termina com a frase "onda(nm)" e após isso têm as duas colunas com os valores a serem plotados.
-4) A primeira coluna corresponderá ao eixo Y (eixo ordenado) e a segunda coluna corresponderá ao eixo X (eixo das abscissas).
+4) A primeira coluna corresponderá ao eixo Y (eixo ordenado) e a segunda coluna corresponderá ao eixo X (eixo das abscissas). Esta ordem é igual ao padrão do programa principal que faz as medidas no laboratório.
 5) O usuário pode alterar o nome dos eixos para o caso em que se mudem as unidades, ordens de grandeza, dimensão e até natureza dos valores plotados.
 6) O programa foi feito para não parar de rodar caso você não coloque alguma informação (título, nome das amostras), mas tente preencher todas as partes para melhor aproveitamento do gráfico.
 7) O usuário pode plotar qualquer natureza de curvas nesse ambiente (desde que sejam cumpridas as especificações já citadas nos itens acima). 

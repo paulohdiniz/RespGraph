@@ -29,11 +29,15 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'openFD
         '
         Me.openFD.FileName = "openFD"
+        '
+        'ToolTip1
+        '
         '
         'Button1
         '
@@ -44,7 +48,7 @@ Partial Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(280, 152)
         Me.Button1.TabIndex = 33
-        Me.Button1.Text = "Responsividade"
+        Me.Button1.Text = "Calcular" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Responsividade/EQE"
         Me.ToolTip1.SetToolTip(Me.Button1, "Plote o(s) seu(s) gráfico(s) !")
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -61,10 +65,23 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.Button2, "Plote o(s) seu(s) gráfico(s) !")
         Me.Button2.UseVisualStyleBackColor = False
         '
+        'Button6
+        '
+        Me.Button6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Button6.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(1223, 650)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(77, 40)
+        Me.Button6.TabIndex = 58
+        Me.Button6.Text = "Sobre"
+        Me.Button6.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1348, 721)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -81,4 +98,5 @@ Partial Class Form1
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button6 As Button
 End Class

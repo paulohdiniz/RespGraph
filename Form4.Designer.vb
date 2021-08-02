@@ -38,7 +38,7 @@ Partial Class Form4
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(800, 680)
+        Me.TextBox1.Size = New System.Drawing.Size(800, 700)
         Me.TextBox1.TabIndex = 1
         Me.TextBox1.TabStop = False
         Me.TextBox1.Text = resources.GetString("TextBox1.Text")
@@ -47,7 +47,7 @@ Partial Class Form4
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(962, 741)
+        Me.ClientSize = New System.Drawing.Size(962, 765)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form4"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
