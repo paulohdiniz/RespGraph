@@ -46,24 +46,31 @@ Public Class Form2
         If ComboBox1.Text.Equals("818-BB-22") Or ComboBox1.Text.Equals("S-010-H") Then
 
         Else
-            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação.",, "Atenção !")
+            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação. Atentar-se à posição do switch Hi/LO.",, "Atenção !")
         End If
+        If ComboBox1.Text.Equals("S-010-H") Then
+            MsgBox("Atentar-se à posição do switch Hi/LO.",, "Atenção !")
+        End If
+
 
         Dim sensor = New SensorFabricante(ComboBox1.Text)
         TextBox10.Text = sensor.Material
 
-        If sensor.Area.Length > 5 Then
-            TextBox11.Text = sensor.Area.Substring(0, 6) & " mm²"
+        Dim areaDouble As Double
+        Dim ok As Boolean = Double.TryParse(sensor.Area.Substring(0, sensor.Area.Length - 4), areaDouble)
+
+        If ok Then
+            areaDouble = Math.Round(areaDouble, 4, MidpointRounding.AwayFromZero)
+            TextBox11.Text = areaDouble.ToString & " mm²"
         Else
-            TextBox11.Text = sensor.Area & " mm²"
+            TextBox11.Text = sensor.Area.Substring(0, sensor.Area.Length - 4) & " mm²"
         End If
 
         TextBox12.Text = sensor.RespMax
         TextBox13.Text = sensor.FaixaEspectral
 
         'retira o " mm²" do final e arredonda para 4 casas decimais
-        Dim areaDouble As Double
-        Dim ok As Boolean = Double.TryParse(sensor.Area.Substring(0, sensor.Area.Length - 4), areaDouble)
+
         If ok Then
             areaDouble = Math.Round(areaDouble, 4, MidpointRounding.AwayFromZero)
             TextBox3.Text = areaDouble.ToString
@@ -227,7 +234,8 @@ Public Class Form2
 
         Next i
         Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
-
+        Array.Resize(yInterpolado, yInterpolado.Length - 1)
+        Array.Resize(potencia, potencia.Length - 1)
         'receber nome do usuário.
         Dim nomeUsuario = InputBox("Digite seu nome: ", "Nome do usuário")
 
@@ -358,13 +366,13 @@ Public Class Form2
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim sensorSelected = New SensorFabricante(ComboBox1.Text)
-        sensorSelected = sensorSelected.Normalized()
+        sensorSelected = sensorSelected
 
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
         Dim formatX As String
         Dim formatY As String
         formatX = "eixoX"
-        formatY = "N1"
+        formatY = "N0"
 
         Dim maximo As Double
         Dim renameY As String
@@ -428,7 +436,7 @@ Public Class Form2
         Dim RA = New RectangleAnnotation()
         RA.AxisX = verticalLine.AxisX
         RA.IsSizeAlwaysRelative = False
-        RA.Width = MaiorRange() / 17
+        RA.Width = MaiorRange() / 12
         RA.Height = 3
         RA.Name = "RA"
         RA.LineColor = Color.Blue
@@ -605,7 +613,6 @@ Public Class Form2
     Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
         TrackBar1.TickStyle = TickStyle.None
         TextBox14.Text = (10 ^ (TrackBar1.Value)).ToString("0.00E+00")
-        TextBox9.Text = CalculaBeta().ToString("0.00E+00")
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
@@ -614,37 +621,21 @@ Public Class Form2
             Label19.Text = "Ganho do pré-amplificador" & vbCrLf & "de transimpedância Keithley"
             Label19.Left = (Label19.Parent.Width \ 2) - (Label19.Width \ 2)
             TrackBar1.Visible = True
-            Label17.Visible = False
             TextBox14.Text = "1,00E+03"
-            ButtonCalcular.Text = "Salvar Responsividade"
+            ButtonCalcular.Text = "Salvar curva de responsividade"
+            Button7.Text = "Ver curva de responsividade"
         End If
     End Sub
 
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
         If (CheckBox2.Checked) Then
             CheckBox1.Checked = False
-            Label19.Text = "Ganho de conversão" & vbCrLf & "do lockin novo"
+            Label19.Text = "Ganho do pré-amplificador " & vbCrLf & "de transimpedância da Stanford"
             Label19.Left = (Label19.Parent.Width \ 2) - (Label19.Width \ 2)
             TrackBar1.Visible = False
-            Label17.Visible = True
-            CheckBox3.Visible = True
-            CheckBox4.Visible = True
             TextBox14.Text = "2,35E+05"
-            ButtonCalcular.Text = "Salvar EQE"
-        End If
-    End Sub
-
-    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
-        If (CheckBox4.Checked) Then
-            CheckBox3.Checked = False
-            TextBox14.Text = "2,35E+05"
-        End If
-    End Sub
-
-    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
-        If (CheckBox3.Checked) Then
-            CheckBox4.Checked = False
-            TextBox14.Text = "1,0"
+            ButtonCalcular.Text = "Salvar curva de EQE"
+            Button7.Text = "Ver curva de EQE"
         End If
     End Sub
 
@@ -682,5 +673,372 @@ Public Class Form2
         Label23.Left = (Label23.Parent.Width \ 2) - (Label23.Width \ 2)
         TextBox15.Text = CalculaGamma().ToString("0.00E+00")
 
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim PathRef As String
+        PathRef = ComboBox1.Text
+        Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
+
+        'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
+        Dim alfa As Double = CalculaAlfa()
+        Dim beta As Double = CalculaBeta()
+        Dim gamma As Double = CalculaGamma()
+        If (alfa = 0) Then
+            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        End If
+
+        Dim textRef As String 'variável para pegar os dados do txt em forma de string
+        Dim textCalib As String 'variável para pegar os dados do txt em forma de string
+        Dim textAmostra As String 'variável para pegar os dados do txt em forma de string
+
+        Dim indice As Integer
+        Dim temporario As Double
+        Dim yInterpolado(0) As Double
+
+        Dim potencia(0) As Double
+        Dim responsividade(0) As Double
+
+        Dim columnXRef() As Double
+        Dim columnYRef() As Double
+
+        Dim columnXCalib() As Double
+        Dim columnYCalib() As Double
+
+        Dim columnXAmostra() As Double
+        Dim columnYAmostra() As Double
+
+        'curva do sensor de referencia dado pelo fabricante
+        textRef = readTxtComplete(filePath) 'filepath é o caminho do arquivo do sensor de referencia dado pelo fabricante
+        columnYRef = getColumYOfStringComplete(textRef) 'column y é a primeira coluna do txt
+        columnXRef = getColumXOfStringComplete(textRef)  'column x é a segunda coluna do txt
+        'curva do sensor de referencia no SETUP
+        textCalib = readTxtComplete(GlobalVariables.OpenFileDialogSensor.FileName) 'aqui ele vai pegar o caminho do arquivo 
+        columnYCalib = getColumYOfStringComplete(textCalib)
+        columnXCalib = getColumXOfStringComplete(textCalib)
+        'curva da amostra no SETUP
+        textAmostra = readTxtComplete(GlobalVariables.OpenFileDialogAmostra.FileName)
+        columnYAmostra = getColumYOfStringComplete(textAmostra)
+        columnXAmostra = getColumXOfStringComplete(textAmostra)
+
+
+        Dim menor As Integer = 0
+        If columnXCalib(0) > columnXRef(0) Then 'se o menor valor do Xcalib ta dentro da referencia, entao começa do zero
+            menor = 0
+        Else
+            While columnXCalib(menor) < columnXRef(0)
+                menor += 1
+            End While 'menor será o menor indice valido do Xcalib
+        End If
+
+
+        Dim maior As Integer = columnXCalib.Length - 1
+        If columnXCalib(columnXCalib.Length - 1) < columnXRef(columnXRef.Length - 1) Then
+            maior = columnXCalib.Length - 1
+        Else
+            While columnXCalib(maior) > columnXRef(columnXRef.Length - 1)
+                maior -= 1
+            End While 'maior é o ultimo indice valido de Xcalib
+        End If
+
+
+        'filtrando os vetores calib e amostra para valores só dentro do range do fabricante
+        Dim NewColumnXCalib = columnXCalib.Take(maior + 1).Skip(menor).ToArray()
+        Dim NewColumnYCalib = columnYCalib.Take(maior + 1).Skip(menor).ToArray()
+
+        Dim NewColumnXAmostra = columnXAmostra.Take(maior + 1).Skip(menor).ToArray()
+        Dim NewColumnYAmostra = columnYAmostra.Take(maior + 1).Skip(menor).ToArray()
+
+        'Em posse de todos os vetores, agora calcularemos a responsividade
+        For i = 0 To NewColumnXCalib.Length - 1
+            indice = menorque(NewColumnXCalib(i), columnXRef)
+
+            temporario = ((NewColumnXCalib(i)) * (columnYRef(indice + 1) - columnYRef(indice)) + columnYRef(indice) * columnXRef(indice + 1) - columnXRef(indice) * columnYRef(indice + 1)) / (columnXRef(indice + 1) - columnXRef(indice))
+            Add(Of Double)(yInterpolado, temporario)
+
+            If temporario.Equals(0) Then
+                Add(Of Double)(potencia, 0)
+            Else
+                Add(Of Double)(potencia, NewColumnYCalib(i) / temporario)
+            End If
+            If (NewColumnYCalib(i).Equals(0)) Then
+                Add(Of Double)(responsividade, 0)
+            Else
+                If CheckBox1.Checked Then
+                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta) / NewColumnYCalib(i))
+                End If
+                If CheckBox2.Checked Then
+                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta * gamma) / (NewColumnYCalib(i) * NewColumnXCalib(i) * 0.000000001))
+                End If
+            End If
+
+        Next i
+        Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
+        Array.Resize(yInterpolado, yInterpolado.Length - 1)
+        Array.Resize(potencia, potencia.Length - 1)
+
+        Dim sensorSelected = New SensorFabricante(ComboBox1.Text)
+
+        ' N indica o numero como ele realmente é, o NX indica com X casas decimais
+        Dim formatX As String
+        Dim formatY As String
+        formatX = "eixoX"
+        formatY = "N1"
+
+        Dim maximo As Double
+        Dim renameY As String
+        If sensorSelected.isNormalized() Then
+            maximo = 1.0
+            renameY = " "
+        Else
+            maximo = Double.NaN
+            renameY = sensorSelected.UnidadeResponsividade
+        End If
+
+        Form7.Chart1.Titles.Clear()
+        Form7.Chart1.Titles.Add(sensorSelected.Nome) 'specify chart name
+        Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
+        Form7.Chart1.ChartAreas.Clear()
+        Form7.Chart1.Series.Clear()
+        Form7.Chart1.Annotations.Clear()
+        Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
+        With Form7.Chart1.ChartAreas(sensorSelected.Nome)
+            .AxisX.Title = "Comprimento de onda(nm)" 'x label
+            .AxisX.MajorGrid.LineColor = Color.SkyBlue
+            .AxisY.MajorGrid.LineColor = Color.SkyBlue
+            .AxisY.Maximum = maximo
+            .AxisY.Title = renameY 'y label
+            .AxisX.LabelStyle.Format = formatX
+            .AxisY.LabelStyle.Format = formatY
+        End With
+
+        Form7.Chart1.Series.Clear()
+        Form7.Chart1.Series.Add(sensorSelected.Nome)
+        Form7.Chart1.Series(sensorSelected.Nome).Color = Color.FromKnownColor(KnownColor.Red)
+        Form7.Chart1.Series(sensorSelected.Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+        For i = 0 To NewColumnXAmostra.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+            Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(NewColumnXAmostra(i), responsividade(i))
+        Next i
+
+        Dim verticalLine = New VerticalLineAnnotation()
+        verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
+        verticalLine.AllowMoving = True
+        verticalLine.IsInfinitive = True
+        verticalLine.LineColor = Color.Navy
+        verticalLine.LineWidth = 2
+        verticalLine.AnchorOffsetX = 50
+        verticalLine.ClipToChartArea = Form7.Chart1.ChartAreas.First.Name
+        verticalLine.Name = "VA"
+        verticalLine.LineDashStyle = 1
+        verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
+        'verticalLine.X = 1
+        Form7.Chart1.Annotations.Add(verticalLine)
+
+        Dim RA = New RectangleAnnotation()
+        RA.AxisX = verticalLine.AxisX
+        RA.IsSizeAlwaysRelative = False
+        RA.Width = MaiorRange() / 12
+        RA.Height = 3
+        RA.Name = "RA"
+        RA.LineColor = Color.Blue
+        RA.BackColor = Color.White
+        RA.Y = 82.5
+        RA.Text = "Hello"
+        RA.ForeColor = Color.Navy
+        RA.Font = New System.Drawing.Font("Arial", 8.0F)
+        Form7.Chart1.Annotations.Add(RA)
+
+        Form7.Visible = True
+        Form7.WindowState = FormWindowState.Normal
+        Form7.BringToFront()
+
+    End Sub
+
+    Private Sub TextBox16_TextChanged(sender As Object, e As EventArgs) Handles TextBox16.TextChanged, TextBox14.TextChanged
+        If Me.Visible Then
+            TextBox9.Text = CalculaBeta().ToString("0.00E+00")
+        End If
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Dim PathRef As String
+        PathRef = ComboBox1.Text
+        Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
+
+        'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
+        Dim alfa As Double = CalculaAlfa()
+        Dim beta As Double = CalculaBeta()
+        Dim gamma As Double = CalculaGamma()
+        If (alfa = 0) Then
+            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
+            Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
+        End If
+
+        Dim textRef As String 'variável para pegar os dados do txt em forma de string
+        Dim textCalib As String 'variável para pegar os dados do txt em forma de string
+        Dim textAmostra As String 'variável para pegar os dados do txt em forma de string
+
+        Dim indice As Integer
+        Dim temporario As Double
+        Dim yInterpolado(0) As Double
+
+        Dim potencia(0) As Double
+        Dim responsividade(0) As Double
+
+        Dim columnXRef() As Double
+        Dim columnYRef() As Double
+
+        Dim columnXCalib() As Double
+        Dim columnYCalib() As Double
+
+        Dim columnXAmostra() As Double
+        Dim columnYAmostra() As Double
+
+        'curva do sensor de referencia dado pelo fabricante
+        textRef = readTxtComplete(filePath) 'filepath é o caminho do arquivo do sensor de referencia dado pelo fabricante
+        columnYRef = getColumYOfStringComplete(textRef) 'column y é a primeira coluna do txt
+        columnXRef = getColumXOfStringComplete(textRef)  'column x é a segunda coluna do txt
+        'curva do sensor de referencia no SETUP
+        textCalib = readTxtComplete(GlobalVariables.OpenFileDialogSensor.FileName) 'aqui ele vai pegar o caminho do arquivo 
+        columnYCalib = getColumYOfStringComplete(textCalib)
+        columnXCalib = getColumXOfStringComplete(textCalib)
+        'curva da amostra no SETUP
+        textAmostra = readTxtComplete(GlobalVariables.OpenFileDialogAmostra.FileName)
+        columnYAmostra = getColumYOfStringComplete(textAmostra)
+        columnXAmostra = getColumXOfStringComplete(textAmostra)
+
+
+        Dim menor As Integer = 0
+        If columnXCalib(0) > columnXRef(0) Then 'se o menor valor do Xcalib ta dentro da referencia, entao começa do zero
+            menor = 0
+        Else
+            While columnXCalib(menor) < columnXRef(0)
+                menor += 1
+            End While 'menor será o menor indice valido do Xcalib
+        End If
+
+
+        Dim maior As Integer = columnXCalib.Length - 1
+        If columnXCalib(columnXCalib.Length - 1) < columnXRef(columnXRef.Length - 1) Then
+            maior = columnXCalib.Length - 1
+        Else
+            While columnXCalib(maior) > columnXRef(columnXRef.Length - 1)
+                maior -= 1
+            End While 'maior é o ultimo indice valido de Xcalib
+        End If
+
+
+        'filtrando os vetores calib e amostra para valores só dentro do range do fabricante
+        Dim NewColumnXCalib = columnXCalib.Take(maior + 1).Skip(menor).ToArray()
+        Dim NewColumnYCalib = columnYCalib.Take(maior + 1).Skip(menor).ToArray()
+
+        Dim NewColumnXAmostra = columnXAmostra.Take(maior + 1).Skip(menor).ToArray()
+        Dim NewColumnYAmostra = columnYAmostra.Take(maior + 1).Skip(menor).ToArray()
+
+        'Em posse de todos os vetores, agora calcularemos a responsividade
+        For i = 0 To NewColumnXCalib.Length - 1
+            indice = menorque(NewColumnXCalib(i), columnXRef)
+
+            temporario = ((NewColumnXCalib(i)) * (columnYRef(indice + 1) - columnYRef(indice)) + columnYRef(indice) * columnXRef(indice + 1) - columnXRef(indice) * columnYRef(indice + 1)) / (columnXRef(indice + 1) - columnXRef(indice))
+            Add(Of Double)(yInterpolado, temporario)
+
+            If temporario.Equals(0) Then
+                Add(Of Double)(potencia, 0)
+            Else
+                Add(Of Double)(potencia, NewColumnYCalib(i) / temporario)
+            End If
+            If (NewColumnYCalib(i).Equals(0)) Then
+                Add(Of Double)(responsividade, 0)
+            Else
+                If CheckBox1.Checked Then
+                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta) / NewColumnYCalib(i))
+                End If
+                If CheckBox2.Checked Then
+                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta * gamma) / (NewColumnYCalib(i) * NewColumnXCalib(i) * 0.000000001))
+                End If
+            End If
+
+        Next i
+        Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
+        Array.Resize(yInterpolado, yInterpolado.Length - 1)
+        Array.Resize(potencia, potencia.Length - 1)
+
+        Dim sensorSelected = New SensorFabricante(ComboBox1.Text)
+
+        ' N indica o numero como ele realmente é, o NX indica com X casas decimais
+        Dim formatX As String
+        Dim formatY As String
+        formatX = "eixoX"
+        formatY = "E0"
+
+        Dim maximo As Double
+        Dim renameY As String
+        If sensorSelected.isNormalized() Then
+            maximo = 1.0
+            renameY = " "
+        Else
+            maximo = Double.NaN
+            renameY = "Potência"
+        End If
+
+        Form7.Chart1.Titles.Clear()
+        Form7.Chart1.Titles.Add(sensorSelected.Nome) 'specify chart name
+        Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
+        Form7.Chart1.ChartAreas.Clear()
+        Form7.Chart1.Series.Clear()
+        Form7.Chart1.Annotations.Clear()
+        Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
+        With Form7.Chart1.ChartAreas(sensorSelected.Nome)
+            .AxisX.Title = "Comprimento de onda(nm)" 'x label
+            .AxisX.MajorGrid.LineColor = Color.SkyBlue
+            .AxisY.MajorGrid.LineColor = Color.SkyBlue
+            .AxisY.Maximum = maximo
+            .AxisY.Title = renameY 'y label
+            .AxisX.LabelStyle.Format = formatX
+            .AxisY.LabelStyle.Format = formatY
+        End With
+
+        Form7.Chart1.Series.Clear()
+        Form7.Chart1.Series.Add(sensorSelected.Nome)
+        Form7.Chart1.Series(sensorSelected.Nome).Color = Color.FromKnownColor(KnownColor.Red)
+        Form7.Chart1.Series(sensorSelected.Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
+
+        For i = 0 To NewColumnXAmostra.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+            Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(NewColumnXAmostra(i), potencia(i))
+        Next i
+
+        Dim verticalLine = New VerticalLineAnnotation()
+        verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
+        verticalLine.AllowMoving = True
+        verticalLine.IsInfinitive = True
+        verticalLine.LineColor = Color.Navy
+        verticalLine.LineWidth = 2
+        verticalLine.AnchorOffsetX = 50
+        verticalLine.ClipToChartArea = Form7.Chart1.ChartAreas.First.Name
+        verticalLine.Name = "VA"
+        verticalLine.LineDashStyle = 1
+        verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
+        'verticalLine.X = 1
+        Form7.Chart1.Annotations.Add(verticalLine)
+
+        Dim RA = New RectangleAnnotation()
+        RA.AxisX = verticalLine.AxisX
+        RA.IsSizeAlwaysRelative = False
+        RA.Width = MaiorRange() / 12
+        RA.Height = 3
+        RA.Name = "RA"
+        RA.LineColor = Color.Blue
+        RA.BackColor = Color.White
+        RA.Y = 82.5
+        RA.Text = "Hello"
+        RA.ForeColor = Color.Navy
+        RA.Font = New System.Drawing.Font("Arial", 8.0F)
+        Form7.Chart1.Annotations.Add(RA)
+
+        Form7.Visible = True
+        Form7.WindowState = FormWindowState.Normal
+        Form7.BringToFront()
     End Sub
 End Class

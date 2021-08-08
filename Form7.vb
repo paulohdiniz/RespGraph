@@ -83,7 +83,7 @@ Public Class Form7
 
         RA.Text = VA.X
 
-        RA.Width = MaiorRange() / 16.5 'number magic !!!
+        RA.Width = MaiorRange() / 14 'number magic !!!
         Chart1.Update()
 
     End Sub

@@ -58,6 +58,8 @@ Partial Class Form2
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -70,10 +72,7 @@ Partial Class Form2
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.TextBox14 = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -133,7 +132,7 @@ Partial Class Form2
         '
         Me.ButtonAmostra.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ButtonAmostra.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonAmostra.Location = New System.Drawing.Point(24, 165)
+        Me.ButtonAmostra.Location = New System.Drawing.Point(39, 161)
         Me.ButtonAmostra.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ButtonAmostra.Name = "ButtonAmostra"
         Me.ButtonAmostra.Size = New System.Drawing.Size(103, 38)
@@ -145,7 +144,7 @@ Partial Class Form2
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(51, 16)
+        Me.Label3.Location = New System.Drawing.Point(66, 12)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(218, 58)
         Me.Label3.TabIndex = 17
@@ -156,7 +155,7 @@ Partial Class Form2
         '
         Me.TextBox2.BackColor = System.Drawing.Color.Yellow
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(184, 172)
+        Me.TextBox2.Location = New System.Drawing.Point(199, 168)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
@@ -170,7 +169,7 @@ Partial Class Form2
         '
         Me.ButtonCalibracao.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ButtonCalibracao.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCalibracao.Location = New System.Drawing.Point(24, 161)
+        Me.ButtonCalibracao.Location = New System.Drawing.Point(40, 155)
         Me.ButtonCalibracao.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ButtonCalibracao.Name = "ButtonCalibracao"
         Me.ButtonCalibracao.Size = New System.Drawing.Size(103, 41)
@@ -182,7 +181,7 @@ Partial Class Form2
         '
         Me.TextBox1.BackColor = System.Drawing.Color.Yellow
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(184, 169)
+        Me.TextBox1.Location = New System.Drawing.Point(200, 163)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
@@ -196,7 +195,7 @@ Partial Class Form2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(20, 14)
+        Me.Label2.Location = New System.Drawing.Point(36, 8)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(274, 58)
         Me.Label2.TabIndex = 13
@@ -206,13 +205,13 @@ Partial Class Form2
         'ButtonCalcular
         '
         Me.ButtonCalcular.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.ButtonCalcular.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCalcular.Location = New System.Drawing.Point(1118, 437)
+        Me.ButtonCalcular.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCalcular.Location = New System.Drawing.Point(1222, 437)
         Me.ButtonCalcular.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ButtonCalcular.Name = "ButtonCalcular"
-        Me.ButtonCalcular.Size = New System.Drawing.Size(235, 71)
+        Me.ButtonCalcular.Size = New System.Drawing.Size(131, 71)
         Me.ButtonCalcular.TabIndex = 12
-        Me.ButtonCalcular.Text = "Salvar Responsividade"
+        Me.ButtonCalcular.Text = "Salvar curva de responsividade"
         Me.ToolTip1.SetToolTip(Me.ButtonCalcular, "Crie seu arquivo com a curva espectral de responsividade.")
         Me.ButtonCalcular.UseVisualStyleBackColor = False
         '
@@ -220,7 +219,7 @@ Partial Class Form2
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(32, 85)
+        Me.Label4.Location = New System.Drawing.Point(48, 79)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(95, 20)
         Me.Label4.TabIndex = 19
@@ -230,7 +229,7 @@ Partial Class Form2
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(180, 85)
+        Me.Label5.Location = New System.Drawing.Point(196, 79)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(125, 20)
         Me.Label5.TabIndex = 20
@@ -239,7 +238,7 @@ Partial Class Form2
         'TextBox3
         '
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(24, 117)
+        Me.TextBox3.Location = New System.Drawing.Point(40, 111)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(103, 27)
@@ -248,7 +247,7 @@ Partial Class Form2
         'TextBox4
         '
         Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(184, 117)
+        Me.TextBox4.Location = New System.Drawing.Point(200, 111)
         Me.TextBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(116, 27)
@@ -257,7 +256,7 @@ Partial Class Form2
         'TextBox5
         '
         Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(24, 122)
+        Me.TextBox5.Location = New System.Drawing.Point(39, 118)
         Me.TextBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(103, 27)
@@ -266,7 +265,7 @@ Partial Class Form2
         'TextBox6
         '
         Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(184, 122)
+        Me.TextBox6.Location = New System.Drawing.Point(199, 118)
         Me.TextBox6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(116, 27)
@@ -276,7 +275,7 @@ Partial Class Form2
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(32, 89)
+        Me.Label6.Location = New System.Drawing.Point(47, 85)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(95, 20)
         Me.Label6.TabIndex = 27
@@ -286,7 +285,7 @@ Partial Class Form2
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(180, 89)
+        Me.Label7.Location = New System.Drawing.Point(195, 85)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(125, 20)
         Me.Label7.TabIndex = 28
@@ -455,7 +454,7 @@ Partial Class Form2
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(197, 71)
         Me.Button2.TabIndex = 47
-        Me.Button2.Text = "Ver todas curvas do fabricante"
+        Me.Button2.Text = "Ver todas as curvas do fabricante"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Panel2
@@ -470,7 +469,7 @@ Partial Class Form2
         Me.Panel2.Controls.Add(Me.TextBox2)
         Me.Panel2.Location = New System.Drawing.Point(527, 387)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(324, 212)
+        Me.Panel2.Size = New System.Drawing.Size(343, 212)
         Me.Panel2.TabIndex = 37
         Me.ToolTip1.SetToolTip(Me.Panel2, "Curva da amostra no nosso setup")
         '
@@ -496,22 +495,48 @@ Partial Class Form2
         Me.Panel4.Controls.Add(Me.ButtonCalibracao)
         Me.Panel4.Location = New System.Drawing.Point(527, 157)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(324, 212)
+        Me.Panel4.Size = New System.Drawing.Size(343, 212)
         Me.Panel4.TabIndex = 39
         Me.ToolTip1.SetToolTip(Me.Panel4, "Curva do sensor de referência no nosso setup")
         '
         'Button5
         '
-        Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(1118, 521)
+        Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.Location = New System.Drawing.Point(1222, 528)
         Me.Button5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(235, 71)
+        Me.Button5.Size = New System.Drawing.Size(131, 71)
         Me.Button5.TabIndex = 49
-        Me.Button5.Text = "Salvar espectro de potência"
+        Me.Button5.Text = "Salvar curva de potência"
         Me.ToolTip1.SetToolTip(Me.Button5, "Crie seu arquivo com a curva espectral de responsividade.")
         Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button7
+        '
+        Me.Button7.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Location = New System.Drawing.Point(1085, 437)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(131, 71)
+        Me.Button7.TabIndex = 58
+        Me.Button7.Text = "Ver curva de responsividade"
+        Me.ToolTip1.SetToolTip(Me.Button7, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.Button7.UseVisualStyleBackColor = False
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.Button8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button8.Location = New System.Drawing.Point(1085, 528)
+        Me.Button8.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(131, 71)
+        Me.Button8.TabIndex = 59
+        Me.Button8.Text = "Ver curva de potência"
+        Me.ToolTip1.SetToolTip(Me.Button8, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.Button8.UseVisualStyleBackColor = False
         '
         'OpenFileDialog1
         '
@@ -540,6 +565,7 @@ Partial Class Form2
         Me.TextBoxAlfa.Name = "TextBoxAlfa"
         Me.TextBoxAlfa.Size = New System.Drawing.Size(96, 28)
         Me.TextBoxAlfa.TabIndex = 29
+        Me.TextBoxAlfa.Text = "0"
         '
         'Button3
         '
@@ -620,10 +646,7 @@ Partial Class Form2
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.Panel5.Controls.Add(Me.Label17)
-        Me.Panel5.Controls.Add(Me.CheckBox3)
         Me.Panel5.Controls.Add(Me.TrackBar1)
-        Me.Panel5.Controls.Add(Me.CheckBox4)
         Me.Panel5.Controls.Add(Me.TextBox14)
         Me.Panel5.Controls.Add(Me.Label19)
         Me.Panel5.Location = New System.Drawing.Point(876, 233)
@@ -631,53 +654,16 @@ Partial Class Form2
         Me.Panel5.Size = New System.Drawing.Size(477, 198)
         Me.Panel5.TabIndex = 49
         '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(266, 101)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(105, 20)
-        Me.Label17.TabIndex = 29
-        Me.Label17.Text = "Entrada em"
-        Me.Label17.Visible = False
-        '
-        'CheckBox3
-        '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox3.Location = New System.Drawing.Point(346, 126)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(88, 22)
-        Me.CheckBox3.TabIndex = 54
-        Me.CheckBox3.Text = "Corrente"
-        Me.CheckBox3.UseVisualStyleBackColor = True
-        Me.CheckBox3.Visible = False
-        '
         'TrackBar1
         '
         Me.TrackBar1.LargeChange = 1
         Me.TrackBar1.Location = New System.Drawing.Point(39, 65)
-        Me.TrackBar1.Minimum = 1
+        Me.TrackBar1.Minimum = 3
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Size = New System.Drawing.Size(404, 56)
         Me.TrackBar1.TabIndex = 31
         Me.TrackBar1.TickStyle = System.Windows.Forms.TickStyle.None
         Me.TrackBar1.Value = 3
-        '
-        'CheckBox4
-        '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Checked = True
-        Me.CheckBox4.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox4.Location = New System.Drawing.Point(229, 126)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(80, 22)
-        Me.CheckBox4.TabIndex = 53
-        Me.CheckBox4.Text = "Tensão"
-        Me.CheckBox4.UseVisualStyleBackColor = True
-        Me.CheckBox4.Visible = False
         '
         'TextBox14
         '
@@ -710,7 +696,7 @@ Partial Class Form2
         Me.Panel6.Controls.Add(Me.Label22)
         Me.Panel6.Location = New System.Drawing.Point(876, 437)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(236, 162)
+        Me.Panel6.Size = New System.Drawing.Size(203, 162)
         Me.Panel6.TabIndex = 50
         '
         'CheckBox5
@@ -719,7 +705,7 @@ Partial Class Form2
         Me.CheckBox5.Checked = True
         Me.CheckBox5.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox5.Location = New System.Drawing.Point(47, 59)
+        Me.CheckBox5.Location = New System.Drawing.Point(27, 66)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(44, 22)
         Me.CheckBox5.TabIndex = 56
@@ -730,7 +716,7 @@ Partial Class Form2
         '
         Me.CheckBox6.AutoSize = True
         Me.CheckBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox6.Location = New System.Drawing.Point(154, 59)
+        Me.CheckBox6.Location = New System.Drawing.Point(134, 66)
         Me.CheckBox6.Name = "CheckBox6"
         Me.CheckBox6.Size = New System.Drawing.Size(50, 22)
         Me.CheckBox6.TabIndex = 55
@@ -740,7 +726,7 @@ Partial Class Form2
         'TextBox16
         '
         Me.TextBox16.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox16.Location = New System.Drawing.Point(72, 106)
+        Me.TextBox16.Location = New System.Drawing.Point(52, 113)
         Me.TextBox16.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox16.Name = "TextBox16"
         Me.TextBox16.Size = New System.Drawing.Size(103, 27)
@@ -750,7 +736,7 @@ Partial Class Form2
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Times New Roman", 13.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(30, 14)
+        Me.Label22.Location = New System.Drawing.Point(10, 21)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(182, 25)
         Me.Label22.TabIndex = 25
@@ -765,14 +751,14 @@ Partial Class Form2
         Me.Panel7.Controls.Add(Me.Label23)
         Me.Panel7.Location = New System.Drawing.Point(527, 25)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(324, 112)
+        Me.Panel7.Size = New System.Drawing.Size(343, 112)
         Me.Panel7.TabIndex = 49
         '
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox2.Location = New System.Drawing.Point(169, 54)
+        Me.CheckBox2.Location = New System.Drawing.Point(165, 54)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(156, 40)
         Me.CheckBox2.TabIndex = 52
@@ -785,7 +771,7 @@ Partial Class Form2
         Me.CheckBox1.Checked = True
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(12, 63)
+        Me.CheckBox1.Location = New System.Drawing.Point(13, 63)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(135, 22)
         Me.CheckBox1.TabIndex = 51
@@ -822,6 +808,7 @@ Partial Class Form2
         Me.TextBox9.Name = "TextBox9"
         Me.TextBox9.Size = New System.Drawing.Size(96, 28)
         Me.TextBox9.TabIndex = 52
+        Me.TextBox9.Text = "0"
         '
         'Label20
         '
@@ -842,6 +829,7 @@ Partial Class Form2
         Me.TextBox15.Name = "TextBox15"
         Me.TextBox15.Size = New System.Drawing.Size(96, 28)
         Me.TextBox15.TabIndex = 55
+        Me.TextBox15.Text = "0"
         '
         'Button6
         '
@@ -860,6 +848,8 @@ Partial Class Form2
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 711)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.TextBox15)
@@ -959,9 +949,6 @@ Partial Class Form2
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents Label17 As Label
-    Friend WithEvents CheckBox3 As CheckBox
-    Friend WithEvents CheckBox4 As CheckBox
     Friend WithEvents CheckBox5 As CheckBox
     Friend WithEvents CheckBox6 As CheckBox
     Friend WithEvents Label18 As Label
@@ -969,4 +956,6 @@ Partial Class Form2
     Friend WithEvents Label20 As Label
     Friend WithEvents TextBox15 As TextBox
     Friend WithEvents Button6 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button8 As Button
 End Class
