@@ -153,6 +153,40 @@
         Return vetor
     End Function
 
+    Public Function removeZerosVetorY(ByVal vetorX() As Double, ByVal vetorY() As Double) As Double()
+        Dim vetorXsemZeros(0) As Double
+        Dim vetorYsemZeros(0) As Double
+
+        For i = 0 To vetorY.Length - 1
+            If (vetorY(i) > 0) Then
+                Add(Of Double)(vetorXsemZeros, vetorX(i))
+                Add(Of Double)(vetorYsemZeros, vetorY(i))
+            End If
+        Next
+        Array.Resize(vetorXsemZeros, vetorXsemZeros.Length - 1)
+        Array.Resize(vetorYsemZeros, vetorYsemZeros.Length - 1)
+
+        Return vetorYsemZeros
+
+    End Function
+
+    Public Function removeZerosVetorX(ByVal vetorX() As Double, ByVal vetorY() As Double) As Double()
+        Dim vetorXsemZeros(0) As Double
+        Dim vetorYsemZeros(0) As Double
+
+        For i = 0 To vetorY.Length - 1
+            If (vetorY(i) > 0) Then
+                Add(Of Double)(vetorXsemZeros, vetorX(i))
+                Add(Of Double)(vetorYsemZeros, vetorY(i))
+            End If
+        Next
+        Array.Resize(vetorXsemZeros, vetorXsemZeros.Length - 1)
+        Array.Resize(vetorYsemZeros, vetorYsemZeros.Length - 1)
+
+        Return vetorXsemZeros
+
+    End Function
+
     Public Function CalculaAlfa() As Double
 
         Dim areaSensorDeReferencia As Double

@@ -117,26 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TextBox1.Text" xml:space="preserve">
-    <value>Alfa:
-
-O índice 1 se refere ao sensor de referência e o índice 2 à nossa amostra.
- 
-"S" designa a área. 
-
-"d" a distância dos dispositivos ao monocromador.
-
-"T" o espectro de transmissão das eventuais janelas dos criostatos.</value>
-  </data>
-  <data name="TextBox2.Text" xml:space="preserve">
-    <value>Beta:
-
-Switch: posição do switch Hi/LO. Vale 1 para HI e 0.1 para LO (default). Não pôr o o campo de switch para o Si antigo (para ele sempre vale 1 pois não tem switch).
-
-Ganho: 
-Fotodetector = Ganho do pré-amplificador de transimpedância Keithley (só para os fotodetectores)  = 1E+03 – 1E+10 V/A (de dez em dez) em função do usuário (default = 1E+03 V/A).
-
-Célular solar = Ganho de conversão do lockin novo (só para as células solares) = 2.35E+05 V/A (default) se usar a entrada de tensão (A) ou 1 para a entrada de corrente (I). 
-</value>
-  </data>
 </root>

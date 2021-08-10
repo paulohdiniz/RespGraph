@@ -403,6 +403,7 @@ Public Class Form3
     End Sub
 
     Private Sub ButtonPlot_Click(sender As Object, e As EventArgs) Handles ButtonPlot.Click
+        Form2.GlobalVariables.flagBut = 3
         'setup the chart area 
         Dim titulo As String 'Titulo do gráfico
         titulo = RichTextBoxTitulo.Text
@@ -447,23 +448,6 @@ Public Class Form3
             Exit Sub
         End If
 
-        Dim minimoX As Double
-        Dim minimoTxt As String
-        minimoTxt = RichTextBox8.Text
-        If String.IsNullOrEmpty(minimoTxt) Then
-            minimoX = Double.NaN
-        Else
-            Double.TryParse(RichTextBox8.Text, minimoX) 'transformando a string em double
-        End If
-
-        Dim maximoX As Double
-        Dim maximoTxt As String
-        maximoTxt = RichTextBox9.Text
-        If String.IsNullOrEmpty(maximoTxt) Then
-            maximoX = Double.NaN
-        Else
-            Double.TryParse(RichTextBox9.Text, maximoX) 'transformando a string em double
-        End If
         Dim maximoY As Double
         If CheckBox7.Checked Or
             CheckBox8.Checked Or
@@ -508,6 +492,15 @@ Public Class Form3
             formatY = "N" + NumeroCasasDeY
         End If
 
+        Dim axisYLogarithm As Boolean = RadioButton16.Checked
+        Dim baseLogText As String
+        Dim baseLog As Double
+        baseLogText = RichTextBox7.Text
+        If String.IsNullOrEmpty(baseLogText) Then
+            baseLog = 10
+        Else
+            Double.TryParse(RichTextBox7.Text, baseLog) 'transformando a string em double
+        End If
 
         Form7.Chart1.Titles.Clear()
         Form7.Chart1.Titles.Add(titulo) 'specify chart name
@@ -520,10 +513,10 @@ Public Class Form3
             .AxisX.Title = renameX 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
-            .AxisX.Minimum = minimoX 'LIMITANDO O GRAFICO EM X ENTRE O VALOR MINIMUM E MAXIMUM
-            .AxisX.Maximum = maximoX
             .AxisY.Maximum = maximoY
             .AxisY.Title = renameY 'y label
+            .AxisY.IsLogarithmic = axisYLogarithm
+            .AxisY.LogarithmBase = baseLog
             .AxisX.LabelStyle.Format = formatX
             .AxisY.LabelStyle.Format = formatY
         End With
@@ -543,11 +536,14 @@ Public Class Form3
             End If
             Text = readTxtComplete(path)
             Dim y() As Double = getColumYOfStringComplete(Text)
+            Dim x() As Double = getColumXOfStringComplete(Text)
             If (CheckBox7.Checked) Then
                 y = NormalizaVetor(y)
             End If
-            Dim x() As Double = getColumXOfStringComplete(Text)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
@@ -570,7 +566,10 @@ Public Class Form3
                 y = NormalizaVetor(y)
             End If
             Dim x() As Double = getColumXOfStringComplete(Text)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
@@ -589,7 +588,10 @@ Public Class Form3
                 y1 = NormalizaVetor(y1)
             End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
@@ -614,7 +616,10 @@ Public Class Form3
                 y = NormalizaVetor(y)
             End If
             Dim x() As Double = getColumXOfStringComplete(Text)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
@@ -633,7 +638,10 @@ Public Class Form3
                 y1 = NormalizaVetor(y1)
             End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
@@ -652,7 +660,10 @@ Public Class Form3
                 y2 = NormalizaVetor(y2)
             End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
@@ -677,7 +688,10 @@ Public Class Form3
                 y = NormalizaVetor(y)
             End If
             Dim x() As Double = getColumXOfStringComplete(Text)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
@@ -696,7 +710,10 @@ Public Class Form3
                 y1 = NormalizaVetor(y1)
             End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
@@ -715,7 +732,10 @@ Public Class Form3
                 y2 = NormalizaVetor(y2)
             End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
@@ -734,7 +754,10 @@ Public Class Form3
                 y3 = NormalizaVetor(y3)
             End If
             Dim x3() As Double = getColumXOfStringComplete(Text3)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
@@ -758,7 +781,10 @@ Public Class Form3
                 y = NormalizaVetor(y)
             End If
             Dim x() As Double = getColumXOfStringComplete(Text)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
@@ -777,7 +803,10 @@ Public Class Form3
                 y1 = NormalizaVetor(y1)
             End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
@@ -796,7 +825,10 @@ Public Class Form3
                 y2 = NormalizaVetor(y2)
             End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
@@ -815,7 +847,10 @@ Public Class Form3
                 y3 = NormalizaVetor(y3)
             End If
             Dim x3() As Double = getColumXOfStringComplete(Text3)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
@@ -834,7 +869,10 @@ Public Class Form3
                 y4 = NormalizaVetor(y4)
             End If
             Dim x4() As Double = getColumXOfStringComplete(Text4)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
             Next i
@@ -858,7 +896,10 @@ Public Class Form3
                 y = NormalizaVetor(y)
             End If
             Dim x() As Double = getColumXOfStringComplete(Text)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
             Next i
@@ -877,7 +918,10 @@ Public Class Form3
                 y1 = NormalizaVetor(y1)
             End If
             Dim x1() As Double = getColumXOfStringComplete(Text1)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
             Next i
@@ -896,7 +940,10 @@ Public Class Form3
                 y2 = NormalizaVetor(y2)
             End If
             Dim x2() As Double = getColumXOfStringComplete(Text2)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
             Next i
@@ -915,7 +962,10 @@ Public Class Form3
                 y3 = NormalizaVetor(y3)
             End If
             Dim x3() As Double = getColumXOfStringComplete(Text3)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
             Next i
@@ -934,7 +984,10 @@ Public Class Form3
                 y4 = NormalizaVetor(y4)
             End If
             Dim x4() As Double = getColumXOfStringComplete(Text4)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
             Next i
@@ -953,7 +1006,10 @@ Public Class Form3
                 y5 = NormalizaVetor(y5)
             End If
             Dim x5() As Double = getColumXOfStringComplete(Text5)
-
+            If (RadioButton16.Checked) Then
+                y = removeZerosVetorY(x, y)
+                x = removeZerosVetorX(x, y)
+            End If
             For i = 0 To x5.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
                 Form7.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
             Next i
@@ -1008,4 +1064,9 @@ Public Class Form3
         Return maiorRang
     End Function
 
+    Private Sub RadioButton16_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton16.CheckedChanged
+        If RadioButton16.Checked Then
+            MsgBox("Certifique-se que na escala logarítmica não existe valor 0 ou negativo no eixo Y.",, "Atenção !")
+        End If
+    End Sub
 End Class

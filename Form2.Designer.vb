@@ -89,6 +89,7 @@ Partial Class Form2
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -646,6 +647,7 @@ Partial Class Form2
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.Panel5.Controls.Add(Me.ComboBox2)
         Me.Panel5.Controls.Add(Me.TrackBar1)
         Me.Panel5.Controls.Add(Me.TextBox14)
         Me.Panel5.Controls.Add(Me.Label19)
@@ -843,6 +845,24 @@ Partial Class Form2
         Me.Button6.Text = "Help"
         Me.Button6.UseVisualStyleBackColor = False
         '
+        'ComboBox2
+        '
+        Me.ComboBox2.AccessibleDescription = ""
+        Me.ComboBox2.AccessibleName = ""
+        Me.ComboBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"1E-12 A/V", "2E-12 A/V", "5E-12 A/V", "10E-12 A/V", "20E-12 A/V", "50E-12 A/V", "100E-12 A/V", "200E-12 A/V", "500E-12 A/V", "1E-9 A/V", "2E-9 A/V", "5E-9 A/V", "10E-9 A/V", "20E-9 A/V", "50E-9 A/V", "100E-9 A/V", "200E-9 A/V", "500E-9 A/V", "1E-6 A/V", "2E-6 A/V", "5E-6 A/V", "10E-6 A/V", "20E-6 A/V", "50E-6 A/V", "100E-6 A/V", "200E-6 A/V", "500E-6 A/V", "1E-3 A/V", "2E-3 A/V", "5E-3 A/V", "10E-3 A/V", "20E-3 A/V", "50E-3 A/V", "100E-3 A/V", "200E-3 A/V", "500E-3 A/V"})
+        Me.ComboBox2.Location = New System.Drawing.Point(52, 65)
+        Me.ComboBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(372, 30)
+        Me.ComboBox2.TabIndex = 49
+        Me.ComboBox2.Tag = ""
+        Me.ToolTip1.SetToolTip(Me.ComboBox2, "Curva do fabricante")
+        Me.ComboBox2.Visible = False
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -958,4 +978,5 @@ Partial Class Form2
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button8 As Button
+    Friend WithEvents ComboBox2 As ComboBox
 End Class

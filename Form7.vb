@@ -130,4 +130,46 @@ Public Class Form7
             End If
         End If
     End Sub
+
+    Private Sub ButtonHelp_Click(sender As Object, e As EventArgs) Handles ButtonHelp.Click
+        If Form2.GlobalVariables.flagBut = 0 Then 'sensor
+            Form2.Button4.PerformClick()
+        End If
+        If Form2.GlobalVariables.flagBut = 1 Then 'potencia
+            Form2.Button8.PerformClick()
+        End If
+        If Form2.GlobalVariables.flagBut = 2 Then 'respo/eqe
+            Form2.Button7.PerformClick()
+        End If
+        FormDados.Visible = True
+        FormDados.WindowState = FormWindowState.Normal
+        FormDados.BringToFront()
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If Form2.GlobalVariables.flagBut = 0 Then 'sensor
+            Form2.Button4.PerformClick()
+        End If
+        If Form2.GlobalVariables.flagBut = 1 Then 'potencia
+            Form2.Button8.PerformClick()
+        End If
+        If Form2.GlobalVariables.flagBut = 2 Then 'respo/eqe
+            Form2.Button7.PerformClick()
+        End If
+        If Form2.GlobalVariables.flagBut = 3 Then 'respo/eqe
+            Form3.ButtonPlot.PerformClick()
+        End If
+    End Sub
+
+    Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If Form2.GlobalVariables.flagBut = 3 Then
+            CheckBox2.Visible = False
+            ButtonHelp.Visible = False
+        Else
+            CheckBox2.Visible = True
+            ButtonHelp.Visible = True
+        End If
+
+    End Sub
 End Class

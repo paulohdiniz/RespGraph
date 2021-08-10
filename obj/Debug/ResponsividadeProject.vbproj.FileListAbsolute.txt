@@ -92,3 +92,4 @@ C:\Users\phdin\Documents\docs\IC\Etapa 2 - Programa\Prog VB\Responsividade---Eta
 C:\Users\phdin\Documents\docs\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form7.resources
 C:\Users\phdin\Documents\docs\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form8.resources
 C:\Users\phdin\Documents\docs\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.Form9.resources
+C:\Users\phdin\Documents\docs\IC\Etapa 2 - Programa\Prog VB\Responsividade---Etapa2\obj\Debug\ResponsividadeProject.FormDados.resources

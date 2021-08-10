@@ -96,8 +96,8 @@ Partial Class Form8
         Me.TextBox3.Size = New System.Drawing.Size(724, 146)
         Me.TextBox3.TabIndex = 4
         Me.TextBox3.TabStop = False
-        Me.TextBox3.Text = "Gamma:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "h = Constante de Planck (6.62261*10^-34 Js) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "c = Velocidade da luz (29" &
-    "9.792.458 m/s) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "e = Carga do elétron (1.60218*10^-19 C) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.TextBox3.Text = "Gamma:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "h = Constante de Planck (6.62261E-34 Js) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "c = Velocidade da luz (299.7" &
+    "92.458 m/s) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "e = Carga do elétron (1.60218E-19 C) " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Button6
         '
@@ -114,9 +114,9 @@ Partial Class Form8
         'PictureBox2
         '
         Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.No
-        Me.PictureBox2.Location = New System.Drawing.Point(794, 434)
+        Me.PictureBox2.Location = New System.Drawing.Point(794, 329)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(724, 290)
+        Me.PictureBox2.Size = New System.Drawing.Size(724, 439)
         Me.PictureBox2.TabIndex = 59
         Me.PictureBox2.TabStop = False
         '

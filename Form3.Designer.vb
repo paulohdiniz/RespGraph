@@ -40,10 +40,6 @@ Partial Class Form3
         Me.RichTextBox5 = New System.Windows.Forms.RichTextBox()
         Me.RichTextBox6 = New System.Windows.Forms.RichTextBox()
         Me.ButtonPlot = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.RichTextBox8 = New System.Windows.Forms.RichTextBox()
-        Me.RichTextBox9 = New System.Windows.Forms.RichTextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -63,8 +59,6 @@ Partial Class Form3
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.RichTextBox11 = New System.Windows.Forms.RichTextBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.ButtonHelp = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -101,21 +95,35 @@ Partial Class Form3
         Me.OpenFileDialog4 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog5 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog6 = New System.Windows.Forms.OpenFileDialog()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.RadioButton8 = New System.Windows.Forms.RadioButton()
+        Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.RadioButton16 = New System.Windows.Forms.RadioButton()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.RadioButton15 = New System.Windows.Forms.RadioButton()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.RichTextBox7 = New System.Windows.Forms.RichTextBox()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.Panel4.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel14.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(169, 58)
+        Me.Label5.Location = New System.Drawing.Point(169, 83)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(56, 20)
         Me.Label5.TabIndex = 19
@@ -124,10 +132,10 @@ Partial Class Form3
         'RichTextBoxTitulo
         '
         Me.RichTextBoxTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBoxTitulo.Location = New System.Drawing.Point(32, 92)
+        Me.RichTextBoxTitulo.Location = New System.Drawing.Point(32, 117)
         Me.RichTextBoxTitulo.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBoxTitulo.Name = "RichTextBoxTitulo"
-        Me.RichTextBoxTitulo.Size = New System.Drawing.Size(332, 68)
+        Me.RichTextBoxTitulo.Size = New System.Drawing.Size(332, 48)
         Me.RichTextBoxTitulo.TabIndex = 18
         Me.RichTextBoxTitulo.Text = ""
         Me.ToolTip1.SetToolTip(Me.RichTextBoxTitulo, "Digite o Título do seu gráfico")
@@ -136,7 +144,7 @@ Partial Class Form3
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(83, 98)
+        Me.Label4.Location = New System.Drawing.Point(83, 102)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(165, 20)
         Me.Label4.TabIndex = 17
@@ -144,8 +152,11 @@ Partial Class Form3
         '
         'RichTextBox1
         '
+        Me.RichTextBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RichTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(74, 120)
+        Me.RichTextBox1.Location = New System.Drawing.Point(74, 150)
         Me.RichTextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(200, 40)
@@ -271,8 +282,11 @@ Partial Class Form3
         '
         'RichTextBox2
         '
+        Me.RichTextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RichTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox2.Location = New System.Drawing.Point(74, 180)
+        Me.RichTextBox2.Location = New System.Drawing.Point(74, 220)
         Me.RichTextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.Size = New System.Drawing.Size(200, 40)
@@ -283,8 +297,11 @@ Partial Class Form3
         '
         'RichTextBox3
         '
+        Me.RichTextBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RichTextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox3.Location = New System.Drawing.Point(74, 240)
+        Me.RichTextBox3.Location = New System.Drawing.Point(74, 290)
         Me.RichTextBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox3.Name = "RichTextBox3"
         Me.RichTextBox3.Size = New System.Drawing.Size(200, 40)
@@ -295,8 +312,11 @@ Partial Class Form3
         '
         'RichTextBox4
         '
+        Me.RichTextBox4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RichTextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox4.Location = New System.Drawing.Point(74, 300)
+        Me.RichTextBox4.Location = New System.Drawing.Point(74, 360)
         Me.RichTextBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox4.Name = "RichTextBox4"
         Me.RichTextBox4.Size = New System.Drawing.Size(200, 40)
@@ -307,8 +327,11 @@ Partial Class Form3
         '
         'RichTextBox5
         '
+        Me.RichTextBox5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RichTextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox5.Location = New System.Drawing.Point(74, 360)
+        Me.RichTextBox5.Location = New System.Drawing.Point(74, 430)
         Me.RichTextBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox5.Name = "RichTextBox5"
         Me.RichTextBox5.Size = New System.Drawing.Size(200, 40)
@@ -319,8 +342,11 @@ Partial Class Form3
         '
         'RichTextBox6
         '
+        Me.RichTextBox6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RichTextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox6.Location = New System.Drawing.Point(74, 420)
+        Me.RichTextBox6.Location = New System.Drawing.Point(74, 500)
         Me.RichTextBox6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox6.Name = "RichTextBox6"
         Me.RichTextBox6.Size = New System.Drawing.Size(200, 40)
@@ -342,46 +368,6 @@ Partial Class Form3
         Me.ToolTip1.SetToolTip(Me.ButtonPlot, "Plote o(s) seu(s) gráfico(s) !")
         Me.ButtonPlot.UseVisualStyleBackColor = False
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(47, 58)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(68, 18)
-        Me.Label2.TabIndex = 33
-        Me.Label2.Text = "Mínimo "
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(208, 58)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(67, 18)
-        Me.Label3.TabIndex = 34
-        Me.Label3.Text = "Máximo"
-        '
-        'RichTextBox8
-        '
-        Me.RichTextBox8.Location = New System.Drawing.Point(30, 85)
-        Me.RichTextBox8.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.RichTextBox8.Name = "RichTextBox8"
-        Me.RichTextBox8.Size = New System.Drawing.Size(101, 35)
-        Me.RichTextBox8.TabIndex = 35
-        Me.RichTextBox8.Text = ""
-        Me.ToolTip1.SetToolTip(Me.RichTextBox8, "Coloque aqui os valores que você quer quer comece e termine o eixo cartesiano")
-        '
-        'RichTextBox9
-        '
-        Me.RichTextBox9.Location = New System.Drawing.Point(199, 85)
-        Me.RichTextBox9.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.RichTextBox9.Name = "RichTextBox9"
-        Me.RichTextBox9.Size = New System.Drawing.Size(101, 35)
-        Me.RichTextBox9.TabIndex = 36
-        Me.RichTextBox9.Text = ""
-        Me.ToolTip1.SetToolTip(Me.RichTextBox9, "Coloque aqui os valores que você quer quer comece e termine o eixo cartesiano")
-        '
         'ToolTip1
         '
         Me.ToolTip1.AutomaticDelay = 100
@@ -395,9 +381,9 @@ Partial Class Form3
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.Panel2.Controls.Add(Me.Panel6)
         Me.Panel2.Controls.Add(Me.Panel5)
         Me.Panel2.Controls.Add(Me.Panel4)
-        Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.Label13)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.RichTextBoxTitulo)
@@ -413,7 +399,7 @@ Partial Class Form3
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel5.Controls.Add(Me.Panel7)
         Me.Panel5.Controls.Add(Me.Label17)
-        Me.Panel5.Location = New System.Drawing.Point(32, 407)
+        Me.Panel5.Location = New System.Drawing.Point(32, 206)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(332, 149)
         Me.Panel5.TabIndex = 40
@@ -452,6 +438,7 @@ Partial Class Form3
         'Panel9
         '
         Me.Panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel9.Controls.Add(Me.Panel8)
         Me.Panel9.Controls.Add(Me.RadioButton10)
         Me.Panel9.Controls.Add(Me.Label21)
         Me.Panel9.Controls.Add(Me.RadioButton9)
@@ -526,16 +513,16 @@ Partial Class Form3
         Me.Panel4.Controls.Add(Me.Label15)
         Me.Panel4.Controls.Add(Me.Label16)
         Me.Panel4.Controls.Add(Me.RichTextBox11)
-        Me.Panel4.Location = New System.Drawing.Point(32, 236)
+        Me.Panel4.Location = New System.Drawing.Point(390, 83)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(685, 149)
+        Me.Panel4.Size = New System.Drawing.Size(340, 227)
         Me.Panel4.TabIndex = 39
         Me.ToolTip1.SetToolTip(Me.Panel4, "Dê um nome especifico para cada eixo")
         '
         'Button9
         '
         Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.Button9.Location = New System.Drawing.Point(637, 50)
+        Me.Button9.Location = New System.Drawing.Point(283, 129)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(33, 30)
         Me.Button9.TabIndex = 47
@@ -546,7 +533,7 @@ Partial Class Form3
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(267, 23)
+        Me.Label14.Location = New System.Drawing.Point(85, 20)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(153, 20)
         Me.Label14.TabIndex = 37
@@ -566,7 +553,7 @@ Partial Class Form3
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(489, 63)
+        Me.Label15.Location = New System.Drawing.Point(135, 141)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(56, 18)
         Me.Label15.TabIndex = 34
@@ -584,38 +571,13 @@ Partial Class Form3
         '
         'RichTextBox11
         '
-        Me.RichTextBox11.Location = New System.Drawing.Point(370, 85)
+        Me.RichTextBox11.Location = New System.Drawing.Point(13, 164)
         Me.RichTextBox11.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.RichTextBox11.Name = "RichTextBox11"
         Me.RichTextBox11.Size = New System.Drawing.Size(300, 35)
         Me.RichTextBox11.TabIndex = 36
         Me.RichTextBox11.Text = ""
         Me.ToolTip1.SetToolTip(Me.RichTextBox11, "Dê um nome especifico para o eixo Y")
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel3.Controls.Add(Me.Label6)
-        Me.Panel3.Controls.Add(Me.RichTextBox8)
-        Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Controls.Add(Me.Label2)
-        Me.Panel3.Controls.Add(Me.RichTextBox9)
-        Me.Panel3.Location = New System.Drawing.Point(383, 56)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(334, 149)
-        Me.Panel3.TabIndex = 38
-        Me.ToolTip1.SetToolTip(Me.Panel3, "Coloque aqui os valores que você quer quer comece e termine o eixo cartesiano")
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(46, 17)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(243, 20)
-        Me.Label6.TabIndex = 37
-        Me.Label6.Text = "Intervalo do gráfico (eixo X)"
         '
         'Label13
         '
@@ -641,10 +603,13 @@ Partial Class Form3
         '
         'Button6
         '
+        Me.Button6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button6.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Button6.Location = New System.Drawing.Point(310, 420)
+        Me.Button6.Location = New System.Drawing.Point(310, 500)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(107, 40)
         Me.Button6.TabIndex = 49
@@ -654,10 +619,13 @@ Partial Class Form3
         '
         'Button5
         '
+        Me.Button5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Button5.Location = New System.Drawing.Point(310, 360)
+        Me.Button5.Location = New System.Drawing.Point(310, 430)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(107, 40)
         Me.Button5.TabIndex = 48
@@ -667,10 +635,13 @@ Partial Class Form3
         '
         'Button4
         '
+        Me.Button4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Button4.Location = New System.Drawing.Point(310, 300)
+        Me.Button4.Location = New System.Drawing.Point(310, 360)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(107, 40)
         Me.Button4.TabIndex = 47
@@ -680,10 +651,13 @@ Partial Class Form3
         '
         'Button3
         '
+        Me.Button3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Button3.Location = New System.Drawing.Point(310, 240)
+        Me.Button3.Location = New System.Drawing.Point(310, 290)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(107, 40)
         Me.Button3.TabIndex = 46
@@ -693,10 +667,13 @@ Partial Class Form3
         '
         'Button2
         '
+        Me.Button2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Button2.Location = New System.Drawing.Point(310, 180)
+        Me.Button2.Location = New System.Drawing.Point(310, 220)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(107, 40)
         Me.Button2.TabIndex = 45
@@ -706,10 +683,13 @@ Partial Class Form3
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Button1.Location = New System.Drawing.Point(310, 120)
+        Me.Button1.Location = New System.Drawing.Point(310, 150)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(107, 40)
         Me.Button1.TabIndex = 44
@@ -719,9 +699,12 @@ Partial Class Form3
         '
         'Label7
         '
+        Me.Label7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(27, 125)
+        Me.Label7.Location = New System.Drawing.Point(27, 155)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(26, 20)
         Me.Label7.TabIndex = 38
@@ -729,9 +712,12 @@ Partial Class Form3
         '
         'Label8
         '
+        Me.Label8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(27, 185)
+        Me.Label8.Location = New System.Drawing.Point(27, 225)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(32, 20)
         Me.Label8.TabIndex = 39
@@ -740,9 +726,12 @@ Partial Class Form3
         '
         'Label9
         '
+        Me.Label9.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(27, 245)
+        Me.Label9.Location = New System.Drawing.Point(27, 295)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(26, 20)
         Me.Label9.TabIndex = 40
@@ -751,9 +740,12 @@ Partial Class Form3
         '
         'Label10
         '
+        Me.Label10.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(27, 305)
+        Me.Label10.Location = New System.Drawing.Point(27, 365)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(26, 20)
         Me.Label10.TabIndex = 41
@@ -762,9 +754,12 @@ Partial Class Form3
         '
         'Label11
         '
+        Me.Label11.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(27, 365)
+        Me.Label11.Location = New System.Drawing.Point(27, 435)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(26, 20)
         Me.Label11.TabIndex = 42
@@ -773,9 +768,12 @@ Partial Class Form3
         '
         'Label12
         '
+        Me.Label12.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(27, 425)
+        Me.Label12.Location = New System.Drawing.Point(27, 505)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(26, 20)
         Me.Label12.TabIndex = 43
@@ -823,7 +821,7 @@ Partial Class Form3
         Me.Panel1.ForeColor = System.Drawing.SystemColors.Desktop
         Me.Panel1.Location = New System.Drawing.Point(31, 38)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(684, 477)
+        Me.Panel1.Size = New System.Drawing.Size(684, 573)
         Me.Panel1.TabIndex = 44
         '
         'Panel10
@@ -843,9 +841,12 @@ Partial Class Form3
         '
         'TextBox6
         '
+        Me.TextBox6.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox6.BackColor = System.Drawing.Color.Yellow
         Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(564, 423)
+        Me.TextBox6.Location = New System.Drawing.Point(564, 503)
         Me.TextBox6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox6.Multiline = True
         Me.TextBox6.Name = "TextBox6"
@@ -858,9 +859,12 @@ Partial Class Form3
         '
         'TextBox5
         '
+        Me.TextBox5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox5.BackColor = System.Drawing.Color.Yellow
         Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(564, 367)
+        Me.TextBox5.Location = New System.Drawing.Point(564, 437)
         Me.TextBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox5.Multiline = True
         Me.TextBox5.Name = "TextBox5"
@@ -873,9 +877,12 @@ Partial Class Form3
         '
         'TextBox4
         '
+        Me.TextBox4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox4.BackColor = System.Drawing.Color.Yellow
         Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(564, 307)
+        Me.TextBox4.Location = New System.Drawing.Point(564, 367)
         Me.TextBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox4.Multiline = True
         Me.TextBox4.Name = "TextBox4"
@@ -888,9 +895,12 @@ Partial Class Form3
         '
         'TextBox3
         '
+        Me.TextBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox3.BackColor = System.Drawing.Color.Yellow
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(564, 247)
+        Me.TextBox3.Location = New System.Drawing.Point(564, 297)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
@@ -903,9 +913,12 @@ Partial Class Form3
         '
         'TextBox2
         '
+        Me.TextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox2.BackColor = System.Drawing.Color.Yellow
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(564, 187)
+        Me.TextBox2.Location = New System.Drawing.Point(564, 227)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
@@ -918,9 +931,12 @@ Partial Class Form3
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BackColor = System.Drawing.Color.Yellow
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(564, 127)
+        Me.TextBox1.Location = New System.Drawing.Point(564, 157)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
@@ -934,7 +950,7 @@ Partial Class Form3
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(588, 98)
+        Me.Label25.Location = New System.Drawing.Point(588, 102)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(63, 20)
         Me.Label25.TabIndex = 69
@@ -942,9 +958,12 @@ Partial Class Form3
         '
         'CheckBox12
         '
+        Me.CheckBox12.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox12.AutoSize = True
         Me.CheckBox12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox12.Location = New System.Drawing.Point(458, 431)
+        Me.CheckBox12.Location = New System.Drawing.Point(458, 511)
         Me.CheckBox12.Name = "CheckBox12"
         Me.CheckBox12.Size = New System.Drawing.Size(56, 22)
         Me.CheckBox12.TabIndex = 68
@@ -954,9 +973,12 @@ Partial Class Form3
         '
         'CheckBox11
         '
+        Me.CheckBox11.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox11.AutoSize = True
         Me.CheckBox11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox11.Location = New System.Drawing.Point(458, 371)
+        Me.CheckBox11.Location = New System.Drawing.Point(458, 441)
         Me.CheckBox11.Name = "CheckBox11"
         Me.CheckBox11.Size = New System.Drawing.Size(56, 22)
         Me.CheckBox11.TabIndex = 67
@@ -966,9 +988,12 @@ Partial Class Form3
         '
         'CheckBox10
         '
+        Me.CheckBox10.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox10.AutoSize = True
         Me.CheckBox10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox10.Location = New System.Drawing.Point(458, 311)
+        Me.CheckBox10.Location = New System.Drawing.Point(458, 371)
         Me.CheckBox10.Name = "CheckBox10"
         Me.CheckBox10.Size = New System.Drawing.Size(56, 22)
         Me.CheckBox10.TabIndex = 66
@@ -978,9 +1003,12 @@ Partial Class Form3
         '
         'CheckBox9
         '
+        Me.CheckBox9.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox9.AutoSize = True
         Me.CheckBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox9.Location = New System.Drawing.Point(458, 251)
+        Me.CheckBox9.Location = New System.Drawing.Point(458, 301)
         Me.CheckBox9.Name = "CheckBox9"
         Me.CheckBox9.Size = New System.Drawing.Size(56, 22)
         Me.CheckBox9.TabIndex = 65
@@ -990,9 +1018,12 @@ Partial Class Form3
         '
         'CheckBox8
         '
+        Me.CheckBox8.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox8.AutoSize = True
         Me.CheckBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox8.Location = New System.Drawing.Point(458, 191)
+        Me.CheckBox8.Location = New System.Drawing.Point(458, 231)
         Me.CheckBox8.Name = "CheckBox8"
         Me.CheckBox8.Size = New System.Drawing.Size(56, 22)
         Me.CheckBox8.TabIndex = 64
@@ -1002,9 +1033,12 @@ Partial Class Form3
         '
         'CheckBox7
         '
+        Me.CheckBox7.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckBox7.AutoSize = True
         Me.CheckBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox7.Location = New System.Drawing.Point(458, 131)
+        Me.CheckBox7.Location = New System.Drawing.Point(458, 161)
         Me.CheckBox7.Name = "CheckBox7"
         Me.CheckBox7.Size = New System.Drawing.Size(56, 22)
         Me.CheckBox7.TabIndex = 63
@@ -1015,7 +1049,7 @@ Partial Class Form3
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(438, 98)
+        Me.Label24.Location = New System.Drawing.Point(438, 102)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(114, 20)
         Me.Label24.TabIndex = 62
@@ -1045,6 +1079,138 @@ Partial Class Form3
         '
         Me.OpenFileDialog6.FileName = "OpenFileDialog6"
         '
+        'Panel6
+        '
+        Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel6.Controls.Add(Me.Label2)
+        Me.Panel6.Controls.Add(Me.Panel14)
+        Me.Panel6.Controls.Add(Me.RichTextBox7)
+        Me.Panel6.Controls.Add(Me.Label19)
+        Me.Panel6.Location = New System.Drawing.Point(32, 391)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(332, 149)
+        Me.Panel6.TabIndex = 41
+        '
+        'Label19
+        '
+        Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(84, 18)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(165, 20)
+        Me.Label19.TabIndex = 49
+        Me.Label19.Text = "Escala logarítmica"
+        '
+        'Panel8
+        '
+        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.RadioButton7)
+        Me.Panel8.Controls.Add(Me.Label20)
+        Me.Panel8.Controls.Add(Me.RadioButton8)
+        Me.Panel8.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(137, 60)
+        Me.Panel8.TabIndex = 49
+        '
+        'RadioButton7
+        '
+        Me.RadioButton7.AutoSize = True
+        Me.RadioButton7.Checked = True
+        Me.RadioButton7.Location = New System.Drawing.Point(74, 35)
+        Me.RadioButton7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.RadioButton7.Name = "RadioButton7"
+        Me.RadioButton7.Size = New System.Drawing.Size(55, 21)
+        Me.RadioButton7.TabIndex = 47
+        Me.RadioButton7.TabStop = True
+        Me.RadioButton7.Text = "Não"
+        Me.ToolTip1.SetToolTip(Me.RadioButton7, "Com quantas casas decimais você quer os valores do eixo X?")
+        Me.RadioButton7.UseVisualStyleBackColor = True
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(4, 12)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(122, 17)
+        Me.Label20.TabIndex = 47
+        Me.Label20.Text = "Notação Científica"
+        '
+        'RadioButton8
+        '
+        Me.RadioButton8.AutoSize = True
+        Me.RadioButton8.Location = New System.Drawing.Point(16, 35)
+        Me.RadioButton8.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.RadioButton8.Name = "RadioButton8"
+        Me.RadioButton8.Size = New System.Drawing.Size(52, 21)
+        Me.RadioButton8.TabIndex = 46
+        Me.RadioButton8.Text = "Sim"
+        Me.ToolTip1.SetToolTip(Me.RadioButton8, "Com quantas casas decimais você quer os valores do eixo X?")
+        Me.RadioButton8.UseVisualStyleBackColor = True
+        '
+        'Panel14
+        '
+        Me.Panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel14.Controls.Add(Me.RadioButton15)
+        Me.Panel14.Controls.Add(Me.Label27)
+        Me.Panel14.Controls.Add(Me.RadioButton16)
+        Me.Panel14.Location = New System.Drawing.Point(26, 70)
+        Me.Panel14.Name = "Panel14"
+        Me.Panel14.Size = New System.Drawing.Size(137, 60)
+        Me.Panel14.TabIndex = 49
+        '
+        'RadioButton16
+        '
+        Me.RadioButton16.AutoSize = True
+        Me.RadioButton16.Location = New System.Drawing.Point(16, 35)
+        Me.RadioButton16.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.RadioButton16.Name = "RadioButton16"
+        Me.RadioButton16.Size = New System.Drawing.Size(52, 21)
+        Me.RadioButton16.TabIndex = 46
+        Me.RadioButton16.Text = "Sim"
+        Me.ToolTip1.SetToolTip(Me.RadioButton16, "Com quantas casas decimais você quer os valores do eixo X?")
+        Me.RadioButton16.UseVisualStyleBackColor = True
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(45, 5)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(47, 17)
+        Me.Label27.TabIndex = 47
+        Me.Label27.Text = "Eixo Y"
+        '
+        'RadioButton15
+        '
+        Me.RadioButton15.AutoSize = True
+        Me.RadioButton15.Checked = True
+        Me.RadioButton15.Location = New System.Drawing.Point(74, 35)
+        Me.RadioButton15.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.RadioButton15.Name = "RadioButton15"
+        Me.RadioButton15.Size = New System.Drawing.Size(55, 21)
+        Me.RadioButton15.TabIndex = 47
+        Me.RadioButton15.TabStop = True
+        Me.RadioButton15.Text = "Não"
+        Me.ToolTip1.SetToolTip(Me.RadioButton15, "Com quantas casas decimais você quer os valores do eixo X?")
+        Me.RadioButton15.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(243, 76)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(40, 17)
+        Me.Label2.TabIndex = 51
+        Me.Label2.Text = "Base"
+        '
+        'RichTextBox7
+        '
+        Me.RichTextBox7.Location = New System.Drawing.Point(222, 96)
+        Me.RichTextBox7.Name = "RichTextBox7"
+        Me.RichTextBox7.Size = New System.Drawing.Size(81, 33)
+        Me.RichTextBox7.TabIndex = 52
+        Me.RichTextBox7.Text = ""
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1068,12 +1234,16 @@ Partial Class Form3
         Me.Panel9.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
+        Me.Panel14.ResumeLayout(False)
+        Me.Panel14.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1095,12 +1265,7 @@ Partial Class Form3
     Friend WithEvents RichTextBox5 As RichTextBox
     Friend WithEvents RichTextBox6 As RichTextBox
     Friend WithEvents ButtonPlot As Button
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents RichTextBox8 As RichTextBox
-    Friend WithEvents RichTextBox9 As RichTextBox
     Friend WithEvents ToolTip1 As ToolTip
-    Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
@@ -1109,7 +1274,6 @@ Partial Class Form3
     Friend WithEvents Label12 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Panel3 As Panel
     Friend WithEvents Label13 As Label
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label14 As Label
@@ -1156,4 +1320,16 @@ Partial Class Form3
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Panel10 As Panel
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents RadioButton7 As RadioButton
+    Friend WithEvents Label20 As Label
+    Friend WithEvents RadioButton8 As RadioButton
+    Friend WithEvents Panel14 As Panel
+    Friend WithEvents RadioButton15 As RadioButton
+    Friend WithEvents Label27 As Label
+    Friend WithEvents RadioButton16 As RadioButton
+    Friend WithEvents Label2 As Label
+    Friend WithEvents RichTextBox7 As RichTextBox
 End Class
