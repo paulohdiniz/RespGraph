@@ -100,7 +100,7 @@
         stringSearching = "onda(nm)"
         position = InStr(textComplete, stringSearching)
         If position = 0 Then
-            MsgBox("O programa será reiniciado, você selecionou um arquivo inválido ou cancelou a abertura. Clique no botão AJUDA para saber mais",, "Erro Fatal !")
+            MsgBox(ChrW(215) & " O programa será reiniciado, você selecionou um arquivo inválido ou não selecionou o arquivo para que o programa faça os cálculos." & vbCrLf & vbCrLf & ChrW(215) & " Clique no botão AJUDA para saber mais",, "Erro Fatal !")
             'Fecha o programa e reabre.
             Application.Exit()
             Process.Start(Application.ExecutablePath)
@@ -223,6 +223,10 @@
 
         sucesso = Double.TryParse(Form2.TextBox16.Text.Replace(".", ","), switch) And
         Double.TryParse(Form2.TextBox14.Text.Replace(".", ","), ganho)
+
+        If Form2.CheckBox2.Checked Then
+            ganho = 1 / ganho
+        End If
 
         If (sucesso) Then
             beta = switch / ganho

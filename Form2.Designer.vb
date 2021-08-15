@@ -60,6 +60,8 @@ Partial Class Form2
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -89,7 +91,13 @@ Partial Class Form2
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -98,6 +106,8 @@ Partial Class Form2
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -310,7 +320,7 @@ Partial Class Form2
         Me.Panel1.Controls.Add(Me.ComboBox1)
         Me.Panel1.Location = New System.Drawing.Point(30, 25)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(474, 574)
+        Me.Panel1.Size = New System.Drawing.Size(474, 415)
         Me.Panel1.TabIndex = 36
         Me.ToolTip1.SetToolTip(Me.Panel1, "Curva do fabricante")
         '
@@ -318,7 +328,7 @@ Partial Class Form2
         '
         Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button4.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(248, 454)
+        Me.Button4.Location = New System.Drawing.Point(253, 321)
         Me.Button4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(204, 71)
@@ -331,7 +341,7 @@ Partial Class Form2
         '
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Button1.Font = New System.Drawing.Font("Times New Roman", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(27, 454)
+        Me.Button1.Location = New System.Drawing.Point(32, 321)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(204, 71)
@@ -345,7 +355,7 @@ Partial Class Form2
         Me.TextBox13.Enabled = False
         Me.TextBox13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox13.HideSelection = False
-        Me.TextBox13.Location = New System.Drawing.Point(175, 357)
+        Me.TextBox13.Location = New System.Drawing.Point(177, 270)
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.ReadOnly = True
         Me.TextBox13.Size = New System.Drawing.Size(277, 30)
@@ -358,7 +368,7 @@ Partial Class Form2
         Me.TextBox12.Enabled = False
         Me.TextBox12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox12.HideSelection = False
-        Me.TextBox12.Location = New System.Drawing.Point(175, 313)
+        Me.TextBox12.Location = New System.Drawing.Point(177, 226)
         Me.TextBox12.Name = "TextBox12"
         Me.TextBox12.ReadOnly = True
         Me.TextBox12.Size = New System.Drawing.Size(277, 30)
@@ -371,7 +381,7 @@ Partial Class Form2
         Me.TextBox11.Enabled = False
         Me.TextBox11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox11.HideSelection = False
-        Me.TextBox11.Location = New System.Drawing.Point(175, 268)
+        Me.TextBox11.Location = New System.Drawing.Point(177, 181)
         Me.TextBox11.Name = "TextBox11"
         Me.TextBox11.ReadOnly = True
         Me.TextBox11.Size = New System.Drawing.Size(277, 30)
@@ -384,7 +394,7 @@ Partial Class Form2
         Me.TextBox10.Enabled = False
         Me.TextBox10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox10.HideSelection = False
-        Me.TextBox10.Location = New System.Drawing.Point(175, 226)
+        Me.TextBox10.Location = New System.Drawing.Point(177, 139)
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.ReadOnly = True
         Me.TextBox10.Size = New System.Drawing.Size(277, 30)
@@ -396,7 +406,7 @@ Partial Class Form2
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(12, 362)
+        Me.Label16.Location = New System.Drawing.Point(14, 275)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(150, 25)
         Me.Label16.TabIndex = 43
@@ -407,7 +417,7 @@ Partial Class Form2
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(12, 319)
+        Me.Label15.Location = New System.Drawing.Point(14, 232)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(106, 25)
         Me.Label15.TabIndex = 42
@@ -418,7 +428,7 @@ Partial Class Form2
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(12, 273)
+        Me.Label14.Location = New System.Drawing.Point(14, 186)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(60, 25)
         Me.Label14.TabIndex = 41
@@ -429,7 +439,7 @@ Partial Class Form2
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(12, 231)
+        Me.Label13.Location = New System.Drawing.Point(14, 144)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(87, 25)
         Me.Label13.TabIndex = 40
@@ -538,6 +548,40 @@ Partial Class Form2
         Me.Button8.Text = "Ver curva de potência"
         Me.ToolTip1.SetToolTip(Me.Button8, "Crie seu arquivo com a curva espectral de responsividade.")
         Me.Button8.UseVisualStyleBackColor = False
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.AccessibleDescription = ""
+        Me.ComboBox2.AccessibleName = ""
+        Me.ComboBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"1E-12 A/V", "2E-12 A/V", "5E-12 A/V", "10E-12 A/V", "20E-12 A/V", "50E-12 A/V", "100E-12 A/V", "200E-12 A/V", "500E-12 A/V", "1E-9 A/V", "2E-9 A/V", "5E-9 A/V", "10E-9 A/V", "20E-9 A/V", "50E-9 A/V", "100E-9 A/V", "200E-9 A/V", "500E-9 A/V", "1E-6 A/V", "2E-6 A/V", "5E-6 A/V", "10E-6 A/V", "20E-6 A/V", "50E-6 A/V", "100E-6 A/V", "200E-6 A/V", "500E-6 A/V", "1E-3 A/V"})
+        Me.ComboBox2.Location = New System.Drawing.Point(52, 65)
+        Me.ComboBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(372, 30)
+        Me.ComboBox2.TabIndex = 49
+        Me.ComboBox2.Tag = ""
+        Me.ComboBox2.Visible = False
+        '
+        'ComboBox3
+        '
+        Me.ComboBox3.AccessibleDescription = ""
+        Me.ComboBox3.AccessibleName = ""
+        Me.ComboBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Items.AddRange(New Object() {"Globar", "Lâmpada", "Outra:"})
+        Me.ComboBox3.Location = New System.Drawing.Point(54, 57)
+        Me.ComboBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(118, 30)
+        Me.ComboBox3.Sorted = True
+        Me.ComboBox3.TabIndex = 49
+        Me.ComboBox3.Tag = ""
         '
         'OpenFileDialog1
         '
@@ -845,29 +889,88 @@ Partial Class Form2
         Me.Button6.Text = "Help"
         Me.Button6.UseVisualStyleBackColor = False
         '
-        'ComboBox2
+        'Panel8
         '
-        Me.ComboBox2.AccessibleDescription = ""
-        Me.ComboBox2.AccessibleName = ""
-        Me.ComboBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"1E-12 A/V", "2E-12 A/V", "5E-12 A/V", "10E-12 A/V", "20E-12 A/V", "50E-12 A/V", "100E-12 A/V", "200E-12 A/V", "500E-12 A/V", "1E-9 A/V", "2E-9 A/V", "5E-9 A/V", "10E-9 A/V", "20E-9 A/V", "50E-9 A/V", "100E-9 A/V", "200E-9 A/V", "500E-9 A/V", "1E-6 A/V", "2E-6 A/V", "5E-6 A/V", "10E-6 A/V", "20E-6 A/V", "50E-6 A/V", "100E-6 A/V", "200E-6 A/V", "500E-6 A/V", "1E-3 A/V", "2E-3 A/V", "5E-3 A/V", "10E-3 A/V", "20E-3 A/V", "50E-3 A/V", "100E-3 A/V", "200E-3 A/V", "500E-3 A/V"})
-        Me.ComboBox2.Location = New System.Drawing.Point(52, 65)
-        Me.ComboBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(372, 30)
-        Me.ComboBox2.TabIndex = 49
-        Me.ComboBox2.Tag = ""
-        Me.ToolTip1.SetToolTip(Me.ComboBox2, "Curva do fabricante")
-        Me.ComboBox2.Visible = False
+        Me.Panel8.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.Panel8.Controls.Add(Me.ComboBox3)
+        Me.Panel8.Controls.Add(Me.TextBox18)
+        Me.Panel8.Controls.Add(Me.Label24)
+        Me.Panel8.Location = New System.Drawing.Point(30, 458)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(223, 141)
+        Me.Panel8.TabIndex = 49
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox18.Location = New System.Drawing.Point(32, 96)
+        Me.TextBox18.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(160, 27)
+        Me.TextBox18.TabIndex = 29
+        Me.ToolTip1.SetToolTip(Me.TextBox18, "Nome da outra fonte")
+        Me.TextBox18.Visible = False
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(14, 14)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(203, 29)
+        Me.Label24.TabIndex = 25
+        Me.Label24.Text = "Fonte de radiação"
+        Me.Label24.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+        Me.Panel9.Controls.Add(Me.Label21)
+        Me.Panel9.Controls.Add(Me.TextBox17)
+        Me.Panel9.Controls.Add(Me.Label17)
+        Me.Panel9.Location = New System.Drawing.Point(281, 458)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(223, 141)
+        Me.Panel9.TabIndex = 50
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox17.Location = New System.Drawing.Point(32, 96)
+        Me.TextBox17.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New System.Drawing.Size(160, 27)
+        Me.TextBox17.TabIndex = 29
+        Me.ToolTip1.SetToolTip(Me.TextBox17, "Identifique sua amostra")
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Times New Roman", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(58, 14)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(106, 29)
+        Me.Label17.TabIndex = 25
+        Me.Label17.Text = "Amostra"
+        Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(35, 62)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(142, 20)
+        Me.Label21.TabIndex = 29
+        Me.Label21.Text = "Nome da amostra"
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 711)
+        Me.Controls.Add(Me.Panel9)
+        Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
@@ -907,6 +1010,10 @@ Partial Class Form2
         Me.Panel6.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -979,4 +1086,12 @@ Partial Class Form2
     Friend WithEvents Button7 As Button
     Friend WithEvents Button8 As Button
     Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents Label24 As Label
+    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents Label21 As Label
+    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents Label17 As Label
 End Class

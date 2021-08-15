@@ -46,10 +46,10 @@ Public Class Form2
         If ComboBox1.Text.Equals("818-BB-22") Or ComboBox1.Text.Equals("S-010-H") Then
 
         Else
-            MsgBox("Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação. Atentar-se à posição do switch Hi/LO.",, "Atenção !")
+            MsgBox(ChrW(215) & " Este é um sensor LN6N. Lembre-se de sempre resfria-lo com NL antes de liga-lo na fonte de alimentação." & vbCrLf & vbCrLf & ChrW(215) & " Atentar-se à posição do switch Hi/LO.",, "Atenção !")
         End If
         If ComboBox1.Text.Equals("S-010-H") Then
-            MsgBox("Atentar-se à posição do switch Hi/LO.",, "Atenção !")
+            MsgBox(ChrW(215) & " Atentar-se à posição do switch Hi/LO.",, "Atenção !")
         End If
 
 
@@ -145,7 +145,7 @@ Public Class Form2
         Dim beta As Double = CalculaBeta()
         Dim gamma As Double = CalculaGamma()
         If (alfa = 0) Then
-            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
+            MsgBox(ChrW(215) & " Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
         End If
 
@@ -263,6 +263,7 @@ Public Class Form2
             cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
              "Usuário: " & nomeUsuario & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+             "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
              "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
              "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
@@ -280,6 +281,7 @@ Public Class Form2
             cabecalho = "ARQUIVO DE MEDIDA DE EQE" & vbCrLf &
              "Usuário: " & nomeUsuario & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+             "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
              "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
              "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
@@ -368,7 +370,6 @@ Public Class Form2
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         GlobalVariables.flagBut = 0
         Dim sensorSelected = New SensorFabricante(ComboBox1.Text)
-        sensorSelected = sensorSelected
 
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
         Dim formatX As String
@@ -376,14 +377,15 @@ Public Class Form2
         formatX = "eixoX"
         formatY = "N0"
 
-        Dim maximo As Double
         Dim renameY As String
-        If sensorSelected.isNormalized() Then
-            maximo = 1.0
-            renameY = " "
+
+        If Form7.CheckBox2.Checked Then
+            renameY = "Log"
+            formatY = "E0"
+            Form7.CheckBox1.Visible = False 'tive que tirar pq a linha vertical sumiu e nao aparecia mais
         Else
-            maximo = Double.NaN
             renameY = sensorSelected.UnidadeResponsividade
+            Form7.CheckBox1.Visible = True 'tive que tirar pq a linha vertical sumiu e nao aparecia mais
         End If
 
         Form7.Chart1.Titles.Clear()
@@ -397,13 +399,12 @@ Public Class Form2
             .AxisX.Title = "Comprimento de onda(nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
-            .AxisY.Maximum = maximo
             .AxisY.Title = renameY 'y label
             .AxisY.IsLogarithmic = Form7.CheckBox2.Checked
+            .AxisY.IsStartedFromZero = False
             .AxisX.LabelStyle.Format = formatX
             .AxisY.LabelStyle.Format = formatY
         End With
-
         Form7.Chart1.Series.Clear()
 
         Form7.Chart1.Series.Add(sensorSelected.Nome)
@@ -424,6 +425,13 @@ Public Class Form2
         For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
             Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(x(i), y(i))
         Next i
+
+        If Form7.CheckBox2.Checked Then
+            'deixando o gráfico no tamanho correto
+            Form7.Chart1.ChartAreas(0).AxisY.Maximum = Form7.Chart1.Series(0).Points.FindMaxByValue("Y1").YValues(0)
+            Form7.Chart1.ChartAreas(0).AxisY.Minimum = Form7.Chart1.Series(0).Points.FindMinByValue("Y1").YValues(0)
+        End If
+
         FormDados.TextBox2.Text = Text
         Dim verticalLine = New VerticalLineAnnotation()
         verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
@@ -436,7 +444,6 @@ Public Class Form2
         verticalLine.Name = "VA"
         verticalLine.LineDashStyle = 1
         verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
-        'verticalLine.X = 1
         Form7.Chart1.Annotations.Add(verticalLine)
 
         Dim RA = New RectangleAnnotation()
@@ -572,6 +579,7 @@ Public Class Form2
                     cabecalho = "ARQUIVO DO ESPECTRO DE POTENCIA" & vbCrLf &
                         "Usuário: " & nomeUsuario & vbCrLf &
                         "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+                        "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
                         "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
                         "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
                         "Comentário: A razão é entre a curva do sensor do fabricante no setup e a curva do fabricante." & vbCrLf &
@@ -668,7 +676,7 @@ Public Class Form2
             TextBox16.Text = "0,1"
             If ComboBox1.Text.Equals("818-BB-22") Then
                 TextBox16.Text = "1,0"
-                MsgBox("O sensor 818 (Silício antigo) não tem switch, logo sempre vale 1.",, "Atenção !")
+                MsgBox(ChrW(215) & " O sensor 818 (Silício antigo) não tem switch, logo sempre vale 1.",, "Atenção !")
                 CheckBox6.Checked = False
                 CheckBox5.Checked = True
             End If
@@ -686,9 +694,12 @@ Public Class Form2
         Label2.Left = (Label2.Parent.Width \ 2) - (Label2.Width \ 2)
         Label3.Left = (Label3.Parent.Width \ 2) - (Label3.Width \ 2)
         Label9.Left = (Label9.Parent.Width \ 2) - (Label9.Width \ 2)
+        Label17.Left = (Label17.Parent.Width \ 2) - (Label17.Width \ 2)
         Label19.Left = (Label19.Parent.Width \ 2) - (Label19.Width \ 2)
         Label22.Left = (Label22.Parent.Width \ 2) - (Label22.Width \ 2)
         Label23.Left = (Label23.Parent.Width \ 2) - (Label23.Width \ 2)
+        Label24.Left = (Label24.Parent.Width \ 2) - (Label24.Width \ 2)
+
         TextBox15.Text = CalculaGamma().ToString("0.00E+00")
 
     End Sub
@@ -704,7 +715,7 @@ Public Class Form2
         Dim beta As Double = CalculaBeta()
         Dim gamma As Double = CalculaGamma()
         If (alfa = 0) Then
-            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
+            MsgBox(ChrW(215) & " Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
         End If
 
@@ -803,20 +814,27 @@ Public Class Form2
         Dim formatX As String
         Dim formatY As String
         formatX = "eixoX"
-        formatY = "N1"
+        formatY = "N2"
 
-        Dim maximo As Double
+        Dim maximo As Double = Double.NaN
         Dim renameY As String
-        If sensorSelected.isNormalized() Then
-            maximo = 1.0
-            renameY = " "
+
+        If CheckBox2.Checked Then
+            renameY = "EQE"
         Else
-            maximo = Double.NaN
             renameY = sensorSelected.UnidadeResponsividade
         End If
 
+        If Form7.CheckBox2.Checked Then
+            renameY = "Log da " & renameY
+            formatY = "E0"
+        End If
 
+        Dim nomeAmostra = "amostra"
         Dim sensorReferenciaUsado = New SensorFabricante(ComboBox1.Text)
+        If Not String.IsNullOrEmpty(TextBox17.Text) Then
+            nomeAmostra = TextBox17.Text
+        End If
 
         Dim cabecalho As String = ""
         Dim tipoDeMedida As String = "_RESPONSIVIDADE_"
@@ -830,8 +848,9 @@ Public Class Form2
         Dim datahoraAtual As DateTime = Now
         If CheckBox1.Checked Then
             tipoDeMedida = "_RESPONSIVIDADE_"
-            cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
+            cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE DA AMOSTRA " & TextBox17.Text & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+             "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
              "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
              "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
@@ -846,8 +865,9 @@ Public Class Form2
         End If
         If CheckBox2.Checked Then
             tipoDeMedida = "_EQE_"
-            cabecalho = "ARQUIVO DE MEDIDA DE EQE" & vbCrLf &
+            cabecalho = "ARQUIVO DE MEDIDA DE EQE DA AMOSTRA " & TextBox17.Text & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+             "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
              "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
              "Distância do sensor de referência (mm): " & TextBox4.Text & vbCrLf &
@@ -862,13 +882,13 @@ Public Class Form2
         End If
 
         Form7.Chart1.Titles.Clear()
-        Form7.Chart1.Titles.Add(sensorSelected.Nome) 'specify chart name
+        Form7.Chart1.Titles.Add(nomeAmostra) 'specify chart name
         Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
         Form7.Chart1.ChartAreas.Clear()
         Form7.Chart1.Series.Clear()
         Form7.Chart1.Annotations.Clear()
-        Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
-        With Form7.Chart1.ChartAreas(sensorSelected.Nome)
+        Form7.Chart1.ChartAreas.Add(nomeAmostra)
+        With Form7.Chart1.ChartAreas(nomeAmostra)
             .AxisX.Title = "Comprimento de onda(nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
@@ -878,19 +898,29 @@ Public Class Form2
             .AxisX.LabelStyle.Format = formatX
             .AxisY.LabelStyle.Format = formatY
         End With
+        If Form7.CheckBox2.Checked Then
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.IsStartedFromZero = False
+        End If
         Dim textoCompleto As String = cabecalho + vbCrLf
         Form7.Chart1.Series.Clear()
-        Form7.Chart1.Series.Add(sensorSelected.Nome)
-        Form7.Chart1.Series(sensorSelected.Nome).Color = Color.FromKnownColor(KnownColor.Red)
-        Form7.Chart1.Series(sensorSelected.Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
+        Form7.Chart1.Series.Add(nomeAmostra)
+        Form7.Chart1.Series(nomeAmostra).Color = Color.FromKnownColor(KnownColor.Red)
+        Form7.Chart1.Series(nomeAmostra).ChartType = DataVisualization.Charting.SeriesChartType.Line
         If (Form7.CheckBox2.Checked) Then
             responsividade = removeZerosVetorY(NewColumnXAmostra, responsividade)
             NewColumnXAmostra = removeZerosVetorX(NewColumnXAmostra, responsividade)
         End If
         For i = 0 To NewColumnXAmostra.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
             textoCompleto += responsividade(i).ToString + " " + NewColumnXAmostra(i).ToString + vbCrLf
-            Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(NewColumnXAmostra(i), responsividade(i))
+            Form7.Chart1.Series(nomeAmostra).Points.AddXY(NewColumnXAmostra(i), responsividade(i))
         Next i
+
+        If Form7.CheckBox2.Checked Then
+            'deixando o gráfico no tamanho correto
+            Form7.Chart1.ChartAreas(0).AxisY.Maximum = Form7.Chart1.Series(0).Points.FindMaxByValue("Y1").YValues(0)
+            Form7.Chart1.ChartAreas(0).AxisY.Minimum = Form7.Chart1.Series(0).Points.FindMinByValue("Y1").YValues(0)
+        End If
+
         FormDados.TextBox2.Text = textoCompleto
 
         Dim verticalLine = New VerticalLineAnnotation()
@@ -944,7 +974,7 @@ Public Class Form2
         Dim beta As Double = CalculaBeta()
         Dim gamma As Double = CalculaGamma()
         If (alfa = 0) Then
-            MsgBox("Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
+            MsgBox(ChrW(215) & " Área ou distância com valor ZERO não existe. Coloque um valor válido e continue.",, "Atenção !")
             Exit Sub 'isso faz com que saia do evento de botão clido, ele suspende todas as ações posteriores
         End If
 
@@ -1045,14 +1075,17 @@ Public Class Form2
         formatX = "eixoX"
         formatY = "E0"
 
-        Dim maximo As Double
-        Dim renameY As String
-        If sensorSelected.isNormalized() Then
-            maximo = 1.0
-            renameY = " "
-        Else
+        Dim maximo As Double = Double.NaN
+        Dim renameY As String = "Potência"
+        If Form7.CheckBox2.Checked Then
+            renameY = "Log da Potência"
+            formatY = "E0"
             maximo = Double.NaN
-            renameY = "Potência"
+        End If
+
+        Dim nomeAmostra As String = "amostra"
+        If Not String.IsNullOrEmpty(TextBox17.Text) Then
+            nomeAmostra = TextBox17.Text
         End If
 
         Dim cabecalho As String
@@ -1065,13 +1098,13 @@ Public Class Form2
                         "Razão" & " Comprimento de onda(nm)"
         Dim textoCompleto = cabecalho + vbCrLf
         Form7.Chart1.Titles.Clear()
-        Form7.Chart1.Titles.Add(sensorSelected.Nome) 'specify chart name
+        Form7.Chart1.Titles.Add(nomeAmostra) 'specify chart name
         Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
         Form7.Chart1.ChartAreas.Clear()
         Form7.Chart1.Series.Clear()
         Form7.Chart1.Annotations.Clear()
-        Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
-        With Form7.Chart1.ChartAreas(sensorSelected.Nome)
+        Form7.Chart1.ChartAreas.Add(nomeAmostra)
+        With Form7.Chart1.ChartAreas(nomeAmostra)
             .AxisX.Title = "Comprimento de onda(nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
@@ -1083,17 +1116,24 @@ Public Class Form2
         End With
 
         Form7.Chart1.Series.Clear()
-        Form7.Chart1.Series.Add(sensorSelected.Nome)
-        Form7.Chart1.Series(sensorSelected.Nome).Color = Color.FromKnownColor(KnownColor.Red)
-        Form7.Chart1.Series(sensorSelected.Nome).ChartType = DataVisualization.Charting.SeriesChartType.Line
+        Form7.Chart1.Series.Add(nomeAmostra)
+        Form7.Chart1.Series(nomeAmostra).Color = Color.FromKnownColor(KnownColor.Red)
+        Form7.Chart1.Series(nomeAmostra).ChartType = DataVisualization.Charting.SeriesChartType.Line
         If (Form7.CheckBox2.Checked) Then
             potencia = removeZerosVetorY(NewColumnXAmostra, potencia)
             NewColumnXAmostra = removeZerosVetorX(NewColumnXAmostra, potencia)
         End If
         For i = 0 To NewColumnXAmostra.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
             textoCompleto += potencia(i).ToString + " " + NewColumnXAmostra(i).ToString + vbCrLf
-            Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(NewColumnXAmostra(i), potencia(i))
+            Form7.Chart1.Series(nomeAmostra).Points.AddXY(NewColumnXAmostra(i), potencia(i))
         Next i
+
+        If Form7.CheckBox2.Checked Then
+            'deixando o gráfico no tamanho correto
+            Form7.Chart1.ChartAreas(0).AxisY.Maximum = Form7.Chart1.Series(0).Points.FindMaxByValue("Y1").YValues(0)
+            Form7.Chart1.ChartAreas(0).AxisY.Minimum = Form7.Chart1.Series(0).Points.FindMinByValue("Y1").YValues(0)
+        End If
+
         FormDados.TextBox2.Text = textoCompleto
 
         Dim verticalLine = New VerticalLineAnnotation()
@@ -1131,5 +1171,13 @@ Public Class Form2
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
         TextBox14.Text = ComboBox2.Text.Substring(0, ComboBox2.Text.Length - 4)
+    End Sub
+
+    Private Sub ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox3.SelectedIndexChanged
+        If ComboBox3.Text.Equals("Outra:") Then
+            TextBox18.Visible = True
+        Else
+            TextBox18.Visible = False
+        End If
     End Sub
 End Class

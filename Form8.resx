@@ -134,9 +134,9 @@ O índice 1 se refere ao sensor de referência e o índice 2 à nossa amostra.
 Switch: posição do switch Hi/LO. Vale 1 para HI e 0.1 para LO (default). Não pôr o o campo de switch para o Si antigo (para ele sempre vale 1 pois não tem switch).
 
 Ganho: 
-Fotodetector = Ganho do pré-amplificador de transimpedância Keithley (só para os fotodetectores)  = 1E+03 – 1E+10 V/A (de dez em dez) em função do usuário (default = 1E+03 V/A).
+Fotodetector = Ganho do pré-amplificador de transimpedância Keithley (só para os fotodetectores)  = 1E+03 – 1E+10 V/A (de dez em dez) em função do usuário (default = 1E+03 V/A). O ganho é dado em V/A.
 
-Célular solar = Ganho de conversão do lockin novo (só para as células solares) = 2.35E+05 V/A (default) se usar a entrada de tensão (A) ou 1 para a entrada de corrente (I). 
+Célular solar = Pegar o inverso do ganho do pré-amplificador de transimpedância da Stanford (só para céluas solares) que é dado em A/V e vai de 1E-12 a 1E-3 A/V. O default tem que ser 100E-9 A/V.
 </value>
   </data>
 </root>
