@@ -138,6 +138,10 @@ Public Class Form2
     Private Sub ButtonCalcular_Click(sender As Object, e As EventArgs) Handles ButtonCalcular.Click
         Dim PathRef As String
         PathRef = ComboBox1.Text
+        If (String.IsNullOrEmpty(PathRef)) Then
+            MsgBox(ChrW(215) & " Você não selecionou o sensor de referência para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
@@ -168,6 +172,15 @@ Public Class Form2
 
         Dim columnXAmostra() As Double
         Dim columnYAmostra() As Double
+
+        If (String.IsNullOrEmpty(GlobalVariables.OpenFileDialogSensor.FileName)) Then
+            MsgBox(ChrW(215) & " Você não adicionou o 'Arquivo de medida com o sensor de referência' para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
+        If (String.IsNullOrEmpty(GlobalVariables.OpenFileDialogAmostra.FileName)) Then
+            MsgBox(ChrW(215) & " Você não adicionou o 'Arquivo de medida da amostra' para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
 
         'curva do sensor de referencia dado pelo fabricante
         textRef = readTxtComplete(filePath) 'filepath é o caminho do arquivo do sensor de referencia dado pelo fabricante
@@ -262,6 +275,7 @@ Public Class Form2
             tipoDeMedida = "_RESPONSIVIDADE_"
             cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE" & vbCrLf &
              "Usuário: " & nomeUsuario & vbCrLf &
+             "Nome da amostra: " & TextBox17.Text & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
              "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
@@ -280,6 +294,7 @@ Public Class Form2
             tipoDeMedida = "_EQE_"
             cabecalho = "ARQUIVO DE MEDIDA DE EQE" & vbCrLf &
              "Usuário: " & nomeUsuario & vbCrLf &
+             "Nome da amostra: " & TextBox17.Text & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
              "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
@@ -351,6 +366,10 @@ Public Class Form2
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim PathRef As String
         PathRef = ComboBox1.Text
+        If (String.IsNullOrEmpty(PathRef)) Then
+            MsgBox(ChrW(215) & " Você não selecionou o sensor de referência para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".pdf")
         Process.Start(filePath)
     End Sub
@@ -377,10 +396,9 @@ Public Class Form2
         formatX = "eixoX"
         formatY = "N0"
 
-        Dim renameY As String
+        Dim renameY As String = sensorSelected.UnidadeResponsividade
 
         If Form7.CheckBox2.Checked Then
-            renameY = "Log"
             formatY = "E0"
             Form7.CheckBox1.Visible = False 'tive que tirar pq a linha vertical sumiu e nao aparecia mais
         Else
@@ -425,12 +443,6 @@ Public Class Form2
         For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
             Form7.Chart1.Series(sensorSelected.Nome).Points.AddXY(x(i), y(i))
         Next i
-
-        If Form7.CheckBox2.Checked Then
-            'deixando o gráfico no tamanho correto
-            Form7.Chart1.ChartAreas(0).AxisY.Maximum = Form7.Chart1.Series(0).Points.FindMaxByValue("Y1").YValues(0)
-            Form7.Chart1.ChartAreas(0).AxisY.Minimum = Form7.Chart1.Series(0).Points.FindMinByValue("Y1").YValues(0)
-        End If
 
         FormDados.TextBox2.Text = Text
         Dim verticalLine = New VerticalLineAnnotation()
@@ -483,6 +495,10 @@ Public Class Form2
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim PathRef As String
         PathRef = ComboBox1.Text
+        If (String.IsNullOrEmpty(PathRef)) Then
+            MsgBox(ChrW(215) & " Você não selecionou o sensor de referência para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
         Dim textRef As String 'variável para pegar os dados do txt em forma de string
@@ -500,6 +516,11 @@ Public Class Form2
 
         Dim columnXCalib() As Double
         Dim columnYCalib() As Double
+
+        If (String.IsNullOrEmpty(GlobalVariables.OpenFileDialogSensor.FileName)) Then
+            MsgBox(ChrW(215) & " Você não adicionou o 'Arquivo de medida com o sensor de referência' para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
 
         'curva do sensor de referencia dado pelo fabricante
         textRef = readTxtComplete(filePath) 'filepath é o caminho do arquivo do sensor de referencia dado pelo fabricante
@@ -548,8 +569,6 @@ Public Class Form2
             End If
 
         Next i
-        Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
-        Array.Resize(yInterpolado, yInterpolado.Length - 1)
         Array.Resize(potencia, potencia.Length - 1)
         'receber nome do usuário.
         Dim nomeUsuario = InputBox("Digite seu nome: ", "Nome do usuário")
@@ -701,13 +720,19 @@ Public Class Form2
         Label24.Left = (Label24.Parent.Width \ 2) - (Label24.Width \ 2)
 
         TextBox15.Text = CalculaGamma().ToString("0.00E+00")
+        ComboBox2.SelectedIndex = 15
 
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         GlobalVariables.flagBut = 2
         Dim PathRef As String
+
         PathRef = ComboBox1.Text
+        If (String.IsNullOrEmpty(PathRef)) Then
+            MsgBox(ChrW(215) & " Você não selecionou o sensor de referência para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
@@ -738,6 +763,15 @@ Public Class Form2
 
         Dim columnXAmostra() As Double
         Dim columnYAmostra() As Double
+
+        If (String.IsNullOrEmpty(GlobalVariables.OpenFileDialogSensor.FileName)) Then
+            MsgBox(ChrW(215) & " Você não adicionou o 'Arquivo de medida com o sensor de referência' para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
+        If (String.IsNullOrEmpty(GlobalVariables.OpenFileDialogAmostra.FileName)) Then
+            MsgBox(ChrW(215) & " Você não adicionou o 'Arquivo de medida da amostra' para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
 
         'curva do sensor de referencia dado pelo fabricante
         textRef = readTxtComplete(filePath) 'filepath é o caminho do arquivo do sensor de referencia dado pelo fabricante
@@ -826,7 +860,6 @@ Public Class Form2
         End If
 
         If Form7.CheckBox2.Checked Then
-            renameY = "Log da " & renameY
             formatY = "E0"
         End If
 
@@ -849,6 +882,7 @@ Public Class Form2
         If CheckBox1.Checked Then
             tipoDeMedida = "_RESPONSIVIDADE_"
             cabecalho = "ARQUIVO DE MEDIDA DE RESPONSIVIDADE DA AMOSTRA " & TextBox17.Text & vbCrLf &
+             "Nome da amostra: " & TextBox17.Text & vbCrLf &
              "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
              "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
              "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
@@ -915,10 +949,43 @@ Public Class Form2
             Form7.Chart1.Series(nomeAmostra).Points.AddXY(NewColumnXAmostra(i), responsividade(i))
         Next i
 
-        If Form7.CheckBox2.Checked Then
-            'deixando o gráfico no tamanho correto
-            Form7.Chart1.ChartAreas(0).AxisY.Maximum = Form7.Chart1.Series(0).Points.FindMaxByValue("Y1").YValues(0)
-            Form7.Chart1.ChartAreas(0).AxisY.Minimum = Form7.Chart1.Series(0).Points.FindMinByValue("Y1").YValues(0)
+        Dim maiorValor As String = Form7.Chart1.Series(0).Points.FindMaxByValue().YValues(0).ToString("E0")
+        Dim menorValor As String = Form7.Chart1.Series(0).Points.FindMinByValue().YValues(0).ToString("E0")
+
+        If (Form7.CheckBox2.Checked) Then
+            Dim maisoumenosXXXMAIOR As String = maiorValor.Substring(maiorValor.Length - 4, 4)
+            Dim sinalMaior As String = maisoumenosXXXMAIOR.Substring(0, 1)
+            Dim expoenteMaior = 0
+            If ("+".Equals(sinalMaior)) Then
+                Dim valorXXX = maisoumenosXXXMAIOR.Substring(1, 3)
+                expoenteMaior = Integer.Parse(valorXXX) + 1
+            End If
+            If ("-".Equals(sinalMaior)) Then
+                Dim valorXXX = maisoumenosXXXMAIOR.Substring(1, 3)
+                expoenteMaior = Integer.Parse(valorXXX) - 1
+            End If
+
+            Dim maisoumenosXXXMENOR As String = menorValor.Substring(menorValor.Length - 4, 4)
+            Dim sinalMenor As String = maisoumenosXXXMENOR.Substring(0, 1)
+            Dim expoenteMenor = 0
+            If ("+".Equals(sinalMenor)) Then
+                Dim valorXXX = maisoumenosXXXMENOR.Substring(1, 3)
+                expoenteMenor = Integer.Parse(valorXXX)
+            End If
+            If ("-".Equals(sinalMenor)) Then
+                Dim valorXXX = maisoumenosXXXMENOR.Substring(1, 3)
+                expoenteMenor = Integer.Parse(valorXXX)
+            End If
+
+            Dim limiteSuperior As String = "1E" & sinalMaior & expoenteMaior.ToString
+            Dim limiteInferior As String = "1E" & sinalMenor & expoenteMenor.ToString
+
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.Maximum = Double.Parse(limiteSuperior)
+
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.Minimum = Double.Parse(limiteInferior)
+
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.IntervalAutoMode = 1
+
         End If
 
         FormDados.TextBox2.Text = textoCompleto
@@ -967,6 +1034,10 @@ Public Class Form2
         GlobalVariables.flagBut = 1
         Dim PathRef As String
         PathRef = ComboBox1.Text
+        If (String.IsNullOrEmpty(PathRef)) Then
+            MsgBox(ChrW(215) & " Você não selecionou o sensor de referência para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
         Dim filePath As String = IO.Path.Combine(Application.StartupPath, "TxtsDasReferencias", PathRef + ".txt") 'aqui está pegando o caminho (interno) do sensor de referencia escolhido dentre as opções
 
         'Parâmetros para o alfa (coeficiente que corrige os valores por causa das diferentes áreas e distancias)
@@ -980,7 +1051,6 @@ Public Class Form2
 
         Dim textRef As String 'variável para pegar os dados do txt em forma de string
         Dim textCalib As String 'variável para pegar os dados do txt em forma de string
-        Dim textAmostra As String 'variável para pegar os dados do txt em forma de string
 
         Dim indice As Integer
         Dim temporario As Double
@@ -995,8 +1065,10 @@ Public Class Form2
         Dim columnXCalib() As Double
         Dim columnYCalib() As Double
 
-        Dim columnXAmostra() As Double
-        Dim columnYAmostra() As Double
+        If (String.IsNullOrEmpty(GlobalVariables.OpenFileDialogSensor.FileName)) Then
+            MsgBox(ChrW(215) & " Você não adicionou o 'Arquivo de medida com o sensor de referência' para que o programa faça os cálculos.",, "Atenção !")
+            Exit Sub
+        End If
 
         'curva do sensor de referencia dado pelo fabricante
         textRef = readTxtComplete(filePath) 'filepath é o caminho do arquivo do sensor de referencia dado pelo fabricante
@@ -1006,10 +1078,6 @@ Public Class Form2
         textCalib = readTxtComplete(GlobalVariables.OpenFileDialogSensor.FileName) 'aqui ele vai pegar o caminho do arquivo 
         columnYCalib = getColumYOfStringComplete(textCalib)
         columnXCalib = getColumXOfStringComplete(textCalib)
-        'curva da amostra no SETUP
-        textAmostra = readTxtComplete(GlobalVariables.OpenFileDialogAmostra.FileName)
-        columnYAmostra = getColumYOfStringComplete(textAmostra)
-        columnXAmostra = getColumXOfStringComplete(textAmostra)
 
 
         Dim menor As Integer = 0
@@ -1036,9 +1104,6 @@ Public Class Form2
         Dim NewColumnXCalib = columnXCalib.Take(maior + 1).Skip(menor).ToArray()
         Dim NewColumnYCalib = columnYCalib.Take(maior + 1).Skip(menor).ToArray()
 
-        Dim NewColumnXAmostra = columnXAmostra.Take(maior + 1).Skip(menor).ToArray()
-        Dim NewColumnYAmostra = columnYAmostra.Take(maior + 1).Skip(menor).ToArray()
-
         'Em posse de todos os vetores, agora calcularemos a responsividade
         For i = 0 To NewColumnXCalib.Length - 1
             indice = menorque(NewColumnXCalib(i), columnXRef)
@@ -1051,20 +1116,8 @@ Public Class Form2
             Else
                 Add(Of Double)(potencia, NewColumnYCalib(i) / temporario)
             End If
-            If (NewColumnYCalib(i).Equals(0)) Then
-                Add(Of Double)(responsividade, 0)
-            Else
-                If CheckBox1.Checked Then
-                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta) / NewColumnYCalib(i))
-                End If
-                If CheckBox2.Checked Then
-                    Add(Of Double)(responsividade, (NewColumnYAmostra(i) * temporario * alfa * beta * gamma) / (NewColumnYCalib(i) * NewColumnXCalib(i) * 0.000000001))
-                End If
-            End If
 
         Next i
-        Array.Resize(responsividade, responsividade.Length - 1) 'a funcao add sempre deixa o ultimo lugar vago, tira-se entao
-        Array.Resize(yInterpolado, yInterpolado.Length - 1)
         Array.Resize(potencia, potencia.Length - 1)
 
         Dim sensorSelected = New SensorFabricante(ComboBox1.Text)
@@ -1078,9 +1131,7 @@ Public Class Form2
         Dim maximo As Double = Double.NaN
         Dim renameY As String = "Potência"
         If Form7.CheckBox2.Checked Then
-            renameY = "Log da Potência"
             formatY = "E0"
-            maximo = Double.NaN
         End If
 
         Dim nomeAmostra As String = "amostra"
@@ -1092,6 +1143,7 @@ Public Class Form2
         Dim datahoraAtual As DateTime = Now
         cabecalho = "ARQUIVO DO ESPECTRO DE POTENCIA" & vbCrLf &
                         "Data e Hora: " & datahoraAtual.ToShortDateString & " " & datahoraAtual.ToShortTimeString & vbCrLf &
+                        "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
                         "Sensor de referência usado: " & sensorSelected.Nome & vbCrLf &
                         "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
                         "Comentário: A razão é entre a curva do sensor do fabricante no setup e a curva do fabricante." & vbCrLf &
@@ -1120,18 +1172,51 @@ Public Class Form2
         Form7.Chart1.Series(nomeAmostra).Color = Color.FromKnownColor(KnownColor.Red)
         Form7.Chart1.Series(nomeAmostra).ChartType = DataVisualization.Charting.SeriesChartType.Line
         If (Form7.CheckBox2.Checked) Then
-            potencia = removeZerosVetorY(NewColumnXAmostra, potencia)
-            NewColumnXAmostra = removeZerosVetorX(NewColumnXAmostra, potencia)
+            potencia = removeZerosVetorY(NewColumnXCalib, potencia)
+            NewColumnXCalib = removeZerosVetorX(NewColumnXCalib, potencia)
         End If
-        For i = 0 To NewColumnXAmostra.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-            textoCompleto += potencia(i).ToString + " " + NewColumnXAmostra(i).ToString + vbCrLf
-            Form7.Chart1.Series(nomeAmostra).Points.AddXY(NewColumnXAmostra(i), potencia(i))
+        For i = 0 To NewColumnXCalib.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
+            textoCompleto += potencia(i).ToString + " " + NewColumnXCalib(i).ToString + vbCrLf
+            Form7.Chart1.Series(nomeAmostra).Points.AddXY(NewColumnXCalib(i), potencia(i))
         Next i
 
-        If Form7.CheckBox2.Checked Then
-            'deixando o gráfico no tamanho correto
-            Form7.Chart1.ChartAreas(0).AxisY.Maximum = Form7.Chart1.Series(0).Points.FindMaxByValue("Y1").YValues(0)
-            Form7.Chart1.ChartAreas(0).AxisY.Minimum = Form7.Chart1.Series(0).Points.FindMinByValue("Y1").YValues(0)
+        Dim maiorValor As String = Form7.Chart1.Series(0).Points.FindMaxByValue().YValues(0).ToString("E0")
+        Dim menorValor As String = Form7.Chart1.Series(0).Points.FindMinByValue().YValues(0).ToString("E0")
+
+        If (Form7.CheckBox2.Checked) Then
+            Dim maisoumenosXXXMAIOR As String = maiorValor.Substring(maiorValor.Length - 4, 4)
+            Dim sinalMaior As String = maisoumenosXXXMAIOR.Substring(0, 1)
+            Dim expoenteMaior = 0
+            If ("+".Equals(sinalMaior)) Then
+                Dim valorXXX = maisoumenosXXXMAIOR.Substring(1, 3)
+                expoenteMaior = Integer.Parse(valorXXX) + 1
+            End If
+            If ("-".Equals(sinalMaior)) Then
+                Dim valorXXX = maisoumenosXXXMAIOR.Substring(1, 3)
+                expoenteMaior = Integer.Parse(valorXXX) - 1
+            End If
+
+            Dim maisoumenosXXXMENOR As String = menorValor.Substring(menorValor.Length - 4, 4)
+            Dim sinalMenor As String = maisoumenosXXXMENOR.Substring(0, 1)
+            Dim expoenteMenor = 0
+            If ("+".Equals(sinalMenor)) Then
+                Dim valorXXX = maisoumenosXXXMENOR.Substring(1, 3)
+                expoenteMenor = Integer.Parse(valorXXX)
+            End If
+            If ("-".Equals(sinalMenor)) Then
+                Dim valorXXX = maisoumenosXXXMENOR.Substring(1, 3)
+                expoenteMenor = Integer.Parse(valorXXX)
+            End If
+
+            Dim limiteSuperior As String = "1E" & sinalMaior & expoenteMaior.ToString
+            Dim limiteInferior As String = "1E" & sinalMenor & expoenteMenor.ToString
+
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.Maximum = Double.Parse(limiteSuperior)
+
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.Minimum = Double.Parse(limiteInferior)
+
+            Form7.Chart1.ChartAreas(nomeAmostra).AxisY.IntervalAutoMode = 1
+
         End If
 
         FormDados.TextBox2.Text = textoCompleto

@@ -456,8 +456,6 @@ Public Class Form3
             CheckBox11.Checked Or
             CheckBox12.Checked Then
             maximoY = 1.0
-        Else
-            maximoY = Double.NaN
         End If
 
         Dim renameX As String
@@ -470,14 +468,6 @@ Public Class Form3
         renameY = RichTextBox11.Text
         If String.IsNullOrEmpty(renameY) Then
             renameY = " "
-        End If
-
-        If RadioButton16.Checked Then
-            If renameY.Equals(" ") Then
-                renameY = "Log"
-            Else
-                renameY = "Log de " & renameY
-            End If
         End If
 
         ' N indica o numero como ele realmente é, o NX indica com X casas decimais
@@ -510,6 +500,17 @@ Public Class Form3
             Double.TryParse(RichTextBox7.Text, baseLog) 'transformando a string em double
         End If
 
+        Dim XMinimo As Double = 0
+        Dim XMaximo As Double = Double.NaN
+        If RadioButton12.Checked Then
+            If Not String.IsNullOrEmpty(RichTextBox8.Text) Then
+                XMaximo = Double.Parse(RichTextBox8.Text)
+            End If
+            If Not String.IsNullOrEmpty(RichTextBox9.Text) Then
+                XMinimo = Double.Parse(RichTextBox9.Text)
+            End If
+        End If
+
         Form7.Chart1.Titles.Clear()
         Form7.Chart1.Titles.Add(titulo) 'specify chart name
         Form7.Chart1.Titles(0).Font = New Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold) 'mexa aqui pra mudar a fonte do titulo
@@ -521,7 +522,6 @@ Public Class Form3
             .AxisX.Title = renameX 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
-            .AxisY.Maximum = maximoY
             .AxisY.Title = renameY 'y label
             .AxisY.IsLogarithmic = axisYLogarithm
             .AxisY.LogarithmBase = baseLog
@@ -553,7 +553,13 @@ Public Class Form3
                 x = removeZerosVetorX(x, y)
             End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                If (RadioButton12.Checked) Then
+                    If (x(i) >= XMinimo And x(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                End If
             Next i
         End If
         ' FIM - 1 GRAFICO
@@ -579,7 +585,13 @@ Public Class Form3
                 x = removeZerosVetorX(x, y)
             End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                If (RadioButton12.Checked) Then
+                    If (x(i) >= XMinimo And x(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(1))
@@ -601,7 +613,13 @@ Public Class Form3
                 x1 = removeZerosVetorX(x1, y1)
             End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                If (RadioButton12.Checked) Then
+                    If (x1(i) >= XMinimo And x1(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                End If
             Next i
 
         End If
@@ -629,7 +647,13 @@ Public Class Form3
                 x = removeZerosVetorX(x, y)
             End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                If (RadioButton12.Checked) Then
+                    If (x(i) >= XMinimo And x(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(1))
@@ -651,7 +675,13 @@ Public Class Form3
                 x1 = removeZerosVetorX(x1, y1)
             End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                If (RadioButton12.Checked) Then
+                    If (x1(i) >= XMinimo And x1(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(2))
@@ -673,7 +703,13 @@ Public Class Form3
                 x2 = removeZerosVetorX(x2, y2)
             End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                If (RadioButton12.Checked) Then
+                    If (x2(i) >= XMinimo And x2(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                End If
             Next i
 
         End If
@@ -701,7 +737,13 @@ Public Class Form3
                 x = removeZerosVetorX(x, y)
             End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                If (RadioButton12.Checked) Then
+                    If (x(i) >= XMinimo And x(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(1))
@@ -723,7 +765,13 @@ Public Class Form3
                 x1 = removeZerosVetorX(x1, y1)
             End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                If (RadioButton12.Checked) Then
+                    If (x1(i) >= XMinimo And x1(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(2))
@@ -745,7 +793,13 @@ Public Class Form3
                 x2 = removeZerosVetorX(x2, y2)
             End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                If (RadioButton12.Checked) Then
+                    If (x2(i) >= XMinimo And x2(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(3))
@@ -767,7 +821,13 @@ Public Class Form3
                 x3 = removeZerosVetorX(x3, y3)
             End If
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                If (RadioButton12.Checked) Then
+                    If (x3(i) >= XMinimo And x3(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                End If
             Next i
         End If
         ' FIM - 4 GRAFICOS
@@ -794,7 +854,13 @@ Public Class Form3
                 x = removeZerosVetorX(x, y)
             End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                If (RadioButton12.Checked) Then
+                    If (x(i) >= XMinimo And x(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(1))
@@ -816,7 +882,13 @@ Public Class Form3
                 x1 = removeZerosVetorX(x1, y1)
             End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                If (RadioButton12.Checked) Then
+                    If (x1(i) >= XMinimo And x1(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(2))
@@ -838,7 +910,13 @@ Public Class Form3
                 x2 = removeZerosVetorX(x2, y2)
             End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                If (RadioButton12.Checked) Then
+                    If (x2(i) >= XMinimo And x2(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(3))
@@ -860,7 +938,13 @@ Public Class Form3
                 x3 = removeZerosVetorX(x3, y3)
             End If
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                If (RadioButton12.Checked) Then
+                    If (x3(i) >= XMinimo And x3(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(4))
@@ -882,7 +966,13 @@ Public Class Form3
                 x4 = removeZerosVetorX(x4, y4)
             End If
             For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                If (RadioButton12.Checked) Then
+                    If (x4(i) >= XMinimo And x4(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                End If
             Next i
         End If
         ' FIM - 5 GRAFICOS
@@ -909,7 +999,13 @@ Public Class Form3
                 x = removeZerosVetorX(x, y)
             End If
             For i = 0 To x.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                If (RadioButton12.Checked) Then
+                    If (x(i) >= XMinimo And x(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(0)).Points.AddXY(x(i), y(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(1))
@@ -931,7 +1027,13 @@ Public Class Form3
                 x1 = removeZerosVetorX(x1, y1)
             End If
             For i = 0 To x1.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                If (RadioButton12.Checked) Then
+                    If (x1(i) >= XMinimo And x1(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(1)).Points.AddXY(x1(i), y1(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(2))
@@ -953,7 +1055,13 @@ Public Class Form3
                 x2 = removeZerosVetorX(x2, y2)
             End If
             For i = 0 To x2.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                If (RadioButton12.Checked) Then
+                    If (x2(i) >= XMinimo And x2(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(2)).Points.AddXY(x2(i), y2(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(3))
@@ -975,7 +1083,13 @@ Public Class Form3
                 x3 = removeZerosVetorX(x3, y3)
             End If
             For i = 0 To x3.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                If (RadioButton12.Checked) Then
+                    If (x3(i) >= XMinimo And x3(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(3)).Points.AddXY(x3(i), y3(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(4))
@@ -997,7 +1111,13 @@ Public Class Form3
                 x4 = removeZerosVetorX(x4, y4)
             End If
             For i = 0 To x4.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                If (RadioButton12.Checked) Then
+                    If (x4(i) >= XMinimo And x4(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(4)).Points.AddXY(x4(i), y4(i))
+                End If
             Next i
 
             Form7.Chart1.Series.Add(nomeAmostra(5))
@@ -1019,52 +1139,105 @@ Public Class Form3
                 x5 = removeZerosVetorX(x5, y5)
             End If
             For i = 0 To x5.Length - 2 'o ultimo elemento é 0, pois o vetor foi acrescentado e nada foi adiconado ao mesmo
-                Form7.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
+                If (RadioButton12.Checked) Then
+                    If (x5(i) >= XMinimo And x5(i) <= XMaximo) Then
+                        Form7.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
+                    End If
+                Else
+                    Form7.Chart1.Series(nomeAmostra(5)).Points.AddXY(x5(i), y5(i))
+                End If
             Next i
         End If
-        ' FIM - 6 GRAFICOS
+        ' FIM - 6 GRAFICO
 
+        Dim maior As Double = 0
+        Dim menor As Double = Double.MaxValue
         If RadioButton16.Checked Then
             'deixando o gráfico no tamanho correto, percorre todas as series e pega o maior valor pra setar
-            Dim maior As Double = 0
-            Dim temp As Double = 0
+            Dim tempMax As Double = 0
+            Dim tempMin As Double = 0
             For Each serie In Form7.Chart1.Series
-                temp = serie.Points.FindMaxByValue().YValues(0)
-                If (temp > maior) Then
-                    maior = temp
+                tempMax = serie.Points.FindMaxByValue().YValues(0)
+                tempMin = serie.Points.FindMinByValue().YValues(0)
+                If (tempMax > maior) Then
+                    maior = tempMax
+                End If
+                If (tempMin < menor) Then
+                    menor = tempMin
                 End If
             Next
-            Form7.Chart1.ChartAreas(0).AxisY.Maximum = maior
+        End If
+
+        Dim maiorValor As String = maior.ToString("E0")
+        Dim menorValor As String = menor.ToString("E0")
+
+        If (RadioButton16.Checked) Then
+            Dim maisoumenosXXXMAIOR As String = maiorValor.Substring(maiorValor.Length - 4, 4)
+            Dim sinalMaior As String = maisoumenosXXXMAIOR.Substring(0, 1)
+            Dim expoenteMaior = 0
+            If ("+".Equals(sinalMaior)) Then
+                Dim valorXXX = maisoumenosXXXMAIOR.Substring(1, 3)
+                expoenteMaior = Integer.Parse(valorXXX) + 1
+            End If
+            If ("-".Equals(sinalMaior)) Then
+                Dim valorXXX = maisoumenosXXXMAIOR.Substring(1, 3)
+                expoenteMaior = Integer.Parse(valorXXX) - 1
+            End If
+
+            Dim maisoumenosXXXMENOR As String = menorValor.Substring(menorValor.Length - 4, 4)
+            Dim sinalMenor As String = maisoumenosXXXMENOR.Substring(0, 1)
+            Dim expoenteMenor = 0
+            If ("+".Equals(sinalMenor)) Then
+                Dim valorXXX = maisoumenosXXXMENOR.Substring(1, 3)
+                expoenteMenor = Integer.Parse(valorXXX)
+            End If
+            If ("-".Equals(sinalMenor)) Then
+                Dim valorXXX = maisoumenosXXXMENOR.Substring(1, 3)
+                expoenteMenor = Integer.Parse(valorXXX)
+            End If
+
+            Dim limiteSuperior As String = "1E" & sinalMaior & expoenteMaior.ToString
+            Dim limiteInferior As String = "1E" & sinalMenor & expoenteMenor.ToString
+
+            Form7.Chart1.ChartAreas(nomeAmostra(0)).AxisY.Maximum = Double.Parse(limiteSuperior)
+
+            Form7.Chart1.ChartAreas(nomeAmostra(0)).AxisY.Minimum = Double.Parse(limiteInferior)
+
+            Form7.Chart1.ChartAreas(nomeAmostra(0)).AxisY.IntervalAutoMode = 1
+
         End If
 
         'anotacoes
-        Dim verticalLine = New VerticalLineAnnotation()
-        verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
-        verticalLine.AllowMoving = True
-        verticalLine.IsInfinitive = True
-        verticalLine.LineColor = Color.Navy
-        verticalLine.LineWidth = 2
-        verticalLine.AnchorOffsetX = 50
-        verticalLine.ClipToChartArea = Form7.Chart1.ChartAreas.First.Name
-        verticalLine.Name = "VA"
-        verticalLine.LineDashStyle = 1
-        verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
-        'verticalLine.X = 1
-        Form7.Chart1.Annotations.Add(verticalLine)
 
-        Dim RA = New RectangleAnnotation()
-        RA.AxisX = verticalLine.AxisX
-        RA.IsSizeAlwaysRelative = False
-        RA.Width = MaiorRange() / 17
-        RA.Height = 3
-        RA.Name = "RA"
-        RA.LineColor = Color.Blue
-        RA.BackColor = Color.White
-        RA.Y = 82.5
-        RA.Text = "Hello"
-        RA.ForeColor = Color.Navy
-        RA.Font = New System.Drawing.Font("Arial", 8.0F)
-        Form7.Chart1.Annotations.Add(RA)
+        If Not RadioButton12.Checked Then
+            Dim verticalLine = New VerticalLineAnnotation()
+            verticalLine.AxisX = Form7.Chart1.ChartAreas.First.AxisX
+            verticalLine.AllowMoving = True
+            verticalLine.IsInfinitive = True
+            verticalLine.LineColor = Color.Navy
+            verticalLine.LineWidth = 2
+            verticalLine.AnchorOffsetX = 50
+            verticalLine.ClipToChartArea = Form7.Chart1.ChartAreas.First.Name
+            verticalLine.Name = "VA"
+            verticalLine.LineDashStyle = 1
+            verticalLine.AnchorDataPoint = Form7.Chart1.Series.First.Points(0)
+            'verticalLine.X = 1
+            Form7.Chart1.Annotations.Add(verticalLine)
+
+            Dim RA = New RectangleAnnotation()
+            RA.AxisX = verticalLine.AxisX
+            RA.IsSizeAlwaysRelative = False
+            RA.Width = MaiorRange() / 17
+            RA.Height = 3
+            RA.Name = "RA"
+            RA.LineColor = Color.Blue
+            RA.BackColor = Color.White
+            RA.Y = 82.5
+            RA.Text = "Hello"
+            RA.ForeColor = Color.Navy
+            RA.Font = New System.Drawing.Font("Arial", 8.0F)
+            Form7.Chart1.Annotations.Add(RA)
+        End If
 
         Form7.Visible = True
         Form7.WindowState = FormWindowState.Normal

@@ -100,7 +100,7 @@
         stringSearching = "onda(nm)"
         position = InStr(textComplete, stringSearching)
         If position = 0 Then
-            MsgBox(ChrW(215) & " O programa será reiniciado, você selecionou um arquivo inválido ou não selecionou o arquivo para que o programa faça os cálculos." & vbCrLf & vbCrLf & ChrW(215) & " Clique no botão AJUDA para saber mais",, "Erro Fatal !")
+            MsgBox(ChrW(215) & " O programa será reiniciado, você selecionou um arquivo inválido, abra-o e veja (até o final) se corresponde ao que você deseja." & vbCrLf & vbCrLf & ChrW(215) & " Clique no botão AJUDA para saber mais",, "Erro Fatal !")
             'Fecha o programa e reabre.
             Application.Exit()
             Process.Start(Application.ExecutablePath)

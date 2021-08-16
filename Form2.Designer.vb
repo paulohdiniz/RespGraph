@@ -60,6 +60,8 @@ Partial Class Form2
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -92,12 +94,10 @@ Partial Class Form2
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.TextBox18 = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.TextBox17 = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -223,7 +223,7 @@ Partial Class Form2
         Me.ButtonCalcular.Size = New System.Drawing.Size(131, 71)
         Me.ButtonCalcular.TabIndex = 12
         Me.ButtonCalcular.Text = "Salvar curva de responsividade"
-        Me.ToolTip1.SetToolTip(Me.ButtonCalcular, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.ToolTip1.SetToolTip(Me.ButtonCalcular, "Crie seu arquivo com a curva correspondente.")
         Me.ButtonCalcular.UseVisualStyleBackColor = False
         '
         'Label4
@@ -520,7 +520,7 @@ Partial Class Form2
         Me.Button5.Size = New System.Drawing.Size(131, 71)
         Me.Button5.TabIndex = 49
         Me.Button5.Text = "Salvar curva de potência"
-        Me.ToolTip1.SetToolTip(Me.Button5, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.ToolTip1.SetToolTip(Me.Button5, "Salve sua curva de potência")
         Me.Button5.UseVisualStyleBackColor = False
         '
         'Button7
@@ -533,7 +533,7 @@ Partial Class Form2
         Me.Button7.Size = New System.Drawing.Size(131, 71)
         Me.Button7.TabIndex = 58
         Me.Button7.Text = "Ver curva de responsividade"
-        Me.ToolTip1.SetToolTip(Me.Button7, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.ToolTip1.SetToolTip(Me.Button7, "Veja sua curva correspondente")
         Me.Button7.UseVisualStyleBackColor = False
         '
         'Button8
@@ -546,8 +546,29 @@ Partial Class Form2
         Me.Button8.Size = New System.Drawing.Size(131, 71)
         Me.Button8.TabIndex = 59
         Me.Button8.Text = "Ver curva de potência"
-        Me.ToolTip1.SetToolTip(Me.Button8, "Crie seu arquivo com a curva espectral de responsividade.")
+        Me.ToolTip1.SetToolTip(Me.Button8, "Veja a curva de potência")
         Me.Button8.UseVisualStyleBackColor = False
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox18.Location = New System.Drawing.Point(32, 96)
+        Me.TextBox18.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(160, 27)
+        Me.TextBox18.TabIndex = 29
+        Me.ToolTip1.SetToolTip(Me.TextBox18, "Nome da outra fonte")
+        Me.TextBox18.Visible = False
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox17.Location = New System.Drawing.Point(32, 96)
+        Me.TextBox17.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New System.Drawing.Size(160, 27)
+        Me.TextBox17.TabIndex = 29
+        Me.ToolTip1.SetToolTip(Me.TextBox17, "Identifique sua amostra")
         '
         'ComboBox2
         '
@@ -799,6 +820,7 @@ Partial Class Form2
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(343, 112)
         Me.Panel7.TabIndex = 49
+        Me.ToolTip1.SetToolTip(Me.Panel7, "Determine o tipo de medida que você deseja realizar")
         '
         'CheckBox2
         '
@@ -899,17 +921,7 @@ Partial Class Form2
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(223, 141)
         Me.Panel8.TabIndex = 49
-        '
-        'TextBox18
-        '
-        Me.TextBox18.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox18.Location = New System.Drawing.Point(32, 96)
-        Me.TextBox18.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.Size = New System.Drawing.Size(160, 27)
-        Me.TextBox18.TabIndex = 29
-        Me.ToolTip1.SetToolTip(Me.TextBox18, "Nome da outra fonte")
-        Me.TextBox18.Visible = False
+        Me.ToolTip1.SetToolTip(Me.Panel8, "Indique a fonte de radiação usada no experimento.")
         '
         'Label24
         '
@@ -932,16 +944,17 @@ Partial Class Form2
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(223, 141)
         Me.Panel9.TabIndex = 50
+        Me.ToolTip1.SetToolTip(Me.Panel9, "Qual nome da sua amostra?")
         '
-        'TextBox17
+        'Label21
         '
-        Me.TextBox17.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox17.Location = New System.Drawing.Point(32, 96)
-        Me.TextBox17.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.Size = New System.Drawing.Size(160, 27)
-        Me.TextBox17.TabIndex = 29
-        Me.ToolTip1.SetToolTip(Me.TextBox17, "Identifique sua amostra")
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(35, 62)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(142, 20)
+        Me.Label21.TabIndex = 29
+        Me.Label21.Text = "Nome da amostra"
         '
         'Label17
         '
@@ -953,16 +966,6 @@ Partial Class Form2
         Me.Label17.TabIndex = 25
         Me.Label17.Text = "Amostra"
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(35, 62)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(142, 20)
-        Me.Label21.TabIndex = 29
-        Me.Label21.Text = "Nome da amostra"
         '
         'Form2
         '
