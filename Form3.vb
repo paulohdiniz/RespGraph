@@ -448,16 +448,6 @@ Public Class Form3
             Exit Sub
         End If
 
-        Dim maximoY As Double
-        If CheckBox7.Checked Or
-            CheckBox8.Checked Or
-            CheckBox9.Checked Or
-            CheckBox10.Checked Or
-            CheckBox11.Checked Or
-            CheckBox12.Checked Then
-            maximoY = 1.0
-        End If
-
         Dim renameX As String
         renameX = RichTextBox10.Text
         If String.IsNullOrEmpty(renameX) Then
@@ -528,6 +518,16 @@ Public Class Form3
             .AxisX.LabelStyle.Format = formatX
             .AxisY.LabelStyle.Format = formatY
         End With
+
+        If CheckBox7.Checked Or
+            CheckBox8.Checked Or
+            CheckBox9.Checked Or
+            CheckBox10.Checked Or
+            CheckBox11.Checked Or
+            CheckBox12.Checked Then
+            Form7.Chart1.ChartAreas(nomeAmostra(0)).AxisY.Maximum = 1.0
+        End If
+
         'specify series plot lines
         Form7.Chart1.Series.Clear()
         ' INICIO - 1 GRAFICO
