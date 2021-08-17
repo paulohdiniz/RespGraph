@@ -287,7 +287,8 @@ Public Class Form2
              "Janela do Criostato: " & TextBox8.Text & vbCrLf &
              "Switch: " & switchTemp & vbCrLf &
              "Alfa: " & TextBoxAlfa.Text & vbCrLf &
-             "Ganho Keithley: " & TextBox14.Text & vbCrLf &
+             "Beta: " & TextBox9.Text & vbCrLf &
+             "Ganho Keithley: " & TextBox14.Text & " (V/A)" & vbCrLf &
              sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
         End If
         If CheckBox2.Checked Then
@@ -306,7 +307,8 @@ Public Class Form2
              "Janela do Criostato: " & TextBox8.Text & vbCrLf &
              "Switch: " & switchTemp & vbCrLf &
              "Alfa: " & TextBoxAlfa.Text & vbCrLf &
-             "Ganho Stanford: " & TextBox14.Text & vbCrLf &
+             "Beta: " & TextBox9.Text & vbCrLf &
+             "Ganho Stanford: " & TextBox14.Text & " (A/V)" & vbCrLf &
              "EQE " & " Comprimento de onda(nm)"
         End If
 
@@ -414,7 +416,7 @@ Public Class Form2
         Form7.Chart1.Annotations.Clear()
         Form7.Chart1.ChartAreas.Add(sensorSelected.Nome)
         With Form7.Chart1.ChartAreas(sensorSelected.Nome)
-            .AxisX.Title = "Comprimento de onda(nm)" 'x label
+            .AxisX.Title = "Comprimento de onda (nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.Title = renameY 'y label
@@ -601,7 +603,7 @@ Public Class Form2
                         "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
                         "Sensor de referência usado: " & sensorReferenciaUsado.Nome & vbCrLf &
                         "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
-                        "Comentário: A razão é entre a curva do sensor do fabricante no setup e a curva do fabricante." & vbCrLf &
+                        "Comentário: Essa curva é a razão entre a medida feita com o sensor de referência (em V) e a curva de responsividade do fabricante (em V/W)." & vbCrLf &
                         "Razão" & " Comprimento de onda(nm)"
                     outFile = My.Computer.FileSystem.OpenTextFileWriter(sfdPic.FileName, False)
                     outFile.WriteLine(cabecalho)
@@ -894,7 +896,8 @@ Public Class Form2
              "Janela do Criostato: " & TextBox8.Text & vbCrLf &
              "Switch: " & switchTemp & vbCrLf &
              "Alfa: " & TextBoxAlfa.Text & vbCrLf &
-             "Ganho Keithley: " & TextBox14.Text & vbCrLf &
+             "Beta: " & TextBox9.Text & vbCrLf &
+             "Ganho Keithley: " & TextBox14.Text & " (V/A)" & vbCrLf &
              sensorReferenciaUsado.UnidadeResponsividade & " Comprimento de onda(nm)"
         End If
         If CheckBox2.Checked Then
@@ -911,7 +914,8 @@ Public Class Form2
              "Janela do Criostato: " & TextBox8.Text & vbCrLf &
              "Switch: " & switchTemp & vbCrLf &
              "Alfa: " & TextBoxAlfa.Text & vbCrLf &
-             "Ganho Stanford: " & TextBox14.Text & vbCrLf &
+             "Beta: " & TextBox9.Text & vbCrLf &
+             "Ganho Stanford: " & TextBox14.Text & " (A/V)" & vbCrLf &
              "EQE " & " Comprimento de onda(nm)"
         End If
 
@@ -923,7 +927,7 @@ Public Class Form2
         Form7.Chart1.Annotations.Clear()
         Form7.Chart1.ChartAreas.Add(nomeAmostra)
         With Form7.Chart1.ChartAreas(nomeAmostra)
-            .AxisX.Title = "Comprimento de onda(nm)" 'x label
+            .AxisX.Title = "Comprimento de onda (nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.Maximum = maximo
@@ -1126,15 +1130,15 @@ Public Class Form2
         Dim formatX As String
         Dim formatY As String
         formatX = "eixoX"
-        formatY = "E0"
+        formatY = "E1"
 
         Dim maximo As Double = Double.NaN
-        Dim renameY As String = "Potência"
+        Dim renameY As String = "Potência (W)"
         If Form7.CheckBox2.Checked Then
             formatY = "E0"
         End If
 
-        Dim nomeAmostra As String = "amostra"
+        Dim nomeAmostra As String = "Amostra"
         If Not String.IsNullOrEmpty(TextBox17.Text) Then
             nomeAmostra = TextBox17.Text
         End If
@@ -1146,7 +1150,7 @@ Public Class Form2
                         "Fonte de radiação: " & ComboBox3.Text & " " & TextBox18.Text & vbCrLf &
                         "Sensor de referência usado: " & sensorSelected.Nome & vbCrLf &
                         "Área do sensor de referência (mm²): " & TextBox3.Text & vbCrLf &
-                        "Comentário: A razão é entre a curva do sensor do fabricante no setup e a curva do fabricante." & vbCrLf &
+                        "Comentário: Essa curva é a razão entre a medida feita com o sensor de referência (em V) e a curva de responsividade do fabricante (em V/W)." & vbCrLf &
                         "Razão" & " Comprimento de onda(nm)"
         Dim textoCompleto = cabecalho + vbCrLf
         Form7.Chart1.Titles.Clear()
@@ -1157,7 +1161,7 @@ Public Class Form2
         Form7.Chart1.Annotations.Clear()
         Form7.Chart1.ChartAreas.Add(nomeAmostra)
         With Form7.Chart1.ChartAreas(nomeAmostra)
-            .AxisX.Title = "Comprimento de onda(nm)" 'x label
+            .AxisX.Title = "Comprimento de onda (nm)" 'x label
             .AxisX.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.MajorGrid.LineColor = Color.SkyBlue
             .AxisY.Maximum = maximo

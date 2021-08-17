@@ -1261,7 +1261,7 @@ Public Class Form3
 
     Private Sub RadioButton16_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton16.CheckedChanged
         If RadioButton16.Checked Then
-            MsgBox("Certifique-se que na escala logarítmica não existe valor 0 ou negativo no eixo Y.",, "Atenção !")
+            MsgBox(ChrW(215) & " Certifique-se que seu arquivo possui apenas valores maiores que zero. Os valores diferentes disso serão descartados.",, "Atenção !")
         End If
     End Sub
 End Class

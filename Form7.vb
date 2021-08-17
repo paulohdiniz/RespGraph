@@ -141,6 +141,11 @@ Public Class Form7
         If Form2.GlobalVariables.flagBut = 2 Then 'respo/eqe
             Form2.Button7.PerformClick()
         End If
+        If Form2.GlobalVariables.flagBut = 3 Then 'plotar
+            Dim path As String = Form3.GlobalVariables.OpenFileDialog1.FileName
+            Dim Text As String = readTxtComplete(path)
+            FormDados.TextBox2.Text = Text
+        End If
         FormDados.Visible = True
         FormDados.WindowState = FormWindowState.Normal
         FormDados.BringToFront()
@@ -165,11 +170,138 @@ Public Class Form7
 
         If Form2.GlobalVariables.flagBut = 3 Then
             CheckBox2.Visible = False
-            ButtonHelp.Visible = False
+
+            If (Form3.RadioButton1.Checked) Then
+                ButtonHelp.BackColor = Color.FromKnownColor(KnownColor.Red)
+                ButtonHelp.Visible = True
+                Button1.Visible = False
+                Button2.Visible = False
+                Button3.Visible = False
+                Button4.Visible = False
+                Button5.Visible = False
+            End If
+            If (Form3.RadioButton2.Checked) Then
+                ButtonHelp.BackColor = Color.FromKnownColor(KnownColor.Red)
+                ButtonHelp.Visible = True
+                Button1.BackColor = Color.FromKnownColor(KnownColor.Blue)
+                Button1.Visible = True
+                Button2.Visible = False
+                Button3.Visible = False
+                Button4.Visible = False
+                Button5.Visible = False
+            End If
+            If (Form3.RadioButton3.Checked) Then
+                ButtonHelp.BackColor = Color.FromKnownColor(KnownColor.Red)
+                ButtonHelp.Visible = True
+                Button1.BackColor = Color.FromKnownColor(KnownColor.Blue)
+                Button1.Visible = True
+                Button2.BackColor = Color.FromKnownColor(KnownColor.Green)
+                Button2.Visible = True
+                Button3.Visible = False
+                Button4.Visible = False
+                Button5.Visible = False
+            End If
+            If (Form3.RadioButton4.Checked) Then
+                ButtonHelp.BackColor = Color.FromKnownColor(KnownColor.Red)
+                ButtonHelp.Visible = True
+                Button1.BackColor = Color.FromKnownColor(KnownColor.Blue)
+                Button1.Visible = True
+                Button2.BackColor = Color.FromKnownColor(KnownColor.Green)
+                Button2.Visible = True
+                Button3.BackColor = Color.FromKnownColor(KnownColor.Black)
+                Button3.Visible = True
+                Button4.Visible = False
+                Button5.Visible = False
+            End If
+            If (Form3.RadioButton5.Checked) Then
+                ButtonHelp.BackColor = Color.FromKnownColor(KnownColor.Red)
+                ButtonHelp.Visible = True
+                Button1.BackColor = Color.FromKnownColor(KnownColor.Blue)
+                Button1.Visible = True
+                Button2.BackColor = Color.FromKnownColor(KnownColor.Green)
+                Button2.Visible = True
+                Button3.BackColor = Color.FromKnownColor(KnownColor.Black)
+                Button3.Visible = True
+                Button4.BackColor = Color.FromKnownColor(KnownColor.Yellow)
+                Button4.Visible = True
+                Button5.Visible = False
+            End If
+            If (Form3.RadioButton6.Checked) Then
+                ButtonHelp.BackColor = Color.FromKnownColor(KnownColor.Red)
+                ButtonHelp.Visible = True
+                Button1.BackColor = Color.FromKnownColor(KnownColor.Blue)
+                Button1.Visible = True
+                Button2.BackColor = Color.FromKnownColor(KnownColor.Green)
+                Button2.Visible = True
+                Button3.BackColor = Color.FromKnownColor(KnownColor.Black)
+                Button3.Visible = True
+                Button4.BackColor = Color.FromKnownColor(KnownColor.Yellow)
+                Button4.Visible = True
+                Button5.BackColor = Color.FromKnownColor(KnownColor.Pink)
+                Button5.Visible = True
+            End If
+
+
         Else
-            CheckBox2.Visible = True
             ButtonHelp.Visible = True
+            Button1.Visible = False
+            Button2.Visible = False
+            Button3.Visible = False
+            Button4.Visible = False
+            Button5.Visible = False
+
+            CheckBox2.Visible = True
         End If
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim path As String = Form3.GlobalVariables.OpenFileDialog2.FileName
+        Dim Text As String = readTxtComplete(path)
+        FormDados.TextBox2.Text = Text
+
+        FormDados.Visible = True
+        FormDados.WindowState = FormWindowState.Normal
+        FormDados.BringToFront()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim path As String = Form3.GlobalVariables.OpenFileDialog3.FileName
+        Dim Text As String = readTxtComplete(path)
+        FormDados.TextBox2.Text = Text
+
+        FormDados.Visible = True
+        FormDados.WindowState = FormWindowState.Normal
+        FormDados.BringToFront()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim path As String = Form3.GlobalVariables.OpenFileDialog4.FileName
+        Dim Text As String = readTxtComplete(path)
+        FormDados.TextBox2.Text = Text
+
+        FormDados.Visible = True
+        FormDados.WindowState = FormWindowState.Normal
+        FormDados.BringToFront()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim path As String = Form3.GlobalVariables.OpenFileDialog5.FileName
+        Dim Text As String = readTxtComplete(path)
+        FormDados.TextBox2.Text = Text
+
+        FormDados.Visible = True
+        FormDados.WindowState = FormWindowState.Normal
+        FormDados.BringToFront()
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim path As String = Form3.GlobalVariables.OpenFileDialog6.FileName
+        Dim Text As String = readTxtComplete(path)
+        FormDados.TextBox2.Text = Text
+
+        FormDados.Visible = True
+        FormDados.WindowState = FormWindowState.Normal
+        FormDados.BringToFront()
     End Sub
 End Class
